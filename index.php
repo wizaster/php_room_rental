@@ -68,8 +68,8 @@
                                 Connecter</a></li>
                         <li><a href="register.php">Devenir Membre</a></li>
 
-                        <li><a href="#" class="cta"><span
-                                        class="bg-primary text-white rounded">+ Afficher votre salle</span></a></li>
+                        <li><a href="add_room.php" class="cta"><span
+                                        class="bg-primary text-white rounded">Afficher votre salle</span></a></li>
                     </ul>
                 </nav>
             </div>
