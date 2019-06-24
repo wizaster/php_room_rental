@@ -1,26 +1,24 @@
 <?php
-require_once('./Configs/config.php');
+include_once('./configs/config.php');
 include_once('./Classes/Database.class.php');
-include_once('./Classes/Favori.class.php');
+include_once('./Classes/Salle.class.php');
 
-class FavoriDAO
+class SalleDAO
 {
     public function create($x) {
         try {
             $db = Database::getInstance();
             
             $pstmt = $db->prepare("INSERT INTO ".Config::DB_TABLE_SALLE.
-            " (ID, NOM, SUPERFICIE, CAPACITE, ADDRESSE, IDDISPO, DESC, CREATEDSINCE, IDPROP)
-            VALUES (:id, :nom, :sup, :cap, :add, :dispo, :desc, :created)");
+                " (nom, superficie, capacite, adresse_Id, description, proprietaire_Id)
+            VALUES (:nom, :sup, :cap, :add, :desc, :idProp)");
             $n = $pstmt->execute(array(
-                ':id' => $x->getId(),
                 ':nom' => $x->getNom(),
                 ':sup' => $x->getSuperficie(),
                 ':cap' => $x->getCapacite(),
                 ':add' => $x->getAddresse(),
-                ':dispo' => $x->getIdDispo(),
                 ':desc' => $x->getDesc(),
-                ':created' => $x->getCreatedSince()));
+                ':idProp' => $x->getIdProp()));
             
             $pstmt->closeCursor();
             //$db->close();
@@ -31,11 +29,18 @@ class FavoriDAO
             throw $e;
         }
     }
-    
+
+    public static function nbrUser()
+    {
+        $Kweri = 'SELECT COUNT(*) FROM ' . Config::DB_TABLE_SALLE;
+        $cnx = Database::getInstance();
+        $res = $cnx->query($Kweri);
+        return $res;
+    }
     public static function findAll()
     {
         try {
-            $liste = new Array();
+            $liste = Array();
                 
             $query = 'SELECT * FROM '.Config::DB_TABLE_SALLE;
             $cnx = Database::getInstance();
@@ -91,7 +96,7 @@ class FavoriDAO
     {
         try 
         {
-            $liste = new Array();
+            $liste = Array();
             
             $db = Database::getInstance();
             

@@ -1,5 +1,7 @@
 <?php
-class Favori {
+
+class Salle
+{
     private $id;
     private $nom;
     private $superficie;
@@ -11,17 +13,14 @@ class Favori {
     private $idProp;
     
     public function __construct(
-        $_id=0, $_nom="", $_superficie=0, $_capacite=0, $_addresse="",
-        $_idDispo="", $_desc="", $_createdSince="", $_idProp="")
+        $_nom, $_superficie, $_capacite, $_addresse,
+        $_desc, $_idProp)
     {
-        $this->id = $_id;
         $this->nom = $_nom;
         $this->superficie = $_superficie;
         $this->capacite = $_capacite;
         $this->addresse = $_addresse;
-        $this->idDispo = $_idDispo;
         $this->desc = $_desc;
-        $this->createdSince = $_createdSince;
         $this->idProp = $_idProp;
     }
     
@@ -32,12 +31,12 @@ class Favori {
     
     public function getNom()
     {
-        return $this->url;
+        return $this->nom;
     }
     
     public function getSuperficie()
     {
-        return $this->title;
+        return $this->superficie;
     }
     
     public function getCapacite()
@@ -119,7 +118,7 @@ class Favori {
     {
         return "Salle{".$this->id.",".$this->nom.",".$this->superficie.",".
 		$this->capacite.",".$this->addresse.",".$this->idDispo.",".$this->desc.",".
-		$this->createdSince.","".$this->idProp.""}";
+            $this->createdSince . "," . $this->idProp . "}";
     }
     
     public function loadFromArray($tab)

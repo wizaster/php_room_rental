@@ -1,3 +1,51 @@
+<?php
+include_once('./Classes/Salle.class.php');
+include_once('./Classes/SalleDAO.class.php');
+include_once('./Classes/salle_adresseDAO.class.php');
+include_once('./Classes/salle_adresse.class.php');
+
+$sDao = new SalleDAO();
+$saDao = new salle_adresseDAO();
+$db = Database::getInstance();
+
+$no_civique = "";
+$no_local = "";
+$rue = "";
+$ville = "";
+$code_postal = "";
+$province = "";
+$pays = "";
+$superficie = "";
+$capacite = "";
+$titre = "";
+$desc = "";
+
+if (ISSET($_REQUEST['action'])) {
+    $no_civique = "'" . $_REQUEST['noCivique'] . "'";
+    $no_local = "'" . $_REQUEST['local-room'] . "'";
+    $rue = "'" . $_REQUEST['rue-room'] . "'";
+    $ville = "'" . $_REQUEST['ville-room'] . "'";
+    $code_postal = "'" . $_REQUEST['codePostal-room'] . "'";
+    $province = "'" . $_REQUEST['province-room'] . "'";
+    $pays = "'" . $_REQUEST['pays-room'] . "'";
+    $superficie = (int)$_REQUEST['superficie'];
+    $capacite = (int)$_REQUEST['capacite'];
+    var_dump($superficie);
+    var_dump($capacite);
+    var_dump($superficie);
+    var_dump($capacite);
+    $titre = "'" . $_REQUEST['titre'] . "'";
+    $desc = "'" . $_REQUEST['description-room'] . "'";
+    $adresse = new Salle_adresse($no_civique, $no_local, $rue, $ville, $code_postal, $province, $pays);
+    $adr = $saDao->create($adresse);
+    $id_adr = $db->lastInsertId();
+    $salle = new Salle($titre, $superficie, $capacite, $id_adr, $desc, 1);
+    $res = $sDao->create($salle);
+    echo "Salle enregister!!!";
+    var_dump($superficie);
+    var_dump($capacite);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,66 +159,70 @@
                 <div class="col-md-12 mb-12" data-aos="fade">
 
 
-                    <form action="#" class="p-5 bg-white">
+                    <form action="#" method="post" class="p-5 bg-white">
 
                         <div class=" form-group">
 
-                            <div class="" row col-md-12>
+                            <div class=" row col-md-12">
                                 <p>Veuillez remplir tous les champs.</p>
                             </div>
                             <div class="row col-12">
-                                <div class="col-3 form-room">
-                                    <label class="text-black" for="noCivique">No civique</label>
-                                    <input type="number" id="noCivique" class="form-control">
-                                </div>
                                 <div class="col-2 form-room">
-                                    <label class="text-black" for="local-room">Local</label>
-                                    <input type="text" id="local-room" class="form-control">
+                                    <label class="text-black" for="noCivique">No civique</label>
+                                    <input type="text" name="noCivique" class="form-control">
                                 </div>
-                                <div class="col-7 form-room">
+                                <div class="col-1 form-room">
+                                    <label class="text-black" for="local-room">Local</label>
+                                    <input type="text" name="local-room" class="form-control">
+                                </div>
+                                <div class="col-5 form-room">
                                     <label class="text-black" for="rue-room">Rue</label>
-                                    <input type="text" id="rue-room" class="form-control">
+                                    <input type="text" name="rue-room" class="form-control">
+                                </div>
+                                <div class="col-4 form-room">
+                                    <label class="text-black" for="ville-room">Ville</label>
+                                    <input type="text" name="ville-room" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="codePostal-room">Code postal</label>
-                                    <input type="number" id="codePostal-room" class="form-control">
+                                    <input type="text" name="codePostal-room" class="form-control">
                                 </div>
                                 <div class="col-4 form-room">
                                     <label class="text-black" for="province-room">Province</label>
-                                    <input type="text" id="province-room" class="form-control">
+                                    <input type="text" name="province-room" class="form-control">
                                 </div>
                                 <div class="col-5 form-room">
                                     <label class="text-black" for="pays-room">Pays</label>
-                                    <input type="text" id="pays-room" class="form-control">
+                                    <input type="text" name="pays-room" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
                                     <label class="text-black" for="titre">Titre</label>
-                                    <input type="text" id="titre" class="form-control">
+                                    <input type="text" name="titre" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
                                     <label class="text-black" for="description-room">Description</label>
-                                    <textarea rows="5" id="description-room" class="form-control"></textarea>
+                                    <textarea rows="5" name="description-room" class="form-control"></textarea>
                                 </div>
                             </div>
                             <br/><br/>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
-                                    <label class="text-black" for="capacite">Capacité</label>
-                                    <input type="number" min="1" step="any" id="capacite" class="form-control"/>
+                                    <label class="text-black" for="capaciteRoom">Capacité</label>
+                                    <input type="text" name="capaciteRoom" class="form-control"/>
                                 </div>
                                 <div class="col-3 form-room">
-                                    <label class="text-black" for="superficie">Superficie (en M²)</label>
-                                    <input type="number" min="1" step="any" id="superficie" class="form-control"/>
+                                    <label class="text-black" for="superficieRoom">Superficie (en M²)</label>
+                                    <input type="text" name="superficieRoom" class="form-control"/>
                                 </div>
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="prix_jour">Prix journalier</label>
-                                    <input type="number" min="1" step="any" id="prix_jour" class="form-control"/>
+                                    <input type="text" min="1" step="any" name="prix_jour" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row col-md-12">
@@ -185,6 +237,7 @@
                             <div class="form-room col-12">
                                 <input type="submit" value="Suivant"
                                        class="btn btn-primary py-2 px-4 text-white btn-suivant">
+                                <input type="hidden" name="action" value="suivant"/>
                             </div>
                         </div>
 

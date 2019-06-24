@@ -1,4 +1,7 @@
 <?php
+if (ISSET($_REQUEST['create_user'])) {
+
+}
 ?>
 
 
@@ -99,7 +102,7 @@
 
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8 text-center">
-                            <h1>Afficher votre salle</h1>
+                            <h1>Devenir membre</h1>
                         </div>
                     </div>
 
@@ -115,7 +118,7 @@
                 <div class="col-md-12 mb-12" data-aos="fade">
 
 
-                    <form action="#" class="p-5 bg-white">
+                    <form action="#" method="post" class="p-5 bg-white">
 
                         <div class=" form-group">
 
@@ -178,31 +181,12 @@
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
-                                    <label class="text-black" for="titre">Titre</label>
-                                    <input type="text" id="titre" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row col-md-12">
-                                <div class="col-12 form-room">
                                     <label class="text-black" for="description-room">Description</label>
+                                    <div>Dites quelque chose à propos de vous</div>
                                     <textarea rows="5" id="description-room" class="form-control"></textarea>
                                 </div>
                             </div>
                             <br/><br/>
-                            <div class="row col-md-12">
-                                <div class="col-3 form-room">
-                                    <label class="text-black" for="capacite">Capacité</label>
-                                    <input type="number" min="1" step="any" id="capacite" class="form-control"/>
-                                </div>
-                                <div class="col-3 form-room">
-                                    <label class="text-black" for="superficie">Superficie (en M²)</label>
-                                    <input type="number" min="1" step="any" id="superficie" class="form-control"/>
-                                </div>
-                                <div class="col-3 form-room">
-                                    <label class="text-black" for="prix_jour">Prix journalier</label>
-                                    <input type="number" min="1" step="any" id="prix_jour" class="form-control"/>
-                                </div>
-                            </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
 
@@ -212,8 +196,8 @@
 
 
                         <div class="row col-12">
-                            <div class="form-room col-12">
-                                <input type="submit" value="Suivant"
+                            <div class="col-12">
+                                <input type="submit" name="create_user" value="Devenir membre"
                                        class="btn btn-primary py-2 px-4 text-white btn-suivant">
                             </div>
                         </div>
