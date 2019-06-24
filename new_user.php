@@ -1,6 +1,50 @@
 <?php
-if (ISSET($_REQUEST['create_user'])) {
 
+include_once('./Classes/User.class.php');
+include_once('./Classes/UserDAO.class.php');
+
+$uDao = new UserDAO();
+$db = Database::getInstance();
+
+$username = "";
+$password = "";
+$nom = "";
+$prenom = "";
+$email = "";
+$adresse = "";
+$noCivique = "";
+$appt = "";
+$rue = "";
+$codePostal = "";
+$province = "";
+$pays = "";
+$desc = "";
+
+if (ISSET($_REQUEST['action'])) {
+    $username = $_REQUEST['create-username'];
+    $password = $_REQUEST['create-password'];
+    var_dump($password);
+    var_dump($password);
+    var_dump($password);
+    var_dump($password);
+    var_dump($password);
+    var_dump($password);
+    var_dump($password);
+
+    $nom = $_REQUEST['create-nom'];
+    $prenom = $_REQUEST['create-prenom'];
+    $email = $_REQUEST['create-email'];
+    $noCivique = (int)$_REQUEST['noCivique-user'];
+    $appt = $_REQUEST['app-user'];
+    $rue = $_REQUEST['rue-user'];
+    $codePostal = $_REQUEST['codePostal-user'];
+    $province = $_REQUEST['province-user'];
+    $pays = $_REQUEST['pays-user'];
+    $desc = $_REQUEST['description-user'];
+    $adresse = $noCivique . "," . $appt . "," . $rue . "," . $codePostal . "," . $province . "," . $pays;
+
+    $user = new User($username, $password, $nom, $prenom, $adresse, $email, $desc);
+    $uDao->create($user);
 }
 ?>
 
@@ -122,68 +166,68 @@ if (ISSET($_REQUEST['create_user'])) {
 
                         <div class=" form-group">
 
-                            <div class="" row col-md-12>
+                            <div class=" row col-md-12">
                                 <p>Veuillez remplir tous les champs.</p>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-5">
                                     <label class="text-black" for="create-username">Nom Utilisateur</label>
-                                    <input type="text" id="create-username" class="form-control">
+                                    <input type="text" name="create-username" class="form-control">
                                 </div>
                                 <div class="col-5">
                                     <label class="text-black" for="create-password">Mot de passe</label>
-                                    <input type="text" id="create-password" class="form-control">
+                                    <input type="password" name="create-password" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-5">
                                     <label class="text-black" for="create-prenom">Prénom</label>
-                                    <input type="text" id="create-prenom" class="form-control">
+                                    <input type="text" name="create-prenom" class="form-control">
                                 </div>
                                 <div class="col-5">
                                     <label class="text-black" for="create-nom">Nom</label>
-                                    <input type="text" id="create-nom" class="form-control">
+                                    <input type="text" name="create-nom" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-10">
                                     <label class="text-black" for="create-email">Adresse courriel</label>
-                                    <input type="email" id="create-email" class="form-control">
+                                    <input type="email" name="create-email" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-12">
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="noCivique-user">No civique</label>
-                                    <input type="number" id="noCivique-user" class="form-control">
+                                    <input type="number" name="noCivique-user" class="form-control">
                                 </div>
                                 <div class="col-2 form-room">
                                     <label class="text-black" for="app-user">Appartement</label>
-                                    <input type="text" id="app-room" class="form-control">
+                                    <input type="text" name="app-user" class="form-control">
                                 </div>
                                 <div class="col-7 form-room">
                                     <label class="text-black" for="rue-user">Rue</label>
-                                    <input type="text" id="rue-user" class="form-control">
+                                    <input type="text" name="rue-user" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="codePostal-user">Code postal</label>
-                                    <input type="number" id="codePostal-user" class="form-control">
+                                    <input type="text" name="codePostal-user" class="form-control">
                                 </div>
                                 <div class="col-4 form-room">
                                     <label class="text-black" for="province-user">Province</label>
-                                    <input type="text" id="province-user" class="form-control">
+                                    <input type="text" name="province-user" class="form-control">
                                 </div>
                                 <div class="col-5 form-room">
                                     <label class="text-black" for="pays-user">Pays</label>
-                                    <input type="text" id="pays-user" class="form-control">
+                                    <input type="text" name="pays-user" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
-                                    <label class="text-black" for="description-room">Description</label>
+                                    <label class="text-black" for="description-user">Description</label>
                                     <div>Dites quelque chose à propos de vous</div>
-                                    <textarea rows="5" id="description-room" class="form-control"></textarea>
+                                    <textarea rows="5" name="description-user" class="form-control"></textarea>
                                 </div>
                             </div>
                             <br/><br/>
@@ -199,6 +243,7 @@ if (ISSET($_REQUEST['create_user'])) {
                             <div class="col-12">
                                 <input type="submit" name="create_user" value="Devenir membre"
                                        class="btn btn-primary py-2 px-4 text-white btn-suivant">
+                                <input type="hidden" name="action" value="Devenir membre"/>
                             </div>
                         </div>
 
