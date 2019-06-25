@@ -13,8 +13,8 @@ class Salle
     private $idProp;
     
     public function __construct(
-        $_nom, $_superficie, $_capacite, $_addresse,
-        $_desc, $_idProp)
+        $_nom, $_superficie = 0, $_capacite = 0, $_addresse,
+        $_desc = "", $_idProp)
     {
         $this->nom = $_nom;
         $this->superficie = $_superficie;
