@@ -32,9 +32,9 @@ class SalleDAO
 
     public static function nbrUser()
     {
-        $Kweri = 'SELECT COUNT(*) FROM ' . Config::DB_TABLE_SALLE;
+        $kweri = 'SELECT COUNT(*) FROM ' . Config::DB_TABLE_SALLE;
         $cnx = Database::getInstance();
-        $res = $cnx->query($Kweri);
+        $res = $cnx->query($kweri);
         return $res;
     }
     public static function findAll()

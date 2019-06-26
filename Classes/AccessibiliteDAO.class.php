@@ -1,9 +1,10 @@
 <?php
 include_once('./configs/config.php');
-include_once('./Classes/Accessibilte.class.php');
-include_once('./Database.class.php');
+include_once('./Classes/Database.class.php');
+include_once('./Classes/Accessibilite.class.php');
 
-class AccessibilteDAO
+
+class AccessibiliteDAO
 {
     function __construct()
     {
@@ -17,11 +18,36 @@ class AccessibilteDAO
             VALUES(:nom, :description)");
             $n = $pstmt->execute(array(
                 ':nom' => $x->getNom(),
-                ':description' => getDescription()));
+                ':description' => $x->getDescription()));
             $pstmt->closeCursor();
             return $n;
         } catch (PDOException $e) {
             throw $e;
+        }
+    }
+
+    public function findAll()
+    {
+        try {
+            $liste = Array();
+
+            $query = 'SELECT * FROM ' . Config::DB_TABLE_ACCESS;
+            $cnx = Database::getInstance();
+
+            $result = $cnx->query($query);
+            foreach ($result as $row) {
+                $s = new Accessibilite();
+
+                $s->loadFromArray($row);
+
+                array_push($liste, $s);
+            }
+            $result->closeCursor();
+            //$cnx->close();
+            return $liste;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
         }
     }
 }

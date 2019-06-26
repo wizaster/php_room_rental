@@ -1,7 +1,30 @@
 <?php
 
-class Equipement
+class Accessibilite
 {
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
     private $id;
     private $nom;
@@ -27,23 +50,6 @@ class Equipement
         $this->description = $x->description;
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
     /**
      * @param mixed $nom
      */
@@ -53,15 +59,7 @@ class Equipement
     }
 
     /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param mixed $description
+     * @param string $description
      */
     public function setDescription($description)
     {

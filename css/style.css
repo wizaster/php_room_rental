@@ -2410,3 +2410,13 @@ h1, h2, h3, h4, h5,
 .btn-suivant {
     float: right;
 }
+
+.cta {
+    padding: 10px 15px;
+    background-color: #3060e3;
+    border-radius: 15px;
+}
+
+.searchbar input {
+    width: 200px;
+}

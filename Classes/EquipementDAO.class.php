@@ -25,4 +25,30 @@ class EquipementDAO
             throw $e;
         }
     }
+
+    public function findAll()
+    {
+        try {
+            $liste = Array();
+
+            $query = 'SELECT * FROM ' . Config::DB_TABLE_EQUIP;
+            $cnx = Database::getInstance();
+
+            $result = $cnx->query($query);
+            foreach ($result as $row) {
+                $s = new Equipement();
+
+                $s->loadFromArray($row);
+
+                array_push($liste, $s);
+            }
+            $result->closeCursor();
+            //$cnx->close();
+            return $liste;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
+        }
+    }
+
 }
