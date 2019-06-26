@@ -30,8 +30,8 @@
                         <li class="has-children">
                             <a href="about.php">Comment ca marche</a>
                             <ul class="dropdown">
-                                <li><a href="#">Comment louer</a></li>
-                                <li><a href="#">Comment afficher</a></li>
+                                <li><a href="listings-single.php">Comment louer</a></li>
+                                <li><a href="add_room.php">Comment afficher</a></li>
                                 <li><a href="#">prix</a></li>
                                 <li><a href="#">FAQ</a></li>
                             </ul>
@@ -45,7 +45,7 @@
                     </ul>
                     <div class="searchbar site-menu js-clone-nav">
                         <input type="text" name="searchbar" value="trouvez le bonheur"/>
-                        <a href="#" class="cta"><span
+                        <a href="advanced_search.php" class="cta"><span
                                     class="bg-primary text-white rounded">Recherche</span></a>
                     </div>
                 </nav>

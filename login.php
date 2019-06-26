@@ -77,7 +77,7 @@ include('header.php');
 
                         <div class="row form-group">
                             <div class="col-12">
-                                <p>Vous n'êtes pas membre ? <a href="register.php">Soyez-le en deux minutes!</a></p>
+                                <p>Vous n'êtes pas membre ? <a href="new_user.php.php">Soyez-le en deux minutes!</a></p>
                             </div>
                         </div>
 
