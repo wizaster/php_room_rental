@@ -18,34 +18,35 @@
         <div class="row align-items-center">
 
             <div class="col-6 col-xl-2">
-                <h1 class="mb-0 site-logo"><a href="index.php" class="text-black mb-0">Abbys'<span class="text-primary">List</span>
+                <h1 class="mb-0 site-logo"><a href="?action=default" class="text-black mb-0">Abbys'<span
+                                class="text-primary">List</span>
                     </a></h1>
             </div>
             <div class="col-12 col-md-10 d-none d-xl-block">
                 <nav class="site-navigation position-relative text-right" role="navigation">
 
                     <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                        <li class="active"><a href="index.php">Accueil</a></li>
-                        <li><a href="listings.php">salles</a></li>
+                        <li class="active"><a href="?action=default">Accueil</a></li>
+                        <li><a href="?action=afficher_salles">salles</a></li>
                         <li class="has-children">
-                            <a href="about.php">Comment ca marche</a>
+                            <a href="?action=a_propos">Comment ca marche</a>
                             <ul class="dropdown">
-                                <li><a href="listings-single.php">Comment louer</a></li>
-                                <li><a href="add_room.php">Comment afficher</a></li>
+                                <li><a href="?action=afficher_salle">Comment louer</a></li>
+                                <li><a href="?action=ajouter_salle">Comment afficher</a></li>
                                 <li><a href="#">prix</a></li>
                                 <li><a href="#">FAQ</a></li>
                             </ul>
                         </li>
-                        <li><a href="blog.php">Blog</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="?action=blog">Blog</a></li>
+                        <li><a href="?action=contact">Contact</a></li>
 
-                        <li class="ml-xl-3 login"><a href="login.php"><span class="border-left pl-xl-4"></span>Se
+                        <li class="ml-xl-3 login"><a href="?action=connexion"><span class="border-left pl-xl-4"></span>Se
                                 Connecter</a></li>
-                        <li><a href="new_user.php">Devenir Membre</a></li>
+                        <li><a href="?action=nouvel_utilisateur">Devenir Membre</a></li>
                     </ul>
                     <div class="searchbar site-menu js-clone-nav">
                         <input type="text" name="searchbar" value="trouvez le bonheur"/>
-                        <a href="advanced_search.php" class="cta"><span
+                        <a href="?action=recherche_avance" class="cta"><span
                                     class="bg-primary text-white rounded">Recherche</span></a>
                     </div>
                 </nav>

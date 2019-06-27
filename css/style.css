@@ -2420,3 +2420,7 @@ h1, h2, h3, h4, h5,
 .searchbar input {
     width: 200px;
 }
+
+.hero {
+    background-image: url(../images/hero_conference.jpg);
+}
