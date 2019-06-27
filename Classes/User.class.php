@@ -2,171 +2,191 @@
 
 class User
 {
+    private $username;
+    private $password;
+    
     private $id;
     private $nom;
     private $prenom;
     private $adresse;
-    private $username;
-    private $password;
     private $email;
     private $description;
-    private $userType;
-    private $userSince;
+    private $user_type;
+    private $user_since;
 
-    public function __construct($_username, $_password, $_nom, $_prenom, $_adresse, $_email, $_description)
+    public function __construct(
+        $_username = "",
+        $_password = "",
+        
+        $_id = 0,
+        $_nom = "",
+        $_prenom = "",
+        $_adresse = "",
+        $_email = "",
+        $_description = "",
+        $_user_type = 1,
+        $_user_since = ""
+    )
     {
         $this->username = $_username;
         $this->password = $_password;
+        
+        $this->id = $_id;
         $this->nom = $_nom;
         $this->prenom = $_prenom;
         $this->adresse = $_adresse;
         $this->email = $_email;
         $this->description = $_description;
-        $this->userType = 1;
+        $this->user_type = $_user_type;
+        $this->user_since = $_user_since;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
+    
+    // Getters
     {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * @param mixed $nom
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * @param mixed $prenom
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * @param mixed $adresse
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getUsername()
     {
         return $this->username;
     }
-
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return mixed
-     */
+    
     public function getPassword()
     {
         return $this->password;
     }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
+    
+    public function getId()
     {
-        $this->password = $password;
+        return $this->id;
     }
-
-    /**
-     * @return mixed
-     */
+    
+    public function getNom()
+    {
+        return $this->nom;
+    }
+    
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+    
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+    
     public function getEmail()
     {
         return $this->email;
     }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
+    
     public function getDescription()
     {
         return $this->description;
     }
 
-    /**
-     * @param mixed $description
-     */
+    public function getUserType()
+    {
+        return $this->user_type;
+    }
+    
+    public function getUserSince()
+    {
+        return $this->user_since;
+    }
+    }
+    
+    // Setters
+    {
+    public function setUsername($_username)
+    {
+        $this->username = $_username;
+    }
+    
+    public function setPassword($_password)
+    {
+        $this->password = $_password;
+    }
+    
+    public function setId($_id)
+    {
+        $this->id = $_id;
+    }
+    
+    public function setNom($_nom)
+    {
+        $this->nom = $_nom;
+    }
+    
+    public function setPrenom($_prenom)
+    {
+        $this->prenom = $_prenom;
+    }
+    
+    public function setAdresse($_adresse)
+    {
+        $this->adresse = $_adresse;
+    }
+    
+    public function setEmail($_email)
+    {
+        $this->email = $_email;
+    }
+    
     public function setDescription($description)
     {
         $this->description = $description;
     }
-
-    /**
-     * @return int
-     */
-    public function getUserType()
+    
+    public function setUserType($_user_type)
     {
-        return $this->userType;
+        $this->user_type = $_user_type;
+    }
+    
+    public function setUserSince($_user_since)
+    {
+        $this->user_since = $user_since;
+    }
     }
 
-    /**
-     * @param int $userType
-     */
-    public function setUserType($userType)
+    
+    public function __toString()
     {
-        $this->userType = $userType;
+        return "User{"
+            .$this->id.","
+            .$this->nom.","
+            .$this->prenom.","
+            .$this->adresse.","
+            .$this->email.","
+            .$this->description.","
+            .$this->user_type.","
+            .$this->user_since.
+            "}";
     }
-
-    /**
-     * @return mixed
-     */
-    public function getUserSince()
+    
+    public function loadFromArray($tab)
     {
-        return $this->userSince;
+        $this->username = $tab["USERNAME"];
+        $this->password = $tab["PASSWORD"];
+        $this->id = $tab["ID"];
+        $this->nom = $tab["NOM"];
+        $this->prenom = $tab["PRENOM"];
+        $this->adresse = $tab["ADRESSE"];
+        $this->email = $tab["EMAIL"];
+		$this->description = $tab["DESCRIPTION"];
+        $this->user_type = $tab["USER_TYPE"];
+        $this->user_since = $tab["USER_SINCE"];
     }
-
+    
+    public function loadFromObject($x)
+    {
+        $this->username = $x->USERNAME;
+        $this->password = $x->PASSWORD;
+        $this->id = $x->ID;
+        $this->nom = $x->NOM;
+        $this->prenom = $x->PRENOM;
+        $this->adresse = $x->ADRESSE;
+        $this->email = $x->EMAIL;
+        $this->description = $x->DESCRIPTION;
+        $this->user_type = $x->USER_TYPE;
+        $this->user_since = $x->USER_SINCE;
+    }
 }

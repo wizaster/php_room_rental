@@ -4,134 +4,124 @@ class Location
 {
 
     private $id;
-    private $dateLocation;
-    private $dateDebut;
-    private $dateFin;
     private $locateurId;
     private $salleId;
-    private $evenementId;
+    private $date_location;
+    private $date_debut;
+    private $date_fin;
 
-    /**
-     * Location constructor.
-     * @param $dateDebut
-     * @param $dateFin
-     * @param $locateurId
-     * @param $salleId
-     * @param $evenementId
-     */
-    public function __construct($dateDebut, $dateFin, $locateurId, $salleId, $evenementId = NULL)
+    
+    public function __construct(
+        $_id = 0,
+        $_locateurId = 0,
+        $_salleId = 0,
+        $_date_location = "",
+        $_date_debut = "",
+        $_date_fin = "")
     {
-        $this->dateDebut = $dateDebut;
-        $this->dateFin = $dateFin;
-        $this->locateurId = $locateurId;
-        $this->salleId = $salleId;
-        $this->evenementId = $evenementId;
+        $this->id = $_id;
+        $this->locateurId = $_locateurId;
+        $this->salleId = $_salleId;
+        $this->date_location = $date_location;
+        $this->date_debut = $_date_debut;
+        $this->date_fin = $_date_fin;
     }
 
-
-    /**
-     * @return mixed
-     */
+    // Getters
+    {
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDateLocation()
-    {
-        return $this->dateLocation;
-    }
-
-    /**
-     * @param mixed $dateLocation
-     */
-    public function setDateLocation($dateLocation)
-    {
-        $this->dateLocation = $dateLocation;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
-    }
-
-    /**
-     * @param mixed $dateDebut
-     */
-    public function setDateDebut($dateDebut)
-    {
-        $this->dateDebut = $dateDebut;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateFin()
-    {
-        return $this->dateFin;
-    }
-
-    /**
-     * @param mixed $dateFin
-     */
-    public function setDateFin($dateFin)
-    {
-        $this->dateFin = $dateFin;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLocateurId()
     {
         return $this->locateurId;
     }
-
-    /**
-     * @param mixed $locateurId
-     */
-    public function setLocateurId($locateurId)
-    {
-        $this->locateurId = $locateurId;
-    }
-
-    /**
-     * @return mixed
-     */
+    
     public function getSalleId()
     {
         return $this->salleId;
     }
-
-    /**
-     * @param mixed $salleId
-     */
+    
+    public function getDateLocation()
+    {
+        return $this->date_location;
+    }
+    
+    public function getDateDebut()
+    {
+        return $this->date_debut;
+    }
+    
+    
+    public function getDateFin()
+    {
+        return $this->date_fin;
+    }
+    }
+    
+    // Setters
+    {
+    public function setId($_id)
+    {
+        $this->id = $_id;
+    }
+        
+    public function setLocateurId($locateurId)
+    {
+        $this->locateurId = $locateurId;
+    }
+        
     public function setSalleId($salleId)
     {
         $this->salleId = $salleId;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getEvenementId()
+    
+    public function setDateLocation($_date_location)
     {
-        return $this->evenementId;
+        $this->date_location = $_date_location;
     }
-
-    /**
-     * @param mixed $evenementId
-     */
-    public function setEvenementId($evenementId)
+    public function setDateDebut($date_debut)
     {
-        $this->evenementId = $evenementId;
+        $this->date_debut = $_date_debut;
     }
-
-
+    
+    public function setDateFin($dateFin)
+    {
+        $this->date_fin = $_date_fin;
+    }
+    }
+    
+    public function __toString()
+    {
+        return "Location{"
+            .$this->id.","
+            .$this->locateurId.","
+            .$this->salleId.","
+            .$this->date_location.","
+            .$this->date_debut.","
+            .$this->date_fin.
+            "}";
+    }
+    
+    public function loadFromArray($tab)
+    {
+        $this->id = $tab["ID"];
+        $this->locateurId = $tab["LOCATEUR_ID"];
+        $this->salleId = $tab["SALLE_ID"];
+        $this->date_location = $tab["CREATE_TIME"];
+        $this->date_debut = $tab["DATE_DEBUT"];
+        $this->date_fin = $tab["DATE_FIN"];
+    }
+    
+    public function loadFromObject($x)
+    {
+        $this->id = $x->ID;
+        $this->locateurId = $x->LOCATEUR_ID;
+        $this->salleId = $x->SALLE_ID;
+        $this->date_location = $x->CREATE_TIME;
+        $this->date_debut = $x->DATE_DEBUT;
+        $this->date_fin = $x->DATE_FIN;
+    }
 }

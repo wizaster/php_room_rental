@@ -1,9 +1,9 @@
 <?php
 include_once('./configs/config.php');
 include_once('./Classes/Database.class.php');
-include_once('./Classes/Salle.class.php');
+include_once('./Classes/Location.class.php');
 
-class SalleDAO
+class LocationDAO
 {
     public function __construct(){}
     
@@ -12,38 +12,20 @@ class SalleDAO
             $db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "INSERT INTO '".Config::DB_TABLE_SALLE."' (
-                nom,
-                superficie,
-                capacite,
-                description,
-                statut,
-                tarif,
-                idProp,
-                code_postal,
-                pays,
-                province,
-                ville,
-                rue,
-                no_civique,
-                appt_suite)
-            VALUES (:nom, :sup, :cap, :desc, :statut, :tar, :idProp, :code, :pays, :prov, :ville, :rue, :nociv, :apsu)");
+                "INSERT INTO '".Config::DB_TABLE_LOCATION."' (
+                id,
+                locateur_id,
+                salle_id,
+                date_debut,
+                date_fin)
+            VALUES (:id, :loc, :sal, :deb, :fin)");
             
             $n = $pstmt->execute(array(
-                ':nom' => $x->getNom(),
-                ':sup' => $x->getSuperficie(),
-                ':cap' => $x->getCapacite(),
-                ':desc' => $x->getDesc(),
-                ':statut' => $x->getStatut(),
-                ':tar' => $x->getTarif(),
-                ':idProp' => $x->getIdProp(),
-                ':code' => $x->getCodePostal(),
-                ':pays' => $x->getPays(),
-                ':prov' => $x->getProvince(),
-                ':ville' => $x->getVille(),
-                ':rue' => $x->getRue(),
-                ':nociv' => $x->getNoCivique(),
-                ':apsu' => $x->getApptSuite()));
+                ':id' => $x->getId(),
+                ':loc' => $x->getLocateurId(),
+                ':sal' => $x->getSalleId(),
+                ':deb' => $x->getDateDebut(),
+                ':fin' => $x->getDateFin()));
             
             $pstmt->closeCursor();
             //$db->close();
@@ -60,16 +42,16 @@ class SalleDAO
         try {
             $liste = Array();
                 
-            $query = 'SELECT * FROM '.Config::DB_TABLE_SALLE;
+            $query = 'SELECT * FROM '.Config::DB_TABLE_LOCATION;
             $cnx = Database::getInstance();
             
             $result = $cnx->query($query);
             foreach($result as $row) {
-                $s = new Salle();
+                $l = new Location();
                 
-                $s->loadFromArray($row);
+                $l->loadFromArray($row);
                 
-                array_push($liste,$s);
+                array_push($liste,$l);
             }
             $result->closeCursor();
             //$cnx->close();
@@ -87,28 +69,19 @@ class SalleDAO
         {
             $db = Database::getInstance();
             
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE ID = :x");
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE ID = :x");
             $pstmt->execute(array(':x' => $id));
             
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
             
             if($result)
             {
-                $s = new Salle();
-                $s->loadFromObject($result);
+                $l = new Location();
+                $l->loadFromObject($result);
                 
                 $pstmt->closeCursor();
-                return $s;
+                return $l;
             }
-            
-            foreach($result as $row) {
-                $s = new Salle();
-                
-                $s->loadFromArray($row);
-                
-                array_push($liste,$s);
-            }
-            
             $pstmt->closeCursor();
             //$db->close();
             return null;
@@ -119,7 +92,7 @@ class SalleDAO
         }
     }
     
-    public static function findByVille($ville)
+    public static function findLocateurId($id)
     {
         try 
         {
@@ -127,18 +100,18 @@ class SalleDAO
             
             $db = Database::getInstance();
             
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE VILLE = :x");
-            $pstmt->execute(array(':x' => $ville));
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE LOCATEUR_ID = :x");
+            $pstmt->execute(array(':x' => $id));
             
                                     // TODO Pas sur!
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
             
             foreach($result as $row) {
-                $s = new Salle();
+                $l = new Location();
                 
-                $s->loadFromArray($row);
+                $l->loadFromArray($row);
                 
-                array_push($liste,$s);
+                array_push($liste,$l);
             }
             $pstmt->closeCursor();
             //$db->close();
@@ -151,7 +124,7 @@ class SalleDAO
         }
     }
     
-    public static function findByIdProp($idProp)
+    public static function findSalleId($id)
     {
         try 
         {
@@ -159,18 +132,18 @@ class SalleDAO
             
             $db = Database::getInstance();
             
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE IDPROP = :x");
-            $pstmt->execute(array(':x' => $idProp));
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE SALLE_ID = :x");
+            $pstmt->execute(array(':x' => $id));
             
                                     // TODO Pas sur!
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
             
             foreach($result as $row) {
-                $s = new Salle();
+                $l = new Location();
                 
-                $s->loadFromArray($row);
+                $l->loadFromArray($row);
                 
-                array_push($liste,$s);
+                array_push($liste,$l);
             }
             $pstmt->closeCursor();
             //$db->close();
@@ -189,37 +162,14 @@ class SalleDAO
 			$db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "UPDATE '".Config::DB_TABLE_SALLE."' SET 
-                NOM = :nom, 
-                SUPERFICIE = :sup, 
-                CAPACITE = :cap,
-                DESC = :des,
-                STATUT = :sta, 
-                SUPERFICIE = :s, 
-                TARIF = :tar,
-                CODE_POSTAL = :cod,
-                PAYS = :pay, 
-                PROVINCE = :pro, 
-                VILLE = :vil,
-                RUE = :rue,
-                NO_CIVIQUE = :noc, 
-                APPT_SUITE = :app
+                "UPDATE '".Config::DB_TABLE_LOCATION."' SET 
+                DATE_DEBUT = :deb, 
+                DATE_FIN = :fin
                 WHERE ID = :i");
             
             $n = $pstmt->execute(array(
-                ':nom' => $x->getNom(),
-                ':sup' => $x->getSuperficie(),
-                ':cap' => $x->getCapacite(),
-                ':des' => $x->getDesc(),
-                ':sta' => $x->getStatut(),
-                ':tar' => $x->getTarif(),
-                ':cod' => $x->getCodePostal(),
-                ':pay' => $x->getPays(),
-                ':pro' => $x->getProvince(),
-                ':vil' => $x->getVille(),
-                ':rue' => $x->getRue(),
-                ':noc' => $x->getNoCivique(),
-                ':app' => $x->getApptSuite()
+                ':deb' => $x->getDateDebut(),
+                ':fin' => $x->getDateFin(),
                 ':i' => $x->getId()));
             
             $pstmt->closeCursor();
@@ -238,7 +188,7 @@ class SalleDAO
         {
             $db = Database::getInstance();
             
-            $pstmt = $db->prepare("DELETE FROM ".Config::DB_TABLE_SALLE." WHERE ID = :x");
+            $pstmt = $db->prepare("DELETE FROM ".Config::DB_TABLE_LOCATION." WHERE ID = :x");
             $n = $pstmt->execute(array(':x' => $x));
             
             $pstmt->closeCursor();
