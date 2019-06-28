@@ -76,8 +76,8 @@ class UserDAO
         try 
         {
             $db = Database::getInstance();
-            
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_USER." WHERE USERNAME = :x");
+
+            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_USER . " WHERE nomUtilisateur = :x");
             $pstmt->execute(array(':x' => $username));
             
             $result = $pstmt->fetch(PDO::FETCH_OBJ);

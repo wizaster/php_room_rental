@@ -147,7 +147,7 @@ include('header.php');
 
                     <div id="featured1" class="d-block d-md-flex listing vertical">
                         <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('../images/img_1.jpg')"></a>
+                           style="background-image: url('./images/img_1.jpg')"></a>
                         <div class="lh-content">
                             <span class="category">Cars &amp; Vehicles</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -166,7 +166,7 @@ include('header.php');
 
                     <div id="featured2" class="d-block d-md-flex listing vertical">
                         <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('../images/img_2.jpg')"></a>
+                           style="background-image: url('./images/img_2.jpg')"></a>
                         <div class="lh-content">
                             <span class="category">Real Estate</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -185,7 +185,7 @@ include('header.php');
 
                     <div id="featured3" class="d-block d-md-flex listing vertical">
                         <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('../images/img_3.jpg')"></a>
+                           style="background-image: url('./images/img_3.jpg')"></a>
                         <div class="lh-content">
                             <span class="category">Furniture</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -204,7 +204,7 @@ include('header.php');
 
                     <div id="featured4" class="d-block d-md-flex listing vertical">
                         <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('/images/img_4.jpg')"></a>
+                           style="background-image: url('./images/img_4.jpg')"></a>
                         <div class="lh-content">
                             <span class="category">Electronics</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -223,7 +223,7 @@ include('header.php');
 
                     <div id="featured5" class="d-block d-md-flex listing vertical">
                         <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('../images/img_1.jpg')"></a>
+                           style="background-image: url('./images/img_1.jpg')"></a>
                         <div class="lh-content">
                             <span class="category">Cars &amp; Vehicles</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -242,7 +242,7 @@ include('header.php');
 
                     <div id="featured6" class="d-block d-md-flex listing vertical">
                         <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('../images/img_2.jpg')"></a>
+                           style="background-image: url('./images/img_2.jpg')"></a>
                         <div class="lh-content">
                             <span class="category">Real Estate</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -261,7 +261,7 @@ include('header.php');
 
                     <div id="featured7" class="d-block d-md-flex listing vertical">
                         <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('../images/img_3.jpg')"></a>
+                           style="background-image: url('./images/img_3.jpg')"></a>
                         <div class="lh-content">
                             <span class="category">Furniture</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -522,7 +522,7 @@ include('header.php');
 <script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/aos.js"></script>
 <script src="/js/rangeslider.min.js"></script>
-
+<script src="/js/script.js"></script>
 <script src="/js/main.js"></script>
 
 </body>

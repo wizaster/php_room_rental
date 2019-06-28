@@ -2,7 +2,7 @@
 
 class User
 {
-    private $username;
+    private $nomUtilisateur;
     private $password;
     
     private $id;
@@ -11,24 +11,24 @@ class User
     private $adresse;
     private $email;
     private $description;
-    private $user_type;
-    private $user_since;
+    private $Type_utilisateur_Id;
+    private $create_time;
 
     public function __construct(
         $_username = "",
         $_password = "",
-        
+
         $_id = 0,
         $_nom = "",
         $_prenom = "",
         $_adresse = "",
         $_email = "",
         $_description = "",
-        $_user_type = 1,
-        $_user_since = ""
+        $_Type_utilisateur_Id = 1,
+        $_create_time = ""
     )
     {
-        $this->username = $_username;
+        $this->nomUtilisateur = $_username;
         $this->password = $_password;
         
         $this->id = $_id;
@@ -37,15 +37,15 @@ class User
         $this->adresse = $_adresse;
         $this->email = $_email;
         $this->description = $_description;
-        $this->user_type = $_user_type;
-        $this->user_since = $_user_since;
+        $this->Type_utilisateur_Id = $_Type_utilisateur_Id;
+        $this->create_time = $_create_time;
     }
     
     // Getters
+
+    public function getNomUtilisateur()
     {
-    public function getUsername()
-    {
-        return $this->username;
+        return $this->nomUtilisateur;
     }
     
     public function getPassword()
@@ -83,22 +83,22 @@ class User
         return $this->description;
     }
 
-    public function getUserType()
+    public function getTypeutilisateurId()
     {
-        return $this->user_type;
+        return $this->Type_utilisateur_Id;
     }
     
     public function getUserSince()
     {
-        return $this->user_since;
+        return $this->create_time;
     }
-    }
+
     
     // Setters
+
+    public function setNomUtilisateur($_username)
     {
-    public function setUsername($_username)
-    {
-        $this->username = $_username;
+        $this->nomUtilisateur = $_username;
     }
     
     public function setPassword($_password)
@@ -135,17 +135,17 @@ class User
     {
         $this->description = $description;
     }
-    
-    public function setUserType($_user_type)
+
+    public function setTypeutilisateurId($_user_type)
     {
-        $this->user_type = $_user_type;
+        $this->Type_utilisateur_Id = $_user_type;
     }
     
     public function setUserSince($_user_since)
     {
-        $this->user_since = $user_since;
+        $this->create_time = $_user_since;
     }
-    }
+
 
     
     public function __toString()
@@ -157,14 +157,14 @@ class User
             .$this->adresse.","
             .$this->email.","
             .$this->description.","
-            .$this->user_type.","
-            .$this->user_since.
+            . $this->Type_utilisateur_Id . ","
+            . $this->create_time .
             "}";
     }
     
     public function loadFromArray($tab)
     {
-        $this->username = $tab["USERNAME"];
+        $this->nomUtilisateur = $tab["nomUtilisateur"];
         $this->password = $tab["PASSWORD"];
         $this->id = $tab["ID"];
         $this->nom = $tab["NOM"];
@@ -172,21 +172,21 @@ class User
         $this->adresse = $tab["ADRESSE"];
         $this->email = $tab["EMAIL"];
 		$this->description = $tab["DESCRIPTION"];
-        $this->user_type = $tab["USER_TYPE"];
-        $this->user_since = $tab["USER_SINCE"];
+        $this->Type_utilisateur_Id = $tab["TYPE_UTILISATEUR_ID"];
+        $this->create_time = $tab["CREATE_TIME"];
     }
     
     public function loadFromObject($x)
     {
-        $this->username = $x->USERNAME;
-        $this->password = $x->PASSWORD;
-        $this->id = $x->ID;
-        $this->nom = $x->NOM;
-        $this->prenom = $x->PRENOM;
-        $this->adresse = $x->ADRESSE;
-        $this->email = $x->EMAIL;
-        $this->description = $x->DESCRIPTION;
-        $this->user_type = $x->USER_TYPE;
-        $this->user_since = $x->USER_SINCE;
+        $this->nomUtilisateur = $x->nomUtilisateur;
+        $this->password = $x->password;
+        $this->id = $x->Id;
+        $this->nom = $x->nom;
+        $this->prenom = $x->prenom;
+        $this->adresse = $x->adresse;
+        $this->email = $x->email;
+        $this->description = $x->description;
+        $this->Type_utilisateur_Id = $x->Type_utilisateur_Id;
+        $this->create_time = $x->create_time;
     }
 }

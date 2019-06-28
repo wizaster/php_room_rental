@@ -37,7 +37,6 @@
                                 <li><a href="#">FAQ</a></li>
                             </ul>
                         </li>
-                        <li><a href="?action=blog">Blog</a></li>
                         <li><a href="?action=contact">Contact</a></li>
 
                         <li class="ml-xl-3 login"><a href="?action=connexion"><span class="border-left pl-xl-4"></span>Se

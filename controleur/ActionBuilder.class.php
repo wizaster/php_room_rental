@@ -8,6 +8,7 @@ require_once('controleur/ContactAction.class.php');
 require_once('controleur/DefaultAction.class.php');
 require_once('controleur/Nouvel_utilisateurAction.class.php');
 require_once('controleur/Recherche_avanceAction.class.php');
+require_once('controleur/ConnecteAction.class.php');
 
 class ActionBuilder
 {
@@ -33,7 +34,7 @@ class ActionBuilder
                 return new ContactAction();
                 break;
             case "connexion" :
-                return new ContactAction();
+                return new ConnexionAction();
                 break;
             case "nouvel_utilisateur" :
                 return new Nouvel_utilisateurAction();
@@ -41,10 +42,13 @@ class ActionBuilder
             case "recherche_avance" :
                 return new Recherche_avanceAction();
                 break;
+            case "connecte":
+                return new ConnecteAction();
+                break;
             default :
                 return new DefaultAction();
         }
     }
 }
 
-?>
+

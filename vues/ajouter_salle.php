@@ -8,6 +8,7 @@ include_once('./Classes/EquipementDAO.class.php');
 include_once('./Classes/Accessibilite.class.php');
 include_once('./Classes/AccessibiliteDAO.class.php');
 
+
 $sDao = new SalleDAO();
 $saDao = new salle_adresseDAO();
 $db = Database::getInstance();
@@ -24,7 +25,7 @@ $capacite = "";
 $titre = "";
 $desc = "";
 
-if (ISSET($_REQUEST['action'])) {
+if (ISSET($_REQUEST['btn'])) {
     $no_civique = $_REQUEST['noCivique'];
     $no_local = $_REQUEST['local-room'];
     $rue = $_REQUEST['rue-room'];
@@ -34,10 +35,6 @@ if (ISSET($_REQUEST['action'])) {
     $pays = $_REQUEST['pays-room'];
     $superficie = (int)$_REQUEST['superficie'];
     $capacite = (int)$_REQUEST['capacite'];
-    var_dump($superficie);
-    var_dump($capacite);
-    var_dump($superficie);
-    var_dump($capacite);
     $titre = $_REQUEST['titre'];
     $desc = $_REQUEST['description-room'];
     $adresse = new Salle_adresse($no_civique, $no_local, $rue, $ville, $code_postal, $province, $pays);
@@ -45,9 +42,6 @@ if (ISSET($_REQUEST['action'])) {
     $id_adr = $db->lastInsertId();
     $salle = new Salle($titre, $superficie, $capacite, $id_adr, $desc, 1);
     $res = $sDao->create($salle);
-    echo "Salle enregister!!!";
-    var_dump($superficie);
-    var_dump($capacite);
 }
 ?>
 <!DOCTYPE html>
@@ -83,7 +77,7 @@ include('vues/header.php');
     </header>
 
 
-<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../images/banquet_login.jpg);"
+<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(./images/banquet_login.jpg);"
      data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
@@ -250,26 +244,12 @@ include('vues/header.php');
 
     <footer class="site-footer">
         <?php
-        include('vue/footer.php');
+        include('vues/footer.php');
         ?>
     </footer>
 </div>
 
-<script src="../js/jquery-3.3.1.min.js"></script>
-<script src="../js/jquery-migrate-3.0.1.min.js"></script>
-<script src="../js/jquery-ui.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/jquery.stellar.min.js"></script>
-<script src="../js/jquery.countdown.min.js"></script>
-<script src="../js/jquery.magnific-popup.min.js"></script>
-<script src="../js/bootstrap-datepicker.min.js"></script>
-<script src="../js/aos.js"></script>
-<script src="../js/rangeslider.min.js"></script>
-<script src="../js/script.js"></script>
 
-<script src="../js/main.js"></script>
 
 </body>
 

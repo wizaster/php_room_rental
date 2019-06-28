@@ -58,12 +58,22 @@ include('header.php');
 
 
                 <form action="#" class="p-5 bg-white">
+                    <?php
+                    if (ISSET($_SESSION["msg"])) {
+                        ?>
+                        <div class="msg-conn">
+                            <h4><?php echo $_SESSION["msg"] ?></h4>
+                        </div>
+                        <?php
+                    }
+                    ?>
+
 
                     <div class="row form-group">
 
                         <div class="col-md-12">
-                            <label class="text-black" for="email">Email</label>
-                            <input type="email" id="email" class="form-control">
+                            <label class="text-black" for="username">Nom utilisateur</label>
+                            <input type="text" name="username" id="username" class="form-control">
                         </div>
                     </div>
 
@@ -71,19 +81,21 @@ include('header.php');
 
                         <div class="col-md-12">
                             <label class="text-black" for="subject">Mot de passe</label>
-                            <input type="password" id="subject" class="form-control">
+                            <input type="password" name="password" id="subject" class="form-control">
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-12">
-                            <p>Vous n'êtes pas membre ? <a href="new_user.php.php">Soyez-le en deux minutes!</a></p>
+                            <p>Vous n'êtes pas membre ? <a href="?action=nouvel_utilisateur">Soyez-le en deux
+                                    minutes!</a></p>
                         </div>
                     </div>
 
 
                     <div class="row form-group">
                         <div class="col-md-12">
+                            <input type="hidden" name="action" value="connecte">
                             <input type="submit" value="Se connecter" class="btn btn-primary py-2 px-4 text-white">
                         </div>
                     </div>

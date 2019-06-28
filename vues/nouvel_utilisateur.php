@@ -20,7 +20,7 @@ $province = "";
 $pays = "";
 $desc = "";
 
-if (ISSET($_REQUEST['action'])) {
+if (ISSET($_REQUEST['nouveau'])) {
     $username = $_REQUEST['create-username'];
     $password = $_REQUEST['create-password'];
     var_dump($password);
