@@ -10,41 +10,40 @@ class SalleDAO
     public function create($x) {
         try {
             $db = Database::getInstance();
-            
+            var_dump($x);
             $pstmt = $db->prepare(
-                "INSERT INTO '".Config::DB_TABLE_SALLE."' (
+                "INSERT INTO " . Config::DB_TABLE_SALLE . " (
                 nom,
                 superficie,
                 capacite,
                 description,
-                statut,
                 tarif,
-                idProp,
-                code_postal,
-                pays,
-                province,
-                ville,
-                rue,
                 no_civique,
-                appt_suite)
-            VALUES (:nom, :sup, :cap, :desc, :statut, :tar, :idProp, :code, :pays, :prov, :ville, :rue, :nociv, :apsu)");
-            
+                appt_suite,
+                rue,
+                code_postal,
+                ville,
+                province,
+                pays,
+                proprietaire_Id
+                )
+            VALUES (:nom, :sup, :cap, :descr, :tar, :nociv, :apsu, :rue, :code, :ville, :prov, :pays, :idProp)");
+
             $n = $pstmt->execute(array(
                 ':nom' => $x->getNom(),
                 ':sup' => $x->getSuperficie(),
                 ':cap' => $x->getCapacite(),
-                ':desc' => $x->getDesc(),
-                ':statut' => $x->getStatut(),
+                ':descr' => $x->getDesc(),
                 ':tar' => $x->getTarif(),
-                ':idProp' => $x->getIdProp(),
-                ':code' => $x->getCodePostal(),
-                ':pays' => $x->getPays(),
-                ':prov' => $x->getProvince(),
-                ':ville' => $x->getVille(),
-                ':rue' => $x->getRue(),
                 ':nociv' => $x->getNoCivique(),
-                ':apsu' => $x->getApptSuite()));
-            
+                ':apsu' => $x->getApptSuite(),
+                ':rue' => $x->getRue(),
+                ':code' => $x->getCodePostal(),
+                ':ville' => $x->getVille(),
+                ':prov' => $x->getProvince(),
+                ':pays' => $x->getPays(),
+                ':idProp' => $x->getIdProp()));
+
             $pstmt->closeCursor();
             //$db->close();
             return $n;
@@ -219,7 +218,7 @@ class SalleDAO
                 ':vil' => $x->getVille(),
                 ':rue' => $x->getRue(),
                 ':noc' => $x->getNoCivique(),
-                ':app' => $x->getApptSuite()
+                ':app' => $x->getApptSuite(),
                 ':i' => $x->getId()));
             
             $pstmt->closeCursor();

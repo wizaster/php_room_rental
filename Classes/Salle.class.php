@@ -22,46 +22,46 @@ class Salle
     
     
     public function __construct(
-        $_id = 0,
+        $_id = "",
         $_nom = "",
         $_superficie = 0,
         $_capacite = 0,
         $_desc = "",
         $_statut = 'x',
         $_tarif = 0,
-        $_created_since = "",
-        $_idProp = 0,
-        
+        $_no_civique = 0,
+        $_appt_suite = "",
+        $_rue = "",
         $_code_postal = "",
-        $_pays = "",
+        $_ville = "",
         $_province = "",
-        $_ville = "";
-        $_rue = "";
-        $_no_civique = 0;
-        $_appt_suite = "";
+        $_pays = "",
+        $_created_since = "",
+        $_idProp = 0
     )
     {
-        $this->id = $_id
-        $this->nom = $_nom
-        $this->superficie = $_superficie
-        $this->capacite = $_capacite
-        $this->desc = $_desc
-        $this->statut = $_statut
-        $this->tarif = $_tarif
-        $this->created_since = $_created_since
-        $this->idProp = $_idProp
-        
-        $this->code_postal = $_code_postal
-        $this->pays = $_pays
-        $this->province = $_province
-        $this->ville = $_ville
-        $this->rue = $_rue
-        $this->no_civique = $_no_civique
-        $this->appt_suite = $_appt_suite
+        $this->id = $_id;
+        $this->nom = $_nom;
+        $this->superficie = $_superficie;
+        $this->capacite = $_capacite;
+        $this->desc = $_desc;
+        $this->statut = $_statut;
+        $this->tarif = $_tarif;
+
+
+        $this->code_postal = $_code_postal;
+        $this->pays = $_pays;
+        $this->province = $_province;
+        $this->ville = $_ville;
+        $this->rue = $_rue;
+        $this->no_civique = $_no_civique;
+        $this->appt_suite = $_appt_suite;
+        $this->created_since = $_created_since;
+        $this->idProp = $_idProp;
     }
     
 	// Getters
-	{
+
     public function getId()
     {
         return $this->id;
@@ -141,10 +141,10 @@ class Salle
     {
         return $this->appt_suite;
     }
-	}
-	
+
+
     // Setters 
-	{
+
     public function setId($_id)
     {
         $this->id = $_id;
@@ -224,8 +224,8 @@ class Salle
     {
         $this->appt_suite = $_appt_suite;
     }
-	}
-    
+
+
     public function __toString()
     {
         return "Salle{"
