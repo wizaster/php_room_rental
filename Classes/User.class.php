@@ -15,22 +15,20 @@ class User
     private $create_time;
 
     public function __construct(
-        $_username = "",
-        $_password = "",
-
         $_id = 0,
+        $_password = "",
+        $_username = "",
+        $_email = "",
         $_nom = "",
         $_prenom = "",
         $_adresse = "",
-        $_email = "",
         $_description = "",
-        $_Type_utilisateur_Id = 1,
-        $_create_time = ""
+        $_create_time = "",
+        $_Type_utilisateur_Id = 1
     )
     {
         $this->nomUtilisateur = $_username;
         $this->password = $_password;
-        
         $this->id = $_id;
         $this->nom = $_nom;
         $this->prenom = $_prenom;

@@ -10,6 +10,7 @@ require_once('controleur/Nouvel_utilisateurAction.class.php');
 require_once('controleur/Recherche_avanceAction.class.php');
 require_once('controleur/ConnecteAction.class.php');
 require_once('controleur/AjoutAction.class.php');
+require_once('controleur/Creation_utilisateurAction.class.php');
 
 class ActionBuilder
 {
@@ -48,6 +49,9 @@ class ActionBuilder
                 break;
             case "ajoutAction":
                 return new AjoutAction();
+                break;
+            case "creation_utilisateur":
+                return new Creation_utilisateurAction();
                 break;
             default :
                 return new DefaultAction();
