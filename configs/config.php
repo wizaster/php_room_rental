@@ -11,9 +11,8 @@
         const DB_TABLE_DISPO = "dispo";
         const DB_TABLE_USER = "utilisateur";
         const DB_TABLE_LOC = "location";
-        const DB_TABLE_SALFURN = "salle_has_furniture";
-        const DB_TABLE_FURN = "fourniture";
         const DB_TABLE_SALEQ = "salle_has_equipement";
+        const DB_TABLE_SALACC = "salle_has_accessibilite";
         const DB_TABLE_EQUIP = "equipement";
         const DB_TABLE_ADRESSE = "salle_adresse";
         const DB_TABLE_ACCESS = "accessibilte";

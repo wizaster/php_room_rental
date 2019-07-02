@@ -12,6 +12,7 @@ require_once('controleur/ConnecteAction.class.php');
 require_once('controleur/AjoutAction.class.php');
 require_once('controleur/Creation_utilisateurAction.class.php');
 require_once('controleur/Salle_optionAction.class.php');
+require_once('controleur/ValiderAction.class.php');
 
 class ActionBuilder
 {

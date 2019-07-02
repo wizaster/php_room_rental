@@ -79,7 +79,7 @@ include('vues/header.php');
                                 $eDao = new EquipementDAO();
                                 $liste = $eDao->findAll();
                                 foreach ($liste as $equip) {
-                                    echo "<input type='checkbox' name='equipSalle[]' value='" . $equip->getNom() . "'/> " . "<label>" . $equip->getNom() . "</label><br/>";
+                                    echo "<input type='checkbox' name='equipSalle[]' value='" . $equip->getId() . "'/> " . "<label>" . $equip->getNom() . "</label><br/>";
                                 }
                                 ?>
                             </div>
@@ -94,7 +94,7 @@ include('vues/header.php');
                                 $aDao = new AccessibiliteDAO();
                                 $listeAccess = $aDao->findAll();
                                 foreach ($listeAccess as $access) {
-                                    echo "<input type='checkbox' name='accessSalle[]' value='" . $access->getNom() . "'/> " . "<label>" . $access->getNom() . "</label><br/>";
+                                    echo "<input type='checkbox' name='accessSalle[]' value='" . $access->getId() . "'/> " . "<label>" . $access->getNom() . "</label><br/>";
                                 }
                                 ?>
                             </div>
