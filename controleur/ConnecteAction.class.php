@@ -18,7 +18,9 @@ class ConnecteAction implements Action
                     session_destroy();
                 $lifetime = 6000;
                 session_set_cookie_params($lifetime);
-                session_start();
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
                 $_SESSION['connecte'] = $username;
                 $_SESSION['role'] = $user->getTypeutilisateurId();
                 $_SESSION['id'] = $user->getId();
