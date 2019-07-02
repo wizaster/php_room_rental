@@ -39,7 +39,8 @@ class AjoutAction implements Action
             $salle = new Salle(0, $titre, $superficie, $capacite, $desc, 'x', $prix, $noCivique, $appt_suite, $rue, $code_postal
                 , $ville, $province, $pays, "", $proprio);
             $res = $sDao->create($salle);
-            return "default";
+
+            return "salle_option";
         }
     }
 }

@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include_once('./configs/config.php');
 include_once('./Classes/Database.class.php');
 include_once('./Classes/Salle.class.php');
@@ -43,6 +47,8 @@ class SalleDAO
                 ':prov' => $x->getProvince(),
                 ':pays' => $x->getPays(),
                 ':idProp' => $x->getIdProp()));
+
+            $_SESSION['salleId'] = $db->lastInsertId();
 
             $pstmt->closeCursor();
             //$db->close();

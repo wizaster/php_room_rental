@@ -17,4 +17,5 @@
         const DB_TABLE_EQUIP = "equipement";
         const DB_TABLE_ADRESSE = "salle_adresse";
         const DB_TABLE_ACCESS = "accessibilte";
+        const DB_TABLE_IMAGE = "images";
     }

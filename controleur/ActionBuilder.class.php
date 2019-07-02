@@ -11,6 +11,7 @@ require_once('controleur/Recherche_avanceAction.class.php');
 require_once('controleur/ConnecteAction.class.php');
 require_once('controleur/AjoutAction.class.php');
 require_once('controleur/Creation_utilisateurAction.class.php');
+require_once('controleur/Salle_optionAction.class.php');
 
 class ActionBuilder
 {
@@ -52,6 +53,12 @@ class ActionBuilder
                 break;
             case "creation_utilisateur":
                 return new Creation_utilisateurAction();
+                break;
+            case "salle_option":
+                return new Salle_optionAction();
+                break;
+            case "validerAction":
+                return new validerAction();
                 break;
             default :
                 return new DefaultAction();
