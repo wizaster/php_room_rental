@@ -14,7 +14,7 @@ class UserDAO
             $db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "INSERT INTO '" . config::DB_TABLE_USER . "' (
+                "INSERT INTO " . config::DB_TABLE_USER . " (
                 `password`,
                 `nomUtilisateur`,
                 `email`,
@@ -23,17 +23,17 @@ class UserDAO
                 `adresse`,
                 `description`,
                 `Type_utilisateur_Id`)
-             VALUES(:psw, :usr, :email, :nom, :prenom, :adr, :desc, :usertype)");
+             VALUES(:psw, :usr, :email, :nom, :prenom, :adr, :descr, :usertype)");
             
             $n = $pstmt->execute(array(
                 ':psw' => $x->getPassword(),
-                ':usr' => $x->getUsername(),
+                ':usr' => $x->getNomUtilisateur(),
                 ':email' => $x->getEmail(),
                 ':nom' => $x->getNom(),
                 ':prenom' => $x->getPrenom(),
                 ':adr' => $x->getAdresse(),
-                ':desc' => $x->getDescription(),
-                ':usertype' => $x->getUserType()));
+                ':descr' => $x->getDescription(),
+                ':usertype' => $x->getTypeutilisateurId()));
             
             $pstmt->closeCursor();
             return $n;

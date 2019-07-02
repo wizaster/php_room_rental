@@ -23,13 +23,7 @@ $desc = "";
 if (ISSET($_REQUEST['nouveau'])) {
     $username = $_REQUEST['create-username'];
     $password = $_REQUEST['create-password'];
-    var_dump($password);
-    var_dump($password);
-    var_dump($password);
-    var_dump($password);
-    var_dump($password);
-    var_dump($password);
-    var_dump($password);
+
 
     $nom = $_REQUEST['create-nom'];
     $prenom = $_REQUEST['create-prenom'];
@@ -108,7 +102,7 @@ include('header.php');
                 <div class="col-md-12 mb-12" data-aos="fade">
 
 
-                    <form action="#" method="post" class="p-5 bg-white">
+                    <form action="#" method="post" id="ajoutUser" class="p-5 bg-white">
 
                         <div class=" form-group">
 
@@ -117,63 +111,69 @@ include('header.php');
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-5">
-                                    <label class="text-black" for="create-username">Nom Utilisateur</label>
-                                    <input type="text" name="create-username" class="form-control">
+                                    <label class="text-black" for="create_username">Nom Utilisateur</label>
+                                    <input type="text" id="create_username" name="create_username" class="form-control">
                                 </div>
                                 <div class="col-5">
-                                    <label class="text-black" for="create-password">Mot de passe</label>
-                                    <input type="password" name="create-password" class="form-control">
+                                    <label class="text-black" for="create_password">Mot de passe</label>
+                                    <input type="password" id="create_password" name="create_password"
+                                           class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-5">
-                                    <label class="text-black" for="create-prenom">Prénom</label>
-                                    <input type="text" name="create-prenom" class="form-control">
+                                    <label class="text-black" for="create_prenom">Prénom</label>
+                                    <input type="text" id="create_prenom" name="create_prenom" class="form-control">
                                 </div>
                                 <div class="col-5">
-                                    <label class="text-black" for="create-nom">Nom</label>
-                                    <input type="text" name="create-nom" class="form-control">
+                                    <label class="text-black" for="create_nom">Nom</label>
+                                    <input type="text" id="create_nom" name="create_nom" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-10">
-                                    <label class="text-black" for="create-email">Adresse courriel</label>
-                                    <input type="email" name="create-email" class="form-control">
+                                    <label class="text-black" for="create_email">Adresse courriel</label>
+                                    <input type="email" id="create_email" name="create_email" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-12">
                                 <div class="col-3 form-room">
-                                    <label class="text-black" for="noCivique-user">No civique</label>
-                                    <input type="number" name="noCivique-user" class="form-control">
+                                    <label class="text-black" for="noCivique_user">No civique</label>
+                                    <input type="number" id="noCivique_user" name="noCivique_user" class="form-control">
                                 </div>
                                 <div class="col-2 form-room">
-                                    <label class="text-black" for="app-user">Appartement</label>
-                                    <input type="text" name="app-user" class="form-control">
+                                    <label class="text-black" for="app_user">Appartement</label>
+                                    <input type="text" id="app_user" name="app_user" class="form-control">
                                 </div>
                                 <div class="col-7 form-room">
-                                    <label class="text-black" for="rue-user">Rue</label>
-                                    <input type="text" name="rue-user" class="form-control">
+                                    <label class="text-black" for="rue_user">Rue</label>
+                                    <input type="text" id="rue_user" name="rue_user" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
-                                    <label class="text-black" for="codePostal-user">Code postal</label>
-                                    <input type="text" name="codePostal-user" class="form-control">
+                                    <label class="text-black" for="codePostal_user">Code postal</label>
+                                    <input type="text" id="codePostal_user" name="codePostal_user" class="form-control">
                                 </div>
-                                <div class="col-4 form-room">
-                                    <label class="text-black" for="province-user">Province</label>
-                                    <input type="text" name="province-user" class="form-control">
+                                <div class="col-3 form-room">
+                                    <label class="text-black" for="ville_user">Ville</label>
+                                    <input type="text" id="ville_user" name="ville_user" class="form-control">
                                 </div>
-                                <div class="col-5 form-room">
-                                    <label class="text-black" for="pays-user">Pays</label>
-                                    <input type="text" name="pays-user" class="form-control">
+                                <div class="col-3 form-room">
+                                    <label class="text-black" for="province_user">Province</label>
+                                    <input type="text" id="province_user" name="province_user" class="form-control">
+                                </div>
+                                <div class="col-3 form-room">
+                                    <label class="text-black" for="pays_user">Pays</label>
+                                    <input type="text" id="pays_user" name="pays_user" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
-                                    <label class="text-black" for="description-user">Description</label>
+                                    <label class="text-black" for="description_user">Description</label>
                                     <div>Dites quelque chose à propos de vous</div>
-                                    <textarea rows="5" name="description-user" class="form-control"></textarea>
+                                    <textarea rows="5" id="description_user" name="description_user"
+                                              class="form-control"></textarea>
                                 </div>
                             </div>
                             <br/><br/>
@@ -189,7 +189,7 @@ include('header.php');
                             <div class="col-12">
                                 <input type="submit" name="create_user" value="Devenir membre"
                                        class="btn btn-primary py-2 px-4 text-white btn-suivant">
-                                <input type="hidden" name="action" value="Devenir membre"/>
+                                <input type="hidden" name="action" value="creation_utilisateur"/>
                             </div>
                         </div>
 

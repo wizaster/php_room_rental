@@ -1,48 +1,14 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 include_once('./Classes/Salle.class.php');
 include_once('./Classes/SalleDAO.class.php');
-include_once('./Classes/salle_adresseDAO.class.php');
-include_once('./Classes/Salle_adresse.class.php');
 include_once('./Classes/Equipement.class.php');
 include_once('./Classes/EquipementDAO.class.php');
 include_once('./Classes/Accessibilite.class.php');
 include_once('./Classes/AccessibiliteDAO.class.php');
 
-
-$sDao = new SalleDAO();
-$saDao = new salle_adresseDAO();
-$db = Database::getInstance();
-
-$no_civique = "";
-$no_local = "";
-$rue = "";
-$ville = "";
-$code_postal = "";
-$province = "";
-$pays = "";
-$superficie = "";
-$capacite = "";
-$titre = "";
-$desc = "";
-
-if (ISSET($_REQUEST['btn'])) {
-    $no_civique = $_REQUEST['noCivique'];
-    $no_local = $_REQUEST['local-room'];
-    $rue = $_REQUEST['rue-room'];
-    $ville = $_REQUEST['ville-room'];
-    $code_postal = $_REQUEST['codePostal-room'];
-    $province = $_REQUEST['province-room'];
-    $pays = $_REQUEST['pays-room'];
-    $superficie = (int)$_REQUEST['superficie'];
-    $capacite = (int)$_REQUEST['capacite'];
-    $titre = $_REQUEST['titre'];
-    $desc = $_REQUEST['description-room'];
-    $adresse = new Salle_adresse($no_civique, $no_local, $rue, $ville, $code_postal, $province, $pays);
-    $adr = $saDao->create($adresse);
-    $id_adr = $db->lastInsertId();
-    $salle = new Salle($titre, $superficie, $capacite, $id_adr, $desc, 1);
-    $res = $sDao->create($salle);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +40,6 @@ if (ISSET($_REQUEST['btn'])) {
 <?php
 include('vues/header.php');
 ?>
-    </header>
 
 
 <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(./images/banquet_login.jpg);"
@@ -103,7 +68,7 @@ include('vues/header.php');
                 <div class="col-md-12 mb-12" data-aos="fade">
 
 
-                    <form action="#" method="post" class="p-5 bg-white">
+                    <form action="#" method="post" id="formAjout" class="p-5 bg-white">
 
                         <div class=" form-group">
 
@@ -113,74 +78,72 @@ include('vues/header.php');
                             <div class="row col-12">
                                 <div class="col-2 form-room">
                                     <label class="text-black" for="noCivique">No civique</label>
-                                    <input type="text" name="noCivique" class="form-control">
+                                    <input type="text" id="noCivique" name="noCivique" class="form-control">
                                 </div>
                                 <div class="col-1 form-room">
-                                    <label class="text-black" for="local-room">Local</label>
-                                    <input type="text" name="local-room" class="form-control">
+                                    <label class="text-black" for="local_room">Local</label>
+                                    <input type="text" id="local_room" name="local_room" class="form-control">
                                 </div>
                                 <div class="col-5 form-room">
-                                    <label class="text-black" for="rue-room">Rue</label>
-                                    <input type="text" name="rue-room" class="form-control">
+                                    <label class="text-black" for="rue_room">Rue</label>
+                                    <input type="text" id="rue_room" name="rue_room" class="form-control">
                                 </div>
                                 <div class="col-4 form-room">
-                                    <label class="text-black" for="ville-room">Ville</label>
-                                    <input type="text" name="ville-room" class="form-control">
+                                    <label class="text-black" for="ville_room">Ville</label>
+                                    <input type="text" id="ville_room" name="ville_room" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
-                                    <label class="text-black" for="codePostal-room">Code postal</label>
-                                    <input type="text" name="codePostal-room" class="form-control">
+                                    <label class="text-black" for="codePostal_room">Code postal</label>
+                                    <input type="text" id="codePostal_room" name="codePostal_room" class="form-control">
                                 </div>
                                 <div class="col-4 form-room">
-                                    <label class="text-black" for="province-room">Province</label>
-                                    <input type="text" name="province-room" class="form-control">
+                                    <label class="text-black" for="province_room">Province</label>
+                                    <input type="text" id="province_room" name="province_room" class="form-control">
                                 </div>
                                 <div class="col-5 form-room">
-                                    <label class="text-black" for="pays-room">Pays</label>
-                                    <input type="text" name="pays-room" class="form-control">
+                                    <label class="text-black" for="pays_room">Pays</label>
+                                    <input type="text" id="pays_room" name="pays_room" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
                                     <label class="text-black" for="titre">Titre</label>
-                                    <input type="text" name="titre" class="form-control">
+                                    <input type="text" id="titre" name="titre" class="form-control">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
-                                    <label class="text-black" for="description-room">Description</label>
-                                    <textarea rows="5" name="description-room" class="form-control"></textarea>
+                                    <label class="text-black" for="description_room">Description</label>
+                                    <textarea rows="5" id="description_room" name="description_room"
+                                              class="form-control"></textarea>
                                 </div>
                             </div>
                             <br/><br/>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="capaciteRoom">Capacité</label>
-                                    <input type="text" name="capaciteRoom" class="form-control"/>
+                                    <input type="text" id="capaciteRoom" name="capaciteRoom" class="form-control"/>
                                 </div>
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="superficieRoom">Superficie (en M²)</label>
-                                    <input type="text" name="superficieRoom" class="form-control"/>
+                                    <input type="text" id="superficieRoom" name="superficieRoom" class="form-control"/>
                                 </div>
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="prix_jour">Prix journalier</label>
-                                    <input type="text" min="1" step="any" name="prix_jour" class="form-control"/>
+                                    <input type="number" min="1" step="any" id="prix_jour" name="prix_jour"
+                                           class="form-control"/>
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
-
+                                    <div>
+                                        <input type="hidden" name="action" value="ajoutAction">
+                                        <input type="submit" name="btnAjout" id="btnAjout" value="Suivant"
+                                               class="bg-primary text-white rounded">
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row col-12">
-                            <div class="form-room col-12">
-                                <input type="button" value="Suivant"
-                                       class="btn btn-primary py-2 px-4 text-white btn-suivant" id="btn-suivant">
                             </div>
                         </div>
 
@@ -195,7 +158,7 @@ include('vues/header.php');
                                 $eDao = new EquipementDAO();
                                 $liste = $eDao->findAll();
                                 foreach ($liste as $equip) {
-                                    echo "<input type='checkbox' name='allo' value='allo'/> " . "<label>" . $equip->getNom() . "</label><br/>";
+                                    echo "<input type='checkbox' name='equipSalle' value='" . $equip->getNom() . "'/> " . "<label>" . $equip->getNom() . "</label><br/>";
                                 }
                                 ?>
                             </div>
@@ -210,7 +173,7 @@ include('vues/header.php');
                                 $aDao = new AccessibiliteDAO();
                                 $listeAccess = $aDao->findAll();
                                 foreach ($listeAccess as $access) {
-                                    echo "<input type='checkbox' name='allo' value='allo'/> " . "<label>" . $access->getNom() . "</label><br/>";
+                                    echo "<input type='checkbox' name='accessSalle' value='" . $access->getNom() . "'/> " . "<label>" . $access->getNom() . "</label><br/>";
                                 }
                                 ?>
                             </div>

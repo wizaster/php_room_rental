@@ -57,5 +57,6 @@ include_once('vues/' . $vue . '.php');
 <script src="./js/rangeslider.min.js"></script>
 <script src="./js/script.js"></script>
 <script src="./js/main.js"></script>
+<script src="js/jquery.validate.js"></script>
 </body>
 </html>
