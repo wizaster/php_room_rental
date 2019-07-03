@@ -13,6 +13,7 @@ require_once('controleur/AjoutAction.class.php');
 require_once('controleur/Creation_utilisateurAction.class.php');
 require_once('controleur/Salle_optionAction.class.php');
 require_once('controleur/ValiderAction.class.php');
+require_once('controleur/Afficher_profilAction.class.php');
 
 class ActionBuilder
 {
@@ -59,7 +60,10 @@ class ActionBuilder
                 return new Salle_optionAction();
                 break;
             case "validerAction":
-                return new validerAction();
+                return new ValiderAction();
+                break;
+            case "afficher_profil":
+                return new Afficher_profilAction();
                 break;
             default :
                 return new DefaultAction();
