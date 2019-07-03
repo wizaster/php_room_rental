@@ -14,6 +14,7 @@ require_once('controleur/Creation_utilisateurAction.class.php');
 require_once('controleur/Salle_optionAction.class.php');
 require_once('controleur/ValiderAction.class.php');
 require_once('controleur/Afficher_profilAction.class.php');
+require_once('controleur/DeconnexionAction.class.php');
 
 class ActionBuilder
 {
@@ -64,6 +65,9 @@ class ActionBuilder
                 break;
             case "afficher_profil":
                 return new Afficher_profilAction();
+                break;
+            case "deconnexion":
+                return new DeconnexionAction();
                 break;
             default :
                 return new DefaultAction();
