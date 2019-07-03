@@ -1,7 +1,8 @@
 <?php
-
-if (!isset($_SESSION)) {
-    session_start();
+if (isset($_SESSION['connecte'])) {
+    $loggedIn = true;
+} else {
+    $loggedIn = false;
 }
 
 ?>
@@ -54,9 +55,9 @@ include('header.php');
         </div>
     </div>
 </div>
-<div class="site-section bg-light">
-    <div class="container">
-        <div class="col-6">
+<div class="site-section bg-light ">
+    <div class="container row col-12 profil">
+        <div class=" m-auto">
             <fieldset>
                 <legend>Informations personnelles</legend>
                 <div>Nom Utilisateur :</div>
@@ -82,10 +83,34 @@ include('header.php');
                 <br/>
             </fieldset>
         </div>
+        <div class="col-6">
+            <?php
+            switch ($_SESSION['role']) {
+                case 1:
+                    ?>
+                    <input type="button" value="consulter_historique">consulter historique</input>
+                    <input type="button" value="Editer_utilisateur">Editer utilisateur</input>
+                    <input type="button" value="Editer_salle">Editer salle</input>
+                    <?php
+                    break;
+                case 2:
+                    ?>
+                    <input type="button" value="modifier salle"/>
+                    <input type="button" value="modifer profil"/>
+                    <input type="button" value="Ajouter salle"/>
+                    <?php
+                    break;
+                case 3:
+                    ?>
+                    <input type="button" value="devenir proprietaire"/>
+                <?php
+            }
+            ?>
+
+        </div>
     </div>
-
-
 </div>
+
 <footer class="site-footer">
     <?php
     include('vues/footer.php');

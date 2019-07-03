@@ -2428,3 +2428,11 @@ h1, h2, h3, h4, h5,
 .hero {
     background-image: url(../images/hero_conference.jpg);
 }
+
+.profil {
+    margin: auto;
+}
+
+.profil fieldset {
+    margin-right: 0px;
+}
