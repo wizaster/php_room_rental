@@ -2436,3 +2436,21 @@ h1, h2, h3, h4, h5,
 .profil fieldset {
     margin-right: 0px;
 }
+
+.msg-conn {
+    border: 2px solid red;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 25px;
+    width: 100%;
+    line-height: 200%;
+    text-align: center;
+}
+
+.msg-conn p {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 125%;
+    font-weight: bold;
+    color: red;
+}

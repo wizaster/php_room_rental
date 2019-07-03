@@ -88,9 +88,9 @@ include('header.php');
             switch ($_SESSION['role']) {
                 case 1:
                     ?>
-                    <input type="button" value="consulter_historique">consulter historique</input>
-                    <input type="button" value="Editer_utilisateur">Editer utilisateur</input>
-                    <input type="button" value="Editer_salle">Editer salle</input>
+                    <input type="button" value="consulter historique"/>
+                    <input type="button" value="Editer utilisateur"/>
+                    <input type="button" value="Editer salle"/>
                     <?php
                     break;
                 case 2:

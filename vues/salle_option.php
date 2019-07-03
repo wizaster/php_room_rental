@@ -1,7 +1,11 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
+if (isset($_SESSION['connecte'])) {
+    $loggedIn = true;
+} else {
+    $loggedIn = false;
 }
+
+
 include_once('./Classes/Salle.class.php');
 include_once('./Classes/SalleDAO.class.php');
 include_once('./Classes/Equipement.class.php');

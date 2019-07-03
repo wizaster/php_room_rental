@@ -1,3 +1,11 @@
+<?php
+if (isset($_SESSION['connecte'])) {
+    $loggedIn = true;
+} else {
+    $loggedIn = false;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,8 +52,6 @@ include('header.php');
                         <h1>Connectez-vous</h1>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -62,9 +68,10 @@ include('header.php');
                     if (ISSET($_SESSION["msg"])) {
                         ?>
                         <div class="msg-conn">
-                            <h4><?php echo $_SESSION["msg"] ?></h4>
+                            <p><?php echo $_SESSION["msg"] ?></p>
                         </div>
                         <?php
+                        unset($_SESSION['msg']);
                     }
                     ?>
 

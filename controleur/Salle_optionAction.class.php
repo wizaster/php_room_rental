@@ -1,6 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
+if (isset($_SESSION['connecte'])) {
+    $loggedIn = true;
+} else {
+    $loggedIn = false;
 }
 require_once('./Classes/SalleDAO.class.php');
 require_once('./controleur/Action.interface.php');

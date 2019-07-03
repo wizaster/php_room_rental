@@ -46,12 +46,14 @@ include('header.php');
                     <form method="post">
                         <div class="row align-items-center">
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4">
-                                <input type="text" class="form-control rounded" placeholder="Que cherchez-vous?">
+                                <input type="text" name="main_recherche" class="form-control rounded"
+                                       placeholder="Que cherchez-vous?">
                             </div>
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
                                 <div class="wrap-icon">
                                     <span class="icon icon-room"></span>
-                                    <input type="text" class="form-control rounded" placeholder="Lieu">
+                                    <input type="text" name="main_recherche_lieu" class="form-control rounded"
+                                           placeholder="Lieu">
                                 </div>
 
                             </div>
