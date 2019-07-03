@@ -103,16 +103,20 @@ include('vues/header.php');
                                 ?>
                             </div>
                         </div>
-                        <div class="roomAttr">
+                        <div class="roomAttr images">
                             <div>
                                 <h4>Images</h4>
-                                <p>Il est fortement conseille de mettre plusieurs images de votre salle dans votre
-                                    annonce</p>
+                                <p>Vous pouvez mettre jusqu'a 5 images sur votre annonce</p>
                             </div>
                             <div>
-                                <input type="file" name="uploadImage">
-                                <button type="button" name="btnImageUpload">Ajouter</button>
+                                <input type="file" name="uploadImage1">
+                                <input type="file" name="uploadImage2">
+                                <input type="file" name="uploadImage3">
+                                <input type="file" name="uploadImage4">
+                                <input type="file" name="uploadImage5">
                             </div>
+
+
                         </div>
                         <input type="hidden" name="action" value="validerAction">
                         <input type="submit" name="valider_option" value="valider"

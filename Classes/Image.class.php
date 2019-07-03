@@ -7,7 +7,7 @@ class Image
     private $emplacement;
     private $salleId;
 
-    public function __construct($_id = null, $_emplacement = null, $_salleId = null)
+    public function __construct($_emplacement = null, $_salleId = null, $_id = 0)
     {
         $this->id = $_id;
         $this->emplacement = $_emplacement;

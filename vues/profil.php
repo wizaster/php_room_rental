@@ -84,6 +84,7 @@ include('header.php');
             </fieldset>
         </div>
         <div class="col-6">
+            <input type="hidden" value="action"
             <?php
             switch ($_SESSION['role']) {
                 case 1:
@@ -103,6 +104,7 @@ include('header.php');
                 case 3:
                     ?>
                     <input type="button" value="devenir proprietaire"/>
+                    <input type="button" value="modifer profil"/>
                 <?php
             }
             ?>

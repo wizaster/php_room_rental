@@ -122,7 +122,7 @@ class UserDAO
                 ':prenom' => $x->getPrenom(),
                 ':adr' => $x->getAdresse(),
                 ':desc' => $x->getDescription(),
-                ':i' => $x->getUserID()));
+                ':i' => $x->getID()));
             
             $pstmt->closeCursor();
             return $n;
