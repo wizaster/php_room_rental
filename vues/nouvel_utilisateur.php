@@ -3,43 +3,6 @@
 include_once('./Classes/User.class.php');
 include_once('./Classes/UserDAO.class.php');
 
-$uDao = new UserDAO();
-$db = Database::getInstance();
-
-$username = "";
-$password = "";
-$nom = "";
-$prenom = "";
-$email = "";
-$adresse = "";
-$noCivique = "";
-$appt = "";
-$rue = "";
-$codePostal = "";
-$province = "";
-$pays = "";
-$desc = "";
-
-if (ISSET($_REQUEST['nouveau'])) {
-    $username = $_REQUEST['create-username'];
-    $password = $_REQUEST['create-password'];
-
-
-    $nom = $_REQUEST['create-nom'];
-    $prenom = $_REQUEST['create-prenom'];
-    $email = $_REQUEST['create-email'];
-    $noCivique = (int)$_REQUEST['noCivique-user'];
-    $appt = $_REQUEST['app-user'];
-    $rue = $_REQUEST['rue-user'];
-    $codePostal = $_REQUEST['codePostal-user'];
-    $province = $_REQUEST['province-user'];
-    $pays = $_REQUEST['pays-user'];
-    $desc = $_REQUEST['description-user'];
-    $adresse = $noCivique . "," . $appt . "," . $rue . "," . $codePostal . "," . $province . "," . $pays;
-
-    $user = new User($username, $password, $nom, $prenom, $adresse, $email, $desc);
-    $uDao->create($user);
-}
 ?>
 
 
