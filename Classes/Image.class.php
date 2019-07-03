@@ -3,31 +3,13 @@
 class Image
 {
 
-    private $id;
     private $emplacement;
     private $salleId;
 
-    public function __construct($_emplacement = null, $_salleId = null, $_id = 0)
+    public function __construct($_emplacement = null, $_salleId = null)
     {
-        $this->id = $_id;
         $this->emplacement = $_emplacement;
         $this->salleId = $_salleId;
-    }
-
-    /**
-     * @return null
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param null $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
