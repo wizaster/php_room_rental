@@ -1,4 +1,9 @@
 <?php
+if (isset($_SESSION['connecte'])) {
+    $loggedIn = true;
+} else {
+    $loggedIn = false;
+}
 ?>
 
 <div class="site-wrap">
@@ -34,14 +39,35 @@
                                 <li><a href="?action=afficher_salle">Comment louer</a></li>
                                 <li><a href="?action=ajouter_salle">Comment afficher</a></li>
                                 <li><a href="#">prix</a></li>
-                                <li><a href="#">FAQ</a></li>
+                                <li><a href="?action=afficher_profil">FAQ</a></li>
                             </ul>
                         </li>
                         <li><a href="?action=contact">Contact</a></li>
 
-                        <li class="ml-xl-3 login"><a href="?action=connexion"><span class="border-left pl-xl-4"></span>Se
-                                Connecter</a></li>
-                        <li><a href="?action=nouvel_utilisateur">Devenir Membre</a></li>
+
+                        <?php
+                        if (!$loggedIn) {
+                            ?>
+                            <li class="ml-xl-3 login"><a href="?action=connexion"><span
+                                            class="border-left pl-xl-4"></span>Se
+                                    Connecter</a></li>
+                            <?php
+                        } else { ?>
+                            <li><a href="?action=deconnexion">Deconnexion</a></li>
+                            <?php
+                        }
+                        ?>
+                        <?php
+                        if (!$loggedIn) {
+                            ?>
+                            <li><a href="?action=nouvel_utilisateur">Devenir Membre</a></li>
+                            <?php
+                        } else { ?>
+                            <li><a href="?action=afficher_profil">Profil</a></li>
+                            <?php
+                        }
+                        ?>
+
                     </ul>
                     <div class="searchbar site-menu js-clone-nav">
                         <input type="text" name="searchbar" value="trouvez le bonheur"/>
@@ -60,3 +86,5 @@
         <!-- </div> -->
 
     </header>
+
+

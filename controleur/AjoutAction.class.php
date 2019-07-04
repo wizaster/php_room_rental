@@ -25,9 +25,7 @@ class AjoutAction implements Action
             $desc = $_REQUEST['description_room'];
             $prix = $_REQUEST['prix_jour'];
             $proprio = $_SESSION["id"];
-            var_dump($proprio);
             $code_postal = $_REQUEST['codePostal_room'];
-            var_dump($code_postal);
             $pays = $_REQUEST['pays_room'];
             $province = $_REQUEST['province_room'];
             $ville = $_REQUEST['ville_room'];
@@ -39,7 +37,8 @@ class AjoutAction implements Action
             $salle = new Salle(0, $titre, $superficie, $capacite, $desc, 'x', $prix, $noCivique, $appt_suite, $rue, $code_postal
                 , $ville, $province, $pays, "", $proprio);
             $res = $sDao->create($salle);
-            return "default";
+
+            return "salle_option";
         }
     }
 }

@@ -14,7 +14,7 @@ class UserDAO
             $db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "INSERT INTO " . config::DB_TABLE_USER . " (
+                "INSERT INTO " . Config::DB_TABLE_USER . " (
                 `password`,
                 `nomUtilisateur`,
                 `email`,
@@ -77,7 +77,7 @@ class UserDAO
         {
             $db = Database::getInstance();
 
-            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_USER . " WHERE nomUtilisateur = :x");
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_USER ." WHERE nomUtilisateur = :x");
             $pstmt->execute(array(':x' => $username));
             
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
@@ -106,13 +106,13 @@ class UserDAO
             $db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "UPDATE '" . config::DB_TABLE_USER . "' SET
-                `password` = :psw,
-                `email` = :email,
-                `nom` = :nom,
-                `prenom` = :prenom,
-                `adresse` = :adr,
-                `description` :desc,
+                "UPDATE ".Config::DB_TABLE_USER." SET
+                password = :psw ,
+                email = :email ,
+                nom = :nom ,
+                prenom = :prenom ,
+                adresse = :adr ,
+                description = :desc
                 WHERE ID = :i");
             
             $n = $pstmt->execute(array(
@@ -122,7 +122,7 @@ class UserDAO
                 ':prenom' => $x->getPrenom(),
                 ':adr' => $x->getAdresse(),
                 ':desc' => $x->getDescription(),
-                ':i' => $x->getUserID()));
+                ':i' => $x->getId()));
             
             $pstmt->closeCursor();
             return $n;

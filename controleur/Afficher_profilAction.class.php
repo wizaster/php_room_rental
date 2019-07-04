@@ -1,0 +1,29 @@
+<?php
+include_once('./Classes/UserDAO.class.php');
+include_once('./Classes/User.class.php');
+include_once('./configs/config.php');
+include_once('./Classes/Database.class.php');
+include_once('./Controleur/Action.interface.php');
+
+class Afficher_profilAction implements Action
+{
+    public function execute()
+    {
+        date_default_timezone_set('America/New_York');
+        $username = $_SESSION['connecte'];
+        $user = UserDAO::findByUsername($username);
+
+        $_SESSION['user']['nom'] = $user->getNom();
+        $_SESSION['user']['prenom'] = $user->getPrenom();
+        $_SESSION['user']['email'] = $user->getEmail();
+        $_SESSION['user']['adresse'] = $user->getAdresse();
+        $_SESSION['user']['bio'] = $user->getDescription();
+        $date = $user->getUserSince();
+        $date = date("d/m/Y", strtotime($date));
+        $_SESSION['user']['membreDepuis'] = $date;
+
+        return "profil";
+    }
+}
+
+

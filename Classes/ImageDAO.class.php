@@ -1,12 +1,15 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 include_once('./configs/config.php');
 include_once('./Classes/Database.class.php');
-include_once('./Classes/Equipement.class.php');
+include_once('./Classes/Image.class.php');
 
-class EquipementDAO
+class ImageDAO
 {
-    function __construct()
+    public function __construct()
     {
     }
 
@@ -14,29 +17,38 @@ class EquipementDAO
     {
         try {
             $db = Database::getInstance();
-            $pstmt = $db->prepare("INSERT INTO `" . config::DB_TABLE_EQUIP . "` (`nom`, `description`)
-            VALUES(:nom, :description)");
+            var_dump($x);
+            $pstmt = $db->prepare(
+                "INSERT INTO " . Config::DB_TABLE_IMAGE . " (
+                emplacement,
+                salle_Id
+                )
+            VALUES (:emp, :sid)");
+
             $n = $pstmt->execute(array(
-                ':nom' => $x->getNom(),
-                ':description' => getDescription()));
+                ':emp' => $x->getEmplacement(),
+                ':sid' => $x->getSalleId()));
+
+
             $pstmt->closeCursor();
+            //$db->close();
             return $n;
         } catch (PDOException $e) {
             throw $e;
         }
     }
 
-    public function findAll()
+    public static function findAll()
     {
         try {
             $liste = Array();
 
-            $query = 'SELECT * FROM ' . Config::DB_TABLE_EQUIP;
+            $query = 'SELECT * FROM ' . Config::DB_TABLE_IMAGE;
             $cnx = Database::getInstance();
 
             $result = $cnx->query($query);
             foreach ($result as $row) {
-                $s = new Equipement();
+                $s = new Image();
 
                 $s->loadFromArray($row);
 
@@ -51,23 +63,21 @@ class EquipementDAO
         }
     }
 
-    public static function findByAnything($terme)
+    public static function findBySalle($salleId)
     {
         try {
             $liste = Array();
 
             $db = Database::getInstance();
 
-            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_EQUIP . " WHERE 
-            nom LIKE %" . ":x" . "% OR
-            description LIKE %" . ":x" . "%");
-            $pstmt->execute(array(':x' => $_REQUEST['main_recherche']));
+            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_IMAGE . " WHERE salle_Id = :x");
+            $pstmt->execute(array(':x' => $salleId));
 
             // TODO Pas sur!
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
 
             foreach ($result as $row) {
-                $s = new Equipement();
+                $s = new Image();
 
                 $s->loadFromArray($row);
 
@@ -75,11 +85,12 @@ class EquipementDAO
             }
             $pstmt->closeCursor();
             //$db->close();
-            return $liste;
+            return liste;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br>";
             return $liste;
         }
     }
 
+    
 }

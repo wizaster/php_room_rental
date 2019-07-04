@@ -1,5 +1,10 @@
 $(document).ready(function () {
-    $('#btn-suivant').click(function () {
+    $('#btnAjoutImage').click(function () {
+        var para = document.createElement("input");
+        para.setAttribute("type", "file");
+        para.setAttribute("name", "uploadImage[]");
+        var parent = document.getElementsByClassName("images");
+        parent.append(para);
 
 
     });
@@ -153,5 +158,6 @@ $(document).ready(function () {
             }
         }
     });
+
 
 });

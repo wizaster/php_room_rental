@@ -1,3 +1,8 @@
+<?php
+include_once('./Classes/SalleDAO.class.php');
+include_once('./Classes/Salle.class.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +32,7 @@
 <body>
 <?php
 include('header.php');
+$villes = SalleDAO::findAllCities();
 ?>
 <div class="site-blocks-cover overlay hero" data-aos="fade"
      data-stellar-background-ratio="0.5">
@@ -46,14 +52,24 @@ include('header.php');
                     <form method="post">
                         <div class="row align-items-center">
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4">
-                                <input type="text" class="form-control rounded" placeholder="Que cherchez-vous?">
+                                <input type="text" name="main_recherche" class="form-control rounded"
+                                       placeholder="Que cherchez-vous?">
                             </div>
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
                                 <div class="wrap-icon">
                                     <span class="icon icon-room"></span>
-                                    <input type="text" class="form-control rounded" placeholder="Lieu">
+                                    <select class="form-control rounded" name="main_recherche_lieu">
+                                        <?php
+                                        $villes = SalleDAO::findAllCities();
+                                        $nb = count($villes);
+                                        for ($i = 0; $i < $nb; $i++) {
+                                            ?>
+                                            <option value="<?php echo $villes[$i]; ?>"><?php echo $villes[$i] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-
                             </div>
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
                                 <div class="select-wrap">
@@ -70,6 +86,7 @@ include('header.php');
                                 </div>
                             </div>
                             <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                                <input type="hidden" name="action" value="recherche">
                                 <input type="submit" class="btn btn-primary btn-block rounded" value="Trouver">
                             </div>
 
@@ -84,7 +101,6 @@ include('header.php');
 
 <div class="site-section bg-light">
     <div class="container">
-
         <div class="overlap-category mb-5">
             <div class="row align-items-stretch no-gutters">
                 <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
@@ -507,6 +523,7 @@ include('header.php');
     <?php
     include('vues/footer.php');
     ?>
+
 </footer>
 </div>
 

@@ -3,8 +3,9 @@
 include_once('./Classes/User.class.php');
 include_once('./Classes/UserDAO.class.php');
 
+$uDao = new UserDAO();
+$db = Database::getInstance();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +50,7 @@ include('header.php');
 
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8 text-center">
-                            <h1>Devenir membre</h1>
+                            <h1>Votre Profil</h1>
                         </div>
                     </div>
 
@@ -70,33 +71,36 @@ include('header.php');
                         <div class=" form-group">
 
                             <div class=" row col-md-12">
-                                <p>Veuillez remplir tous les champs.</p>
+                                <p>Vos Infos</p>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-5">
-                                    <label class="text-black" for="create_username">Nom Utilisateur</label>
-                                    <input type="text" id="create_username" name="create_username" class="form-control">
-                                </div>
-                                <div class="col-5">
-                                    <label class="text-black" for="create_password">Mot de passe</label>
-                                    <input type="password" id="create_password" name="create_password"
-                                           class="form-control">
+                                    <label class="text-black" for="field_password">Mot de passe</label>
+                                    <input type="password" id="field_password" name="field_password"
+                                           class="form-control" value="<?php echo $_SESSION['user']['psw'] ?>">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-5">
-                                    <label class="text-black" for="create_prenom">Prénom</label>
-                                    <input type="text" id="create_prenom" name="create_prenom" class="form-control">
+                                    <label class="text-black" for="field_prenom">Prénom</label>
+                                    <input type="text" id="field_prenom" name="field_prenom" class="form-control" value="<?php echo $_SESSION['user']['prenom'] ?>">
                                 </div>
                                 <div class="col-5">
-                                    <label class="text-black" for="create_nom">Nom</label>
-                                    <input type="text" id="create_nom" name="create_nom" class="form-control">
+                                    <label class="text-black" for="field_nom">Nom</label>
+                                    <input type="text" id="field_nom" name="field_nom" class="form-control" value="<?php echo $_SESSION['user']['nom'] ?>">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-10">
-                                    <label class="text-black" for="create_email">Adresse courriel</label>
-                                    <input type="email" id="create_email" name="create_email" class="form-control">
+                                    <label class="text-black" for="field_email">Adresse courriel</label>
+                                    <input type="email" id="field_email" name="field_email" class="form-control" value="<?php echo $_SESSION['user']['email'] ?>">
+                                </div>
+                            </div>
+                            <div class="row col-md-12">
+                                <div class="col-7 form-room">
+                                    <label class="text-black" for="adresse_user">Adresse Courante</label>
+                                    <input type="text" id="adresse_user" name="adresse_user" class="form-control" 
+                                              readonly value="<?php echo $_SESSION['user']['adresse'] ?>">
                                 </div>
                             </div>
                             <div class="row col-12">
@@ -136,7 +140,7 @@ include('header.php');
                                     <label class="text-black" for="description_user">Description</label>
                                     <div>Dites quelque chose à propos de vous</div>
                                     <textarea rows="5" id="description_user" name="description_user"
-                                              class="form-control"></textarea>
+                                              class="form-control"><?php echo $_SESSION['user']['desc'] ?></textarea>
                                 </div>
                             </div>
                             <br/><br/>
@@ -150,9 +154,9 @@ include('header.php');
 
                         <div class="row col-12">
                             <div class="col-12">
-                                <input type="submit" name="create_user" value="Devenir membre"
+                                <input type="submit" name="modify_user" value="Enregistrer"
                                        class="btn btn-primary py-2 px-4 text-white btn-suivant">
-                                <input type="hidden" name="action" value="creation_utilisateur"/>
+                                <input type="hidden" name="action" value="modifier_utilisateur"/>
                             </div>
                         </div>
 

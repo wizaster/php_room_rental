@@ -11,6 +11,13 @@ require_once('controleur/Recherche_avanceAction.class.php');
 require_once('controleur/ConnecteAction.class.php');
 require_once('controleur/AjoutAction.class.php');
 require_once('controleur/Creation_utilisateurAction.class.php');
+require_once('controleur/Salle_optionAction.class.php');
+require_once('controleur/ValiderAction.class.php');
+require_once('controleur/Afficher_profilAction.class.php');
+require_once('controleur/DeconnexionAction.class.php');
+require_once('controleur/Info_utilisateurAction.class.php');
+require_once('controleur/Modifier_utilisateurAction.class.php');
+require_once('controleur/RechercheAction.class.php');
 
 class ActionBuilder
 {
@@ -52,6 +59,27 @@ class ActionBuilder
                 break;
             case "creation_utilisateur":
                 return new Creation_utilisateurAction();
+                break;
+            case "info_utilisateur":
+                return new Info_utilisateurAction();
+                break;
+            case "modifier_utilisateur":
+                return new Modifier_utilisateurAction();
+                break;
+            case "salle_option":
+                return new Salle_optionAction();
+                break;
+            case "validerAction":
+                return new ValiderAction();
+                break;
+            case "afficher_profil":
+                return new Afficher_profilAction();
+                break;
+            case "deconnexion":
+                return new DeconnexionAction();
+                break;
+            case "recherche":
+                return new RechercheAction();
                 break;
             default :
                 return new DefaultAction();

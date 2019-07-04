@@ -4,10 +4,6 @@ if (!isset($_SESSION)) {
 }
 include_once('./Classes/Salle.class.php');
 include_once('./Classes/SalleDAO.class.php');
-include_once('./Classes/Equipement.class.php');
-include_once('./Classes/EquipementDAO.class.php');
-include_once('./Classes/Accessibilite.class.php');
-include_once('./Classes/AccessibiliteDAO.class.php');
 
 ?>
 <!DOCTYPE html>
@@ -144,38 +140,6 @@ include('vues/header.php');
                                                class="bg-primary text-white rounded">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="roomAttr">
-                            <div>
-                                <h4>Équipement disponible</h4>
-                                <p>Veuillez cocher tous les équipement disponible avec votre salle, avec ou sans
-                                    supplément</p>
-                            </div>
-                            <div>
-                                <?php
-                                $eDao = new EquipementDAO();
-                                $liste = $eDao->findAll();
-                                foreach ($liste as $equip) {
-                                    echo "<input type='checkbox' name='equipSalle' value='" . $equip->getNom() . "'/> " . "<label>" . $equip->getNom() . "</label><br/>";
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="roomAttr">
-                            <div>
-                                <h4>Éléments d'accessibilté</h4>
-                                <p>Veuillez cocher tous les accomodements près de votre salle</p>
-                            </div>
-                            <div>
-                                <?php
-                                $aDao = new AccessibiliteDAO();
-                                $listeAccess = $aDao->findAll();
-                                foreach ($listeAccess as $access) {
-                                    echo "<input type='checkbox' name='accessSalle' value='" . $access->getNom() . "'/> " . "<label>" . $access->getNom() . "</label><br/>";
-                                }
-                                ?>
                             </div>
                         </div>
                     </form>

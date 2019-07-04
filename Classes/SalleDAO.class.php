@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include_once('./configs/config.php');
 include_once('./Classes/Database.class.php');
 include_once('./Classes/Salle.class.php');
@@ -43,6 +47,8 @@ class SalleDAO
                 ':prov' => $x->getProvince(),
                 ':pays' => $x->getPays(),
                 ':idProp' => $x->getIdProp()));
+
+            $_SESSION['salleId'] = $db->lastInsertId();
 
             $pstmt->closeCursor();
             //$db->close();
@@ -230,6 +236,72 @@ class SalleDAO
 			throw $e;
 		}
     }
+
+    public static function findByAnything($terme, $lieu)
+    {
+        try {
+            $liste = Array();
+
+            $db = Database::getInstance();
+
+            $liste = array();
+            $lieux = $_REQUEST['main_recherche_lieu'];
+            $therme = $_REQUEST['main_recherche'];
+            $res = $db->query("SELECT * FROM salle WHERE description = fwefqwef");
+            foreach ($res as $row) {
+                array_push($liste, $row['ville']);
+            }
+            return $liste;
+            /*
+
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE 
+            nom LIKE %:x% OR
+            description LIKE :x AND
+            ville = :y");
+            var_dump($_REQUEST['main_recherche_lieu']);
+            $lieux = $_REQUEST['main_recherche_lieu'];
+            $therme = $_REQUEST['main_recherche'];
+            $pstmt->execute(array(
+                ':x' => $therme,
+                ':y' => $lieux));
+
+            // TODO Pas sur!
+            $result = $pstmt->fetch(PDO::FETCH_OBJ);
+
+            foreach($result as $row) {
+                $s = new Salle();
+
+                $s->loadFromArray($row);
+
+                array_push($liste,$s);
+            }
+            $pstmt->closeCursor();
+            //$db->close();
+            return $liste;
+            */
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
+        }
+    }
+
+    public static function findAllCities()
+    {
+        try {
+            $db = Database::getInstance();
+            $liste = array();
+            $res = $db->query("SELECT distinct ville FROM salle WHERE ville <> ' '");
+            foreach ($res as $row) {
+                array_push($liste, $row['ville']);
+            }
+            return $liste;
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
+        }
+    }
+
     
     public function delete($x)
     {

@@ -8,7 +8,6 @@ class Ajouter_salleAction implements Action
 {
     public function execute()
     {
-        var_dump($_SESSION["role"]);
         if (ISSET($_SESSION["connecte"])) {
             if ($_SESSION["role"] != 2) {
                 $_SESSION['msg'] = "Veuillez vous connecter a un compte proprietaire pour avoir acces a cette fonction";
