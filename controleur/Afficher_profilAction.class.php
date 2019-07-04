@@ -1,8 +1,4 @@
 <?php
-include_once('./Classes/UserDAO.class.php');
-include_once('./Classes/User.class.php');
-include_once('./configs/config.php');
-include_once('./Classes/Database.class.php');
 include_once('./Controleur/Action.interface.php');
 
 class Afficher_profilAction implements Action
@@ -13,6 +9,7 @@ class Afficher_profilAction implements Action
         $username = $_SESSION['connecte'];
         $user = UserDAO::findByUsername($username);
 
+        $_SESSION['role'] = $user->getTypeutilisateurId();
         $_SESSION['user']['nom'] = $user->getNom();
         $_SESSION['user']['prenom'] = $user->getPrenom();
         $_SESSION['user']['email'] = $user->getEmail();

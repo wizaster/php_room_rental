@@ -18,12 +18,17 @@ require_once('controleur/DeconnexionAction.class.php');
 require_once('controleur/Info_utilisateurAction.class.php');
 require_once('controleur/Modifier_utilisateurAction.class.php');
 require_once('controleur/RechercheAction.class.php');
+require_once('controleur/Devenir_proprietaireAction.class.php');
+require_once('controleur/Confirm_devenir_proprietaireAction.class.php');
 
 class ActionBuilder
 {
     public static function getAction($nomAction)
     {
         switch ($nomAction) {
+            case "default" :
+                return new DefaultAction();
+                break;
             case "ajouter_salle":
                 return new Ajouter_salleAction();
                 break;
@@ -36,9 +41,6 @@ class ActionBuilder
             case "a_propos" :
                 return new A_proposAction();
                 break;
-            case "default" :
-                return new DefaultAction();
-                break;
             case "contact" :
                 return new ContactAction();
                 break;
@@ -48,20 +50,29 @@ class ActionBuilder
             case "nouvel_utilisateur" :
                 return new Nouvel_utilisateurAction();
                 break;
-            case "recherche_avance" :
-                return new Recherche_avanceAction();
-                break;
-            case "connecte":
-                return new ConnecteAction();
-                break;
-            case "ajoutAction":
-                return new AjoutAction();
-                break;
             case "creation_utilisateur":
                 return new Creation_utilisateurAction();
                 break;
             case "info_utilisateur":
                 return new Info_utilisateurAction();
+                break;
+            case "afficher_profil":
+                return new Afficher_profilAction();
+                break;
+            case "devenir_proprietaire":
+                return new Devenir_proprietaireAction();
+                break;
+            case "confirm_devenir_proprietaire":
+                return new Confirm_devenir_proprietaireAction();
+                break;
+            case "connecte":
+                return new ConnecteAction();
+                break;
+            case "deconnexion":
+                return new DeconnexionAction();
+                break;
+            case "ajoutAction":
+                return new AjoutAction();
                 break;
             case "modifier_utilisateur":
                 return new Modifier_utilisateurAction();
@@ -72,14 +83,11 @@ class ActionBuilder
             case "validerAction":
                 return new ValiderAction();
                 break;
-            case "afficher_profil":
-                return new Afficher_profilAction();
-                break;
-            case "deconnexion":
-                return new DeconnexionAction();
-                break;
             case "recherche":
                 return new RechercheAction();
+                break;
+            case "recherche_avance" :
+                return new Recherche_avanceAction();
                 break;
             default :
                 return new DefaultAction();
