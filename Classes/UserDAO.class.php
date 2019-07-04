@@ -77,7 +77,7 @@ class UserDAO
         {
             $db = Database::getInstance();
 
-            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_USER . " WHERE nomUtilisateur = :x");
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_USER ." WHERE nomUtilisateur = :x");
             $pstmt->execute(array(':x' => $username));
             
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
@@ -106,7 +106,7 @@ class UserDAO
             $db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "UPDATE " . Config::DB_TABLE_USER . " SET
+                "UPDATE ".Config::DB_TABLE_USER." SET
                 password = :psw ,
                 email = :email ,
                 nom = :nom ,
@@ -122,6 +122,27 @@ class UserDAO
                 ':prenom' => $x->getPrenom(),
                 ':adr' => $x->getAdresse(),
                 ':desc' => $x->getDescription(),
+                ':i' => $x->getId()));
+            
+            $pstmt->closeCursor();
+            return $n;
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+    
+    public function updateUserType($x)
+    {
+        try {
+            $db = Database::getInstance();
+            
+            $pstmt = $db->prepare(
+                "UPDATE ".Config::DB_TABLE_USER." SET
+                Type_utilisateur_Id = :type
+                WHERE ID = :i");
+            
+            $n = $pstmt->execute(array(
+                ':type' => $x->getTypeutilisateurId(),
                 ':i' => $x->getId()));
             
             $pstmt->closeCursor();
