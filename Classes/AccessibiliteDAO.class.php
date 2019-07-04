@@ -58,24 +58,14 @@ class AccessibiliteDAO
 
             $db = Database::getInstance();
 
-            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_ACCESS . " WHERE 
-            nom LIKE %" . ":x" . "% OR
-            description LIKE %" . ":x" . "%
-            ");
-            $pstmt->execute(array(':x' => $_REQUEST['main_recherche']));
+            $liste = array();
 
-            // TODO Pas sur!
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
 
-            foreach ($result as $row) {
-                $s = new Accessibilite();
-
-                $s->loadFromArray($row);
-
-                array_push($liste, $s);
+            $therme = $_REQUEST['main_recherche'];
+            $res = $db->query("SELECT * FROM " . Config::DB_TABLE_ACCESS . " WHERE description LIKE '%" . $therme . "%' OR nom LIKE '%" . $therme . "%'");
+            foreach ($res as $row) {
+                array_push($liste, $row);
             }
-            $pstmt->closeCursor();
-            //$db->close();
             return $liste;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br>";

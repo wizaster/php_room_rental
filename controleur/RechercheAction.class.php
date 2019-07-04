@@ -18,42 +18,39 @@ class RechercheAction implements Action
 {
     public function execute()
     {
-        echo "alalalalalalalalalalalalal<br><br><br><br><br><br>";
         if ((isset($_REQUEST['main_recherche']) && !empty($_REQUEST['main_recherche']))) {
+
             $lieu = $_REQUEST['main_recherche_lieu'];
             $terme = $_REQUEST['main_recherche'];
-            var_dump($terme);
-            var_dump($lieu);
-            $salles = "oops";
+            $salles = array();
             $termes = preg_split("/[\s,]/", $terme);
-            var_dump("termes : " . $termes[0]);
             if (count($termes) == 1) {
-                $salles = SalleDAO::findByAnything($termes, $lieu);
+                $salles = SalleDAO::findByAnything();
                 $equipements = EquipementDAO::findByAnything($termes);
                 $accessibilite = AccessibiliteDAO::findByAnything($termes);
                 if ($equipements != null) {
                     foreach ($equipements as $equip) {
-                        $res = SalleDAO::findById($equip->getSalleId());
+                        $resid = SalleHasEquipementDAO::getSalleId($equip[0]);
+                        $res = SalleDAO::findById($$resid);
                         if ($res->getVille() == $lieu) {
-                            $salles += $res;
+                            array_push($salles, $res);
                         }
                     }
                 }
                 if ($accessibilite != null) {
                     foreach ($accessibilite as $access) {
-                        $res = SalleDAO::findById($access->getSalleId());
-                        if ($res->getVille() == $lieu) {
-                            $salles += $res;
+                        $resid = SalleHasAccessibiliteDAO::getSalleId($access[0]);
+                        foreach ($resid as $sId) {
+                            $res = SalleDAO::findById($sId);
+                            if ($res->getVille() === $lieu) {
+                                array_push($salles, $res);
+                            }
                         }
                     }
                 }
             }
-            var_dump($salles);
             $_SESSION['recherche'] = $salles;
-
-
         }
         return "default";
-
     }
 }

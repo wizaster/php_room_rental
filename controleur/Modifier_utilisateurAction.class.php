@@ -24,12 +24,12 @@ class Modifier_utilisateurAction implements Action
         $desc = $_REQUEST['description_user'];
         $adresse = $noCivique . "," . $appt . "," . $rue . "," . $codePostal . "," . $ville . "," . $province . "," . $pays;
 
-        
+
         $user = new User($_SESSION['user']['id'], $password, "", $email, $nom, $prenom, $adresse, $desc, 0, 1);
         //               ^^^^^^^^^^^^^^^^^^^^^^^
         // Je sens que c'est pas bien de faire ca.
         $uDao->update($user);
-        
+
         // pourrait peut etre setter un variable pour confirmer?
         return "profil_utilisateur";
     }

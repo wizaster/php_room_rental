@@ -9,7 +9,7 @@ class Info_utilisateurAction implements Action
         $username = $_SESSION['connecte'];
         $user = UserDAO::findByUsername($username);
 
-        $_SESSION['user']['id']  = $user->getId();
+        $_SESSION['user']['id'] = $user->getId();
         $_SESSION['user']['usr'] = $user->getNomUtilisateur();
         $_SESSION['user']['psw'] = $user->getPassword();
         $_SESSION['user']['nom'] = $user->getNom();
@@ -17,12 +17,12 @@ class Info_utilisateurAction implements Action
         $_SESSION['user']['email'] = $user->getEmail();
         $_SESSION['user']['adresse'] = $user->getAdresse();
         $_SESSION['user']['desc'] = $user->getDescription();
-        
+
         $date = $user->getUserSince();
         $date = date("d/m/Y", strtotime($date));
         $_SESSION['user']['membreDepuis'] = $date;
-        
-        
+
+
         return "info_utilisateur";
     }
 }

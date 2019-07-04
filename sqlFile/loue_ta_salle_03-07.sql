@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `accessibilte`
 --
 
-CREATE TABLE `accessibilte` (
+CREATE TABLE `accessibilite` (
   `Id` int(11) NOT NULL,
   `nom` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `description` varchar(45) COLLATE utf8_bin DEFAULT NULL
@@ -36,7 +36,7 @@ CREATE TABLE `accessibilte` (
 -- Dumping data for table `accessibilte`
 --
 
-INSERT INTO `accessibilte` (`Id`, `nom`, `description`) VALUES
+INSERT INTO `accessibilite` (`Id`, `nom`, `description`) VALUES
 (1, 'statonnement', NULL),
 (2, 'À proximité des autobus', NULL),
 (3, 'quai de reception', NULL),
@@ -400,7 +400,7 @@ INSERT INTO `utilisateur` (`Id`, `password`, `nomUtilisateur`, `email`, `nom`, `
 --
 -- Indexes for table `accessibilte`
 --
-ALTER TABLE `accessibilte`
+ALTER TABLE `accessibilite`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -516,7 +516,7 @@ ALTER TABLE `utilisateur`
 --
 -- AUTO_INCREMENT for table `accessibilte`
 --
-ALTER TABLE `accessibilte`
+ALTER TABLE `accessibilite`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `equipement`

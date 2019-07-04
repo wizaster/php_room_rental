@@ -98,42 +98,42 @@ include('header.php');
                         <input type="hidden" name="action" value="info_utilisateur"/>
                     </form>
                 </div>
-                    <?php
-                    switch ($_SESSION['role']) {
-                        case 1:
-                            ?>
-                            <div class="row">
-                                <form action="#" method="post" id="Options" class="p-2">
-                                    <input type="submit" value="Devenir Proprietaire"/>
-                                    <input type="hidden" name="action" value="devenir_proprietaire"/>
-                                </form>
-                            </div>
-                            <?php
-                            break;
-                        case 2:
-                            ?>
-                            <div class="row">
-                                <form action="#" method="post" id="Options" class="p-2">
-                                    <input type="submit" value="Devenir Proprietaire"/>
-                                    <input type="submit" value="Ajouter salle"/>
-                                    <input type="hidden" name="action" value="ajouter_salle"/>
-                                </form>
-                            </div>
-                            <div class="row">
-                                <form action="#" method="post" id="Options" class="p-2">
-                                    <input type="submit" value="Modifier Salle"/>
-                                    <input type="hidden" name="action" value="modifier_salle"/>
-                                </form>
-                            </div>
-                            <?php
-                            break;
-                        case 3:
-                            ?>
+                <?php
+                switch ($_SESSION['role']) {
+                    case 1:
+                        ?>
+                        <div class="row">
+                            <form action="#" method="post" id="Options" class="p-2">
+                                <input type="submit" value="Devenir Proprietaire"/>
+                                <input type="hidden" name="action" value="devenir_proprietaire"/>
+                            </form>
+                        </div>
+                        <?php
+                        break;
+                    case 2:
+                        ?>
+                        <div class="row">
+                            <form action="#" method="post" id="Options" class="p-2">
+                                <input type="submit" value="Devenir Proprietaire"/>
+                                <input type="submit" value="Ajouter salle"/>
+                                <input type="hidden" name="action" value="ajouter_salle"/>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <form action="#" method="post" id="Options" class="p-2">
+                                <input type="submit" value="Modifier Salle"/>
+                                <input type="hidden" name="action" value="modifier_salle"/>
+                            </form>
+                        </div>
+                        <?php
+                        break;
+                    case 3:
+                        ?>
 
-                            <?php
-                            break;
-                    }
-                    ?>
+                        <?php
+                        break;
+                }
+                ?>
                 </form>
             </div>
         </div>

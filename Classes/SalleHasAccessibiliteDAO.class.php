@@ -18,7 +18,6 @@ class SalleHasAccessibiliteDAO
     {
         try {
             $db = Database::getInstance();
-            var_dump($x);
             $pstmt = $db->prepare(
                 "INSERT INTO " . Config::DB_TABLE_SALACC . " (
                 Salle_Id,
@@ -35,6 +34,26 @@ class SalleHasAccessibiliteDAO
             return $n;
         } catch (PDOException $e) {
             throw $e;
+        }
+    }
+
+    public static function getSalleId($accessId)
+    {
+        {
+            try {
+                $liste = array();
+                $db = Database::getInstance();
+
+                $res = $db->query("SELECT Salle_Id FROM " . Config::DB_TABLE_SALACC . " WHERE Accessibilite_Id = '" . $accessId . "'");
+                foreach ($res as $row) {
+                    array_push($liste, $row[0]);
+                }
+                return $liste;
+                return $res;
+            } catch (PDOException $e) {
+                print "Error!: " . $e->getMessage() . "<br>";
+                return $res;
+            }
         }
     }
 

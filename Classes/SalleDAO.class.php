@@ -237,7 +237,7 @@ class SalleDAO
 		}
     }
 
-    public static function findByAnything($terme, $lieu)
+    public static function findByAnything()
     {
         try {
             $liste = Array();
@@ -245,40 +245,15 @@ class SalleDAO
             $db = Database::getInstance();
 
             $liste = array();
+
+
             $lieux = $_REQUEST['main_recherche_lieu'];
             $therme = $_REQUEST['main_recherche'];
-            $res = $db->query("SELECT * FROM salle WHERE description = fwefqwef");
+            $res = $db->query("SELECT * FROM salle WHERE (description LIKE '%" . $therme . "%' OR nom LIKE '%" . $therme . "%') AND ville = '" . $lieux . "'");
             foreach ($res as $row) {
                 array_push($liste, $row['ville']);
             }
             return $liste;
-            /*
-
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE 
-            nom LIKE %:x% OR
-            description LIKE :x AND
-            ville = :y");
-            var_dump($_REQUEST['main_recherche_lieu']);
-            $lieux = $_REQUEST['main_recherche_lieu'];
-            $therme = $_REQUEST['main_recherche'];
-            $pstmt->execute(array(
-                ':x' => $therme,
-                ':y' => $lieux));
-
-            // TODO Pas sur!
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
-
-            foreach($result as $row) {
-                $s = new Salle();
-
-                $s->loadFromArray($row);
-
-                array_push($liste,$s);
-            }
-            $pstmt->closeCursor();
-            //$db->close();
-            return $liste;
-            */
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br>";
             return $liste;

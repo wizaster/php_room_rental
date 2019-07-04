@@ -38,6 +38,22 @@ class SalleHasEquipementDAO
         }
     }
 
+    public static function getSalleId($equipId)
+    {
+        {
+            try {
+                $res = '';
+                $db = Database::getInstance();
+
+                $res = $db->query("SELECT Salle_Id FROM " . Config::DB_TABLE_SALEQ . " WHERE Equipement_Id = '" . $equipId . "'");
+                return $res;
+            } catch (PDOException $e) {
+                print "Error!: " . $e->getMessage() . "<br>";
+                return $res;
+            }
+        }
+    }
+
     public function delete($x, $y)
     {
         try {

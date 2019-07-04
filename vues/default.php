@@ -33,6 +33,9 @@ include_once('./Classes/Salle.class.php');
 <?php
 include('header.php');
 $villes = SalleDAO::findAllCities();
+if (isset($_SESSION['recherche'])) {
+    var_dump($_SESSION['recherche']);
+}
 ?>
 <div class="site-blocks-cover overlay hero" data-aos="fade"
      data-stellar-background-ratio="0.5">
@@ -61,6 +64,7 @@ $villes = SalleDAO::findAllCities();
                                     <select class="form-control rounded" name="main_recherche_lieu">
                                         <?php
                                         $villes = SalleDAO::findAllCities();
+
                                         $nb = count($villes);
                                         for ($i = 0; $i < $nb; $i++) {
                                             ?>

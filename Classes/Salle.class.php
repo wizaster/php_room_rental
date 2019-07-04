@@ -264,22 +264,22 @@ class Salle
     
     public function loadFromObject($x)
     {
-        $this->id = $x->ID;
-        $this->nom = $x->NOM;
-        $this->superficie = $x->SUPERFICIE;
-        $this->capacite = $x->CAPACITE;
-        $this->desc = $x->DESC;
-        $this->statut = $x->STATUT;
-        $this->tarif = $x->TARIF;
-        $this->created_since = $x->CREATEDSINCE;
-        $this->idProp = $x->IDPROP;
-        
-        $this->code_postal = $x->CODE_POSTAL;
-        $this->pays = $x->PAYS;
-        $this->province = $x->PROVINCE;
-        $this->ville = $x->VILLE;
-        $this->rue = $x->RUE;
-        $this->no_civique = $x->NO_CIVIQUE;
-        $this->appt_suite = $x->APPT_SUITE;
+        $this->id = $x->Id;
+        $this->nom = $x->nom;
+        $this->superficie = $x->superficie;
+        $this->capacite = $x->capacite;
+        $this->desc = $x->description;
+        $this->statut = $x->statut;
+        $this->tarif = $x->tarif;
+        $this->created_since = $x->create_time;
+        $this->idProp = $x->proprietaire_Id;
+
+        $this->code_postal = $x->code_postal;
+        $this->pays = $x->pays;
+        $this->province = $x->province;
+        $this->ville = $x->ville;
+        $this->rue = $x->rue;
+        $this->no_civique = $x->no_civique;
+        $this->appt_suite = $x->appt_suite;
     }
 }
