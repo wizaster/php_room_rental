@@ -51,6 +51,6 @@ class RechercheAction implements Action
             }
             $_SESSION['recherche'] = $salles;
         }
-        return "default";
+        return "afficher_salles";
     }
 }

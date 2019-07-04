@@ -69,23 +69,11 @@ class ImageDAO
             $liste = Array();
 
             $db = Database::getInstance();
-
-            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_IMAGE . " WHERE salle_Id = :x");
-            $pstmt->execute(array(':x' => $salleId));
-
-            // TODO Pas sur!
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
-
-            foreach ($result as $row) {
-                $s = new Image();
-
-                $s->loadFromArray($row);
-
-                array_push($liste, $s);
+            $res = $db->query("SELECT * FROM " . Config::DB_TABLE_IMAGE . " WHERE salle_Id = '" . $salleId . "'");
+            foreach ($res as $row) {
+                array_push($liste, $row);
             }
-            $pstmt->closeCursor();
-            //$db->close();
-            return liste;
+            return $liste;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br>";
             return $liste;

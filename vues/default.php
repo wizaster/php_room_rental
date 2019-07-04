@@ -34,7 +34,6 @@ include_once('./Classes/Salle.class.php');
 include('header.php');
 $villes = SalleDAO::findAllCities();
 if (isset($_SESSION['recherche'])) {
-    var_dump($_SESSION['recherche']);
 }
 ?>
 <div class="site-blocks-cover overlay hero" data-aos="fade"
