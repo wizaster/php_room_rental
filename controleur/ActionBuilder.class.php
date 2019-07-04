@@ -17,6 +17,7 @@ require_once('controleur/Afficher_profilAction.class.php');
 require_once('controleur/DeconnexionAction.class.php');
 require_once('controleur/Info_utilisateurAction.class.php');
 require_once('controleur/Modifier_utilisateurAction.class.php');
+require_once('controleur/RechercheAction.class.php');
 
 class ActionBuilder
 {
@@ -76,6 +77,9 @@ class ActionBuilder
                 break;
             case "deconnexion":
                 return new DeconnexionAction();
+                break;
+            case "recherche":
+                return new RechercheAction();
                 break;
             default :
                 return new DefaultAction();

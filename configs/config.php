@@ -15,6 +15,6 @@
         const DB_TABLE_SALACC = "salle_has_accessibilite";
         const DB_TABLE_EQUIP = "equipement";
         const DB_TABLE_ADRESSE = "salle_adresse";
-        const DB_TABLE_ACCESS = "accessibilte";
+        const DB_TABLE_ACCESS = "accessibilite";
         const DB_TABLE_IMAGE = "images";
     }
