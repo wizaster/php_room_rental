@@ -234,7 +234,7 @@ class Salle
             .$this->superficie.","
             .$this->capacite.","
             .$this->desc.","
-            .$this->satut.","
+            . $this->statut . ","
             .$this->tarif.","
             .$this->created_since.","
             .$this->idProp.
@@ -243,23 +243,23 @@ class Salle
     
     public function loadFromArray($tab)
     {
-        $this->id = $tab["ID"];
-        $this->nom = $tab["NOM"];
-        $this->superficie = $tab["SUPERFICIE"];
-        $this->capacite = $tab["CAPACITE"];
-        $this->desc = $tab["DESC"];
-		$this->statut = $tab["STATUT"];
-		$this->tarif = $tab["TARIF"];
-        $this->created_since = $tab["CREATEDSINCE"];
-        $this->idProp = $tab["IDPROP"];
-        
-        $this->code_postal = $tab["CODE_POSTAL"];
-        $this->pays = $tab["PAYS"];
-        $this->province = $tab["PROVINCE"];
-		$this->ville = $tab["VILLE"];
-		$this->rue = $tab["RUE"];
-        $this->no_civique = $tab["NO_CIVIQUE"];
-        $this->appt_suite = $tab["APPT_SUITE"];
+        $this->id = $tab["Id"];
+        $this->nom = $tab["nom"];
+        $this->superficie = $tab["superficie"];
+        $this->capacite = $tab["capacite"];
+        $this->desc = $tab["description"];
+        $this->statut = $tab["statut"];
+        $this->tarif = $tab["tarif"];
+        $this->created_since = $tab["create_time"];
+        $this->idProp = $tab["proprietaire_Id"];
+
+        $this->code_postal = $tab["code_postal"];
+        $this->pays = $tab["pays"];
+        $this->province = $tab["province"];
+        $this->ville = $tab["ville"];
+        $this->rue = $tab["rue"];
+        $this->no_civique = $tab["no_civique"];
+        $this->appt_suite = $tab["appt_suite"];
     }
     
     public function loadFromObject($x)

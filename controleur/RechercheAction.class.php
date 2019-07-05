@@ -18,11 +18,21 @@ class RechercheAction implements Action
 {
     public function execute()
     {
-        if ((isset($_REQUEST['main_recherche']) && !empty($_REQUEST['main_recherche']))) {
-
-            $lieu = $_REQUEST['main_recherche_lieu'];
+        $terme = '';
+        $lieu = '';
+        $salles = array();
+        if (!empty($_REQUEST['main_recherche'])) {
             $terme = $_REQUEST['main_recherche'];
-            $salles = array();
+        }
+        if (!empty($_REQUEST['main_recherche_lieu'])) {
+            $lieu = $_REQUEST['main_recherche_lieu'];
+        }
+        if ($terme == '' && isset($_REQUEST['main_recherche_lieu'])) {
+            $salles = SalleDAO::findByVille($lieu);
+        } elseif ($terme == '' && $lieu == '') {
+            unset($_SESSION['recherche']);
+            return "afficher_salles";
+        } else {
             $termes = preg_split("/[\s,]/", $terme);
             if (count($termes) == 1) {
                 $salles = SalleDAO::findByAnything();
@@ -49,8 +59,8 @@ class RechercheAction implements Action
                     }
                 }
             }
-            $_SESSION['recherche'] = $salles;
         }
+        $_SESSION['recherche'] = $salles;
         return "afficher_salles";
     }
 }

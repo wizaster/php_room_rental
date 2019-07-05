@@ -1,3 +1,15 @@
+<?php
+if (isset($_SESSION['connecte'])) {
+    $loggedIn = true;
+} else {
+    $loggedIn = false;
+}
+if (isset($_REQUEST['listing'])) {
+    $salleId = $_REQUEST['listing'];
+} else {
+    $action = "afficher_salles";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,11 +40,24 @@
 <?php
 include('header.php');
 ?>
+
 </header>
+<?php
+$image = ImageDAO::findBySalle($salleId);
+$salle = SalleDAO::findById($salleId);
+?>
 
-
-<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../images/creepy.jpg);"
-     data-aos="fade" data-stellar-background-ratio="0.5">
+<div class="site-blocks-cover inner-page-cover overlay" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover inner-page-cover overlay salleBanniere m-auto col-8"
+        <?php
+        if (!empty($image)) {
+            ?>
+            style="background-image: url(<?php echo $image[0][0] ?>);"
+            <?php
+        }
+        ?>
+    >
+    </div>
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 
@@ -41,7 +66,7 @@ include('header.php');
 
                 <div class="row justify-content-center mt-5">
                     <div class="col-md-8 text-center">
-                        <h1>Un apres-ski dans le desert</h1>
+                        <h1><?php echo $salle->getNom() ?></h1>
                         <p class="mb-0"></p>
                     </div>
                 </div>
@@ -54,53 +79,73 @@ include('header.php');
 
 <div class="site-section">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 m-auto">
+        <div class="">
+            <div class="mb-5">
+                <div class="col-12 m-auto">
 
-                <div class="mb-4">
-                    <div class="slide-one-item home-slider owl-carousel">
-                        <div><img src="../images/img_1.jpg" alt="Image" class="img-fluid"></div>
-                        <div><img src="../images/img_2.jpg" alt="Image" class="img-fluid"></div>
-                        <div><img src="../images/img_3.jpg" alt="Image" class="img-fluid"></div>
-                        <div><img src="../images/img_4.jpg" alt="Image" class="img-fluid"></div>
+                    <div class="mb-4 col-lg-6 col-sm-12">
+                        <?php
+                        if (!empty($image)) {
+                            ?>
+                            <div class="slide-one-item home-slider owl-carousel ">
+                                <?php
+                                foreach ($image as $img) {
+                                    ?>
+                                    <div class="imgSlide"><img src="<?php echo $img[0] ?>" alt="Image"
+                                                               class="img-fluid"></div>
+                                    <?php
+                                }
+                                ?>
+
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
-                </div>
+                    <div <?php
+                    if (empty($image)){
+                        ?> class="row col-4" <?php
+                    } else {
+                    ?> class="row testrow col-4"> <?php
+                        }
+                        ?>
+                        <h4 class="h5 mb-4 text-black">Description</h4>
+                        <p><?php $salle->getDesc() ?></p>
+                    </div>
+                    <div class="row col-6 m-auto">
+                        <?php
+                        if ($loggedIn) {
+                            $user = UserDAO::findByUsername($_SESSION['connecte']);
+                            switch ($user->getTypeutilisateurId()) {
+                                case 1:
+                                    ?>
+                                    <button>Reserver cette salle</button>
+                                    <?php
+                                    break;
+                                case 2:
+                                    if ($user->getId() == $salle->getIdProp()) {
+                                        ?>
+                                        <input type="hidden" name="action" value="modifier_salle"/>
+                                        <input type="submit" class="btn btn-primary btn-block rounded"
+                                               value="Modifier ma salle"/>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <button>Reserver cette salle</button>
+                                        <?php
+                                    }
 
-                <h4 class="h5 mb-4 text-black">Description</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error repellat architecto maiores vero,
-                    quasi dolor, accusantium autem aliquam, ullam sequi saepe illum eaque aperiam eius amet!
-                    Necessitatibus nam sapiente obcaecati sit, fugit omnis non sunt distinctio aliquid, quibusdam
-                    excepturi hic?</p>
-                <p>Nisi, error. Molestias, quidem eaque sequi aut perspiciatis assumenda obcaecati ut quod eius
-                    reprehenderit. Iure rem numquam totam odio dignissimos aspernatur soluta. Corporis suscipit modi
-                    iste consequatur, repellat nihil omnis molestias optio. Dolorem ullam eius officia, eum ratione
-                    dolorum assumenda.</p>
-                <p>Soluta corporis blanditiis cupiditate debitis eveniet, temporibus ut cumque sint repudiandae
-                    quidem tenetur commodi id, quam. Sapiente corrupti magnam quis nulla, asperiores neque tenetur
-                    labore aperiam provident nostrum sequi delectus voluptatem fuga officiis repellat, ratione
-                    aspernatur eius repellendus modi reprehenderit.</p>
-                <p>Sapiente molestias voluptate cupiditate blanditiis quasi qui aperiam accusamus aspernatur ipsam
-                    velit nihil quaerat voluptatum soluta laboriosam ipsum veritatis at reiciendis quod voluptates,
-                    saepe harum dignissimos placeat dolorum aliquid! Quod quasi praesentium optio ratione non et sit
-                    quos excepturi cum?</p>
-
-            </div>
+                                    break;
+                                case 3:
+                                    ?>
+                                    <button>Modifier cette salle</button>
+                                    <?php
+                                    break;
+                            }
+                        }
+                        ?>
 
 
-            <div class="newsletter bg-primary py-5">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <h2>Newsletter</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
-                        <div class="col-md-6">
-
-                            <form class="d-flex">
-                                <input type="text" class="form-control" placeholder="Email">
-                                <input type="submit" value="Subscribe" class="btn btn-white">
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>

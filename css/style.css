@@ -2454,3 +2454,32 @@ h1, h2, h3, h4, h5,
     font-weight: bold;
     color: red;
 }
+
+.imgSlide {
+    display: block;
+!important;
+    height: 400px;
+    object-fit: fill;
+
+}
+
+.testrow {
+    float: right;
+    margin-top: -300px;
+}
+
+.salleBanniere {
+
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .testrow {
+        float: none;
+        margin-top: 0;
+    }
+
+    .imgSlide {
+        width: 80%;
+    }
+}
