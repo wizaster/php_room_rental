@@ -48,11 +48,13 @@ class SalleDAO
                 ':pays' => $x->getPays(),
                 ':idProp' => $x->getIdProp()));
 
-            $_SESSION['salleId'] = $db->lastInsertId();
-
             $pstmt->closeCursor();
             //$db->close();
-            return $n;
+            if ($n) {
+                return $db->lastInsertId();
+            } else {
+                return 0;
+            }
         }
         catch(PDOException $e)
         {

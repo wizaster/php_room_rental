@@ -28,7 +28,6 @@ class Location
     }
 
     // Getters
-    {
     public function getId()
     {
         return $this->id;
@@ -59,10 +58,8 @@ class Location
     {
         return $this->date_fin;
     }
-    }
     
     // Setters
-    {
     public function setId($_id)
     {
         $this->id = $_id;
@@ -90,7 +87,6 @@ class Location
     public function setDateFin($dateFin)
     {
         $this->date_fin = $_date_fin;
-    }
     }
     
     public function __toString()
