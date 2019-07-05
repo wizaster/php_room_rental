@@ -5,6 +5,10 @@ class Info_utilisateurAction implements Action
 {
     public function execute()
     {
+        if (!isset($_SESSION['connecte'])) {
+            return "connexion";
+        }
+        
         date_default_timezone_set('America/New_York');
         $username = $_SESSION['connecte'];
         $user = UserDAO::findByUsername($username);

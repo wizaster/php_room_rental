@@ -7,6 +7,10 @@ class Modifier_utilisateurAction implements Action
 {
     public function execute()
     {
+        if (!isset($_SESSION['connecte'])) {
+            return "connexion";
+        }
+        
         $uDao = new UserDAO();
 
         $password = $_REQUEST['field_password'];

@@ -15,9 +15,15 @@ class AjoutAction implements Action
 {
     public function execute()
     {
+        if (!isset($_SESSION['connecte'])) {
+            return "connexion";
+        }
+        if ($_SESSION['role'] == 1) {
+            return "devenir_proprietaire";
+        }
+
         $sDao = new SalleDAO();
         if (ISSET($_REQUEST['btnAjout'])) {
-
 
             $titre = $_REQUEST['titre'];
             $superficie = (int)$_REQUEST['superficieRoom'];

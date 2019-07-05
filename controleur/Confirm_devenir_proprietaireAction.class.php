@@ -5,13 +5,17 @@ class Confirm_devenir_proprietaireAction implements Action
 {
     public function execute()
     {
+        if (!isset($_SESSION['connecte'])) {
+            return "connexion";
+        }
+        if ($_SESSION['role'] > 1) {
+            return "profil";
+        }
+
         $uDao = new UserDAO();
         
         $user = new User();
-        
         $user->setId($_SESSION['id']);
-        //           ^^^^^^^^^^^^^^^^^^^^^^^
-        // Je sens que c'est pas bien de faire ca.
             
         $user->setTypeutilisateurId(2);
         $uDao->updateUserType($user);
