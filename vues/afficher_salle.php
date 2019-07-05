@@ -121,7 +121,6 @@ $salle = SalleDAO::findById($salleId);
                                     case 1:
                                         ?>
                                         <input type="hidden" name="action" value="reserver_salle"/>
-                                        <input type="hidden" name="listing" value="<?php echo $salleId ?>"/>
                                         <input type="submit" class="btn btn-primary btn-block rounded"
                                                value="Reserver cette salle"/>
                                         <?php
@@ -136,7 +135,6 @@ $salle = SalleDAO::findById($salleId);
                                         } else {
                                             ?>
                                             <input type="hidden" name="action" value="reserver_salle"/>
-                                            <input type="hidden" name="listing" value="<?php echo $salleId ?>"/>
                                             <input type="submit" class="btn btn-primary btn-block rounded"
                                                    value="Reserver cette salle"/>
                                             <?php
@@ -145,10 +143,21 @@ $salle = SalleDAO::findById($salleId);
                                         break;
                                     case 3:
                                         ?>
-                                        <button>Modifier cette salle</button>
+                                        <input type="hidden" name="action" value="modifier_salle"/>
+                                        <input type="submit" class="btn btn-primary btn-block rounded"
+                                                   value="Modifier cette salle"/>
                                         <?php
                                         break;
                                 }
+                                ?>
+                                <input type="hidden" name="listing" value="<?php echo $salleId ?>"/>
+                                <?php
+                            } else {
+                                ?>
+                                <input type="hidden" name="action" value="connexion"/>
+                                <input type="submit" class="btn btn-primary btn-block rounded"
+                                        value="Reserver cette salle"/>
+                                <?php
                             }
                             ?>
                         </form>
