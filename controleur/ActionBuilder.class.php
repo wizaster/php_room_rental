@@ -89,6 +89,9 @@ class ActionBuilder
             case "recherche_avance" :
                 return new Recherche_avanceAction();
                 break;
+            case "reserver_salle" :
+                return new Reserver_salleAction();
+                break;
             default :
                 return new DefaultAction();
         }

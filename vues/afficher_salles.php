@@ -3,7 +3,6 @@ if (isset($_SESSION['connecte'])) {
     $loggedIn = true;
 } else {
     $loggedIn = false;
-    start_session();
 }
 if (isset($_SESSION['recherche'])) {
     $resultat = true;

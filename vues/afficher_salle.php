@@ -113,38 +113,45 @@ $salle = SalleDAO::findById($salleId);
                         <p><?php $salle->getDesc() ?></p>
                     </div>
                     <div class="row col-6 m-auto">
-                        <?php
-                        if ($loggedIn) {
-                            $user = UserDAO::findByUsername($_SESSION['connecte']);
-                            switch ($user->getTypeutilisateurId()) {
-                                case 1:
-                                    ?>
-                                    <button>Reserver cette salle</button>
-                                    <?php
-                                    break;
-                                case 2:
-                                    if ($user->getId() == $salle->getIdProp()) {
+                        <form>
+                            <?php
+                            if ($loggedIn) {
+                                $user = UserDAO::findByUsername($_SESSION['connecte']);
+                                switch ($user->getTypeutilisateurId()) {
+                                    case 1:
                                         ?>
-                                        <input type="hidden" name="action" value="modifier_salle"/>
+                                        <input type="hidden" name="action" value="reserver_salle"/>
+                                        <input type="hidden" name="listing" value="<?php echo $salleId ?>"/>
                                         <input type="submit" class="btn btn-primary btn-block rounded"
-                                               value="Modifier ma salle"/>
+                                               value="Reserver cette salle"/>
                                         <?php
-                                    } else {
+                                        break;
+                                    case 2:
+                                        if ($user->getId() == $salle->getIdProp()) {
+                                            ?>
+                                            <input type="hidden" name="action" value="modifier_salle"/>
+                                            <input type="submit" class="btn btn-primary btn-block rounded"
+                                                   value="Modifier ma salle"/>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <input type="hidden" name="action" value="reserver_salle"/>
+                                            <input type="hidden" name="listing" value="<?php echo $salleId ?>"/>
+                                            <input type="submit" class="btn btn-primary btn-block rounded"
+                                                   value="Reserver cette salle"/>
+                                            <?php
+                                        }
+
+                                        break;
+                                    case 3:
                                         ?>
-                                        <button>Reserver cette salle</button>
+                                        <button>Modifier cette salle</button>
                                         <?php
-                                    }
-
-                                    break;
-                                case 3:
-                                    ?>
-                                    <button>Modifier cette salle</button>
-                                    <?php
-                                    break;
+                                        break;
+                                }
                             }
-                        }
-                        ?>
-
+                            ?>
+                        </form>
 
                     </div>
                 </div>
