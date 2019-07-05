@@ -9,7 +9,7 @@ class DeconnexionAction implements Action
     public function execute()
     {
         if (!isset($_SESSION['connecte'])) {
-            $_SESSION['msg'] = "Connectez vous avec de vous déconnecter";
+            $_SESSION['msg'] = "Connectez vous avant de vous déconnecter";
             return "connexion";
         }
 

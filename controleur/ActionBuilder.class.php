@@ -11,8 +11,6 @@ require_once('controleur/Recherche_avanceAction.class.php');
 require_once('controleur/ConnecteAction.class.php');
 require_once('controleur/AjoutAction.class.php');
 require_once('controleur/Creation_utilisateurAction.class.php');
-require_once('controleur/Salle_optionAction.class.php');
-require_once('controleur/ValiderAction.class.php');
 require_once('controleur/Afficher_profilAction.class.php');
 require_once('controleur/DeconnexionAction.class.php');
 require_once('controleur/Info_utilisateurAction.class.php');

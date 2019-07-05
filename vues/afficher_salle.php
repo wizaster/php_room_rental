@@ -110,7 +110,7 @@ $salle = SalleDAO::findById($salleId);
                         }
                         ?>
                         <h4 class="h5 mb-4 text-black">Description</h4>
-                        <p><?php $salle->getDesc() ?></p>
+                        <p><?php echo $salle->getDesc() ?></p>
                     </div>
                     <div class="row col-6 m-auto">
                         <form>

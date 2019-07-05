@@ -9,7 +9,7 @@ include_once('./Classes/ImageDAO.class.php');
 
 class ImageAction
 {
-    public static function addImage($nomImage)
+    public static function addImage($nomImage, $salleId)
     {
         $php_file_upload_error = array(
             0 => "The file uploaded with success.",
@@ -24,7 +24,7 @@ class ImageAction
         $ext_error = false;
         $extensions = array('jpg', 'jpeg', 'gif', 'png');
 
-        $fileName = $_SESSION['salleId'] . "_" . $_FILES[$nomImage]['name'];
+        $fileName = "./images/" . $salleId . "_" . $_FILES[$nomImage]['name'];
         $fileExtension = explode('.', $_FILES[$nomImage]['name']);
         $fileExtension = end($fileExtension);
         if (!in_array($fileExtension, $extensions)) {
@@ -36,10 +36,10 @@ class ImageAction
             echo "invalid file extension";
         }
         if (!$ext_error) {
-            move_uploaded_file($_FILES[$nomImage]['tmp_name'], "./images/" . $fileName);
+            move_uploaded_file($_FILES[$nomImage]['tmp_name'], $fileName);
         }
         $iDao = new ImageDAO();
-        $image = new Image($fileName, $_SESSION['salleId']);
+        $image = new Image($fileName, $salleId);
         $iDao->create($image);
     }
 }

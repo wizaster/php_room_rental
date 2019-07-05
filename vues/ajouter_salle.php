@@ -1,9 +1,15 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
+if (isset($_SESSION['connecte'])) {
+    $loggedIn = true;
+} else {
+    $loggedIn = false;
 }
 include_once('./Classes/Salle.class.php');
 include_once('./Classes/SalleDAO.class.php');
+include_once('./Classes/Equipement.class.php');
+include_once('./Classes/EquipementDAO.class.php');
+include_once('./Classes/Accessibilite.class.php');
+include_once('./Classes/AccessibiliteDAO.class.php');
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +70,7 @@ include('vues/header.php');
                 <div class="col-md-12 mb-12" data-aos="fade">
 
 
-                    <form action="#" method="post" id="formAjout" class="p-5 bg-white">
+                    <form action="#" method="post" id="formAjout" class="p-5 bg-white" enctype="multipart/form-data">
 
                         <div class=" form-group">
 
@@ -133,15 +139,65 @@ include('vues/header.php');
                                 </div>
                             </div>
                             <div class="row col-md-12">
-                                <div class="col-12 form-room">
-                                    <div>
-                                        <input type="hidden" name="action" value="ajoutAction">
-                                        <input type="submit" name="btnAjout" id="btnAjout" value="Suivant"
-                                               class="bg-primary text-white rounded">
+                                <div class=" form-group">
+                                    <div class="roomAttr">
+                                        <div>
+                                            <h4>Équipement disponible</h4>
+                                            <p>Veuillez cocher tous les équipement disponible avec votre salle, avec ou
+                                                sans
+                                                supplément</p>
+                                        </div>
+                                        <div>
+                                            <?php
+                                            $eDao = new EquipementDAO();
+                                            $liste = $eDao->findAll();
+                                            foreach ($liste as $equip) {
+                                                echo "<input type='checkbox' name='equipSalle[]' value='" . $equip->getId() . "'/> " . "<label>" . $equip->getNom() . "</label><br/>";
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="roomAttr">
+                                        <div>
+                                            <h4>Éléments d'accessibilté</h4>
+                                            <p>Veuillez cocher tous les accomodements près de votre salle</p>
+                                        </div>
+                                        <div>
+                                            <?php
+                                            $aDao = new AccessibiliteDAO();
+                                            $listeAccess = $aDao->findAll();
+                                            foreach ($listeAccess as $access) {
+                                                echo "<input type='checkbox' name='accessSalle[]' value='" . $access->getId() . "'/> " . "<label>" . $access->getNom() . "</label><br/>";
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="roomAttr images">
+                                        <div>
+                                            <h4>Images</h4>
+                                            <p>Vous pouvez mettre jusqu'a 5 images sur votre annonce</p>
+                                        </div>
+                                        <div>
+                                            <input type="file" name="uploadImage1">
+                                            <input type="file" name="uploadImage2">
+                                            <input type="file" name="uploadImage3">
+                                            <input type="file" name="uploadImage4">
+                                            <input type="file" name="uploadImage5">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="row col-md-12">
+                                    <div class="col-12 form-room">
+                                        <div>
+                                            <input type="hidden" name="action" value="ajoutAction">
+                                            <input type="submit" name="btnAjout" id="btnAjout" value="Afficher"
+                                                   class="bg-primary text-white rounded">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
 
