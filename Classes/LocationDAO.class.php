@@ -123,7 +123,26 @@ class LocationDAO
             return $liste;
         }
     }
-    
+
+    public static function findDatesBySalleId($id)
+    {
+        try {
+            $liste = Array();
+
+            $db = Database::getInstance();
+
+            $res = $db->query("SELECT * FROM " . config::DB_TABLE_LOC . " WHERE  Salle_Id = " . $id);
+            foreach ($res as $row) {
+                $obj = new Location();
+                $obj->loadFromArray($row);
+                array_push($liste, $obj);
+            }
+            return $liste;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
+        }
+    }
     public static function findSalleId($id)
     {
         try 
@@ -131,8 +150,8 @@ class LocationDAO
             $liste = Array();
             
             $db = Database::getInstance();
-            
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE SALLE_ID = :x");
+
+            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_LOC . " WHERE Salle_Id = :x");
             $pstmt->execute(array(':x' => $id));
             
                                     // TODO Pas sur!
@@ -140,7 +159,7 @@ class LocationDAO
             
             foreach($result as $row) {
                 $l = new Location();
-                
+                var_dump($row);
                 $l->loadFromArray($row);
                 
                 array_push($liste,$l);

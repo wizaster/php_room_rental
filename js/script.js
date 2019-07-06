@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#datepicker').datepicker();
     $('#btnAjoutImage').click(function () {
         var para = document.createElement("input");
         para.setAttribute("type", "file");

@@ -18,6 +18,8 @@ require_once('controleur/Modifier_utilisateurAction.class.php');
 require_once('controleur/RechercheAction.class.php');
 require_once('controleur/Devenir_proprietaireAction.class.php');
 require_once('controleur/Confirm_devenir_proprietaireAction.class.php');
+require_once('controleur/Reserver_salleAction.class.php');
+require_once('controleur/CalendrierAction.class.php');
 
 class ActionBuilder
 {
@@ -89,6 +91,9 @@ class ActionBuilder
                 break;
             case "reserver_salle" :
                 return new Reserver_salleAction();
+                break;
+            case "calendrier" :
+                return new CalendrierAction();
                 break;
             default :
                 return new DefaultAction();

@@ -38,7 +38,7 @@ if (isset($_SESSION['connecte'])) {
                             <ul class="dropdown">
                                 <li><a href="?action=afficher_salle">Comment louer</a></li>
                                 <li><a href="?action=ajouter_salle">Comment afficher</a></li>
-                                <li><a href="#">prix</a></li>
+                                <li><a href="?action=reserver_salle">prix</a></li>
                                 <li><a href="?action=afficher_profil">FAQ</a></li>
                             </ul>
                         </li>
