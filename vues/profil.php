@@ -119,8 +119,19 @@ include('header.php');
                         </div>
                         <div class="row">
                             <form action="#" method="post" id="Options" class="p-2">
-                                <input type="submit" value="Modifier Salle"/>
-                                <input type="hidden" name="action" value="modifier_salle"/>
+                                <input type="submit" value="Vos Salles"/>
+                                <input type="hidden" name="action" value="recherche"/>
+                                <input type="hidden" name="recherche_par_proprio" value="<?= $_SESSION['id'] ?>"/>
+                                <?php
+                                if (isset($_SESSION['msg'])) {
+                                    ?>
+                                    <div class="msg-conn">
+                                        <p><?= $_SESSION['msg'] ?></p>
+                                    </div>
+                                    <?php
+                                    unset($_SESSION['msg']);
+                                }
+                                ?>
                             </form>
                         </div>
                         <?php

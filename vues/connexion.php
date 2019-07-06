@@ -65,10 +65,10 @@ include('header.php');
 
                 <form action="#" class="p-5 bg-white">
                     <?php
-                    if (ISSET($_SESSION["msg"])) {
+                    if (ISSET($_SESSION['msg'])) {
                         ?>
                         <div class="msg-conn">
-                            <p><?php echo $_SESSION["msg"] ?></p>
+                            <p><?php echo $_SESSION['msg'] ?></p>
                         </div>
                         <?php
                         unset($_SESSION['msg']);
