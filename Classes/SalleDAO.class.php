@@ -55,9 +55,7 @@ class SalleDAO
             } else {
                 return 0;
             }
-        }
-        catch(PDOException $e)
-        {
+        } catch(PDOException $e) {
             throw $e;
         }
     }
@@ -81,8 +79,7 @@ class SalleDAO
             $result->closeCursor();
             //$cnx->close();
             return $liste;
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: ".$e->getMessage()."<br>";
             return $liste;
         }
@@ -119,19 +116,17 @@ class SalleDAO
             $pstmt->closeCursor();
             //$db->close();
             return null;
-        }
-        catch(PDOException $e) 
-        {
+        } catch(PDOException $e) {
             throw $e;
         }
     }
     
     public static function findByVille($ville)
     {
+        $liste = Array();
+        
         try 
         {
-            $liste = Array();
-            
             $db = Database::getInstance();
             /*
             $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE VILLE = :x");
@@ -156,9 +151,7 @@ class SalleDAO
                 array_push($liste, $obj);
             }
             return $liste;
-        }
-        catch(PDOException $e) 
-        {
+        } catch(PDOException $e) {
             print "Error!: ".$e->getMessage()."<br>";
             return $liste;
         }
@@ -166,13 +159,13 @@ class SalleDAO
     
     public static function findByIdProp($idProp)
     {
+        $liste = Array();
+        
         try 
         {
-            $liste = Array();
-            
             $db = Database::getInstance();
-            
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE IDPROP = :x");
+            /*
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE proprietaire_Id = :x");
             $pstmt->execute(array(':x' => $idProp));
             
                                     // TODO Pas sur!
@@ -188,18 +181,24 @@ class SalleDAO
             $pstmt->closeCursor();
             //$db->close();
             return liste;
-        }
-        catch(PDOException $e) 
-        {
+            */
+            $res = $db->query("SELECT * FROM salle WHERE proprietaire_Id = '" . $idProp . "'");
+            foreach ($res as $row) {
+                $obj = new Salle();
+                $obj->loadFromArray($row);
+                array_push($liste, $obj);
+            }
+            return $liste;
+        } catch(PDOException $e) {
             print "Error!: ".$e->getMessage()."<br>";
             return $liste;
         }
     }
     
     public function update($x) {
-		try
-		{
-			$db = Database::getInstance();
+        try
+        {
+            $db = Database::getInstance();
             
             $pstmt = $db->prepare(
                 "UPDATE '".Config::DB_TABLE_SALLE."' SET 
@@ -238,11 +237,9 @@ class SalleDAO
             $pstmt->closeCursor();
             //$db->close();
             return $n;
-		}
-		catch(PDOException $e)
-		{
-			throw $e;
-		}
+        } catch(PDOException $e) {
+            throw $e;
+        }
     }
 
     public static function findByAnything()
@@ -298,9 +295,7 @@ class SalleDAO
             $pstmt->closeCursor();
             //$db->close();
             return $n;
-        }
-        catch(PDOException $e)
-        {
+        } catch(PDOException $e) {
             throw $e;
         }
     }
