@@ -21,11 +21,18 @@ class RechercheAction implements Action
         $terme = '';
         $lieu = '';
         $salles = array();
-        if (!empty($_REQUEST['main_recherche'])) {
+        if(isset($_REQUEST['main_recherche']) && isset($_REQUEST['main_recherche_lieu'])) {
             $terme = $_REQUEST['main_recherche'];
-        }
-        if (!empty($_REQUEST['main_recherche_lieu'])) {
             $lieu = $_REQUEST['main_recherche_lieu'];
+        } elseif (isset($_REQUEST['recherche_par_proprio'])) {
+            $salles = SalleDAO::findByIdProp($_REQUEST['recherche_par_proprio']);
+            if (empty($salles)) {
+                $_SESSION['msg'] = "Vous n'avez pas de salles!";
+                return "profil";
+            } else {
+                $_SESSION['recherche'] = $salles;
+                return "afficher_salles";
+            }
         }
         if ($terme == '' && isset($_REQUEST['main_recherche_lieu'])) {
             $salles = SalleDAO::findByVille($lieu);
