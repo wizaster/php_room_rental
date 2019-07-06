@@ -17,6 +17,7 @@ if ($timestamp === false) {
     $timestamp = strtotime($ym . '-01');
 }
 $location = LocationDAO::findDatesBySalleId($_SESSION['salleId']);
+$_SESSION['location'] = serialize($location);
 if (count($location) > 0) {
     $datesLoc = array();
     foreach ($location as $ficheLoc) {

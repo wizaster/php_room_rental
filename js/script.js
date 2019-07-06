@@ -1,14 +1,6 @@
 $(document).ready(function () {
     $('#datepicker').datepicker();
-    $('#btnAjoutImage').click(function () {
-        var para = document.createElement("input");
-        para.setAttribute("type", "file");
-        para.setAttribute("name", "uploadImage[]");
-        var parent = document.getElementsByClassName("images");
-        parent.append(para);
-
-
-    });
+    $('#datepickerFin').datepicker();
     $("#formAjout").validate({
         rules: {
             noCivique: {

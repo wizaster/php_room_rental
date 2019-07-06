@@ -5,8 +5,8 @@ if (isset($_SESSION['connecte'])) {
 } else {
     $loggedIn = false;
 }
-if (isset($_REQUEST['listing'])) {
-    $salleId = $_REQUEST['listing'];
+if (isset($_SESSION['salleId'])) {
+    $salleId = $_SESSION['salleId'];
 } else {
     $action = "afficher_salles";
 }
@@ -59,14 +59,34 @@ include('header.php');
     </div>
 </div>
 <div class="site-section m-auto">
-    <div class="col-3 ">
-        <label>date :</label><input type="text" id="datepicker"/>
-    </div>
-    <div class="col-10 m-auto">
-        <?php
-        include('vues/calendrier.php');
-        ?>
-    </div>
+    <form method="post">
+        <div class="col-2 m-auto ">
+            <label>Date de debut :</label><input type="text" name="dateDebut" id="datepicker" class="float-right"/><br/>
+            <label>Date de fin :</label><input type="text" name="dateFin" id="datepickerFin" class="float-right"/><br/>
+            <input type="hidden" name="action" value="valider_reservation"/>
+            <input type="submit" value="valider" class="m-auto col-12 btn btn-primary btn-block rounded"/>
+        </div>
+        <div class="col-2 m-auto">
+            <div>
+                <table class="index_calendar">
+                    <tr>
+                        <td class="reserver"></td>
+                        <td> = non disponible</td>
+                    </tr>
+                    <tr>
+                        <td class="today"></td>
+                        <td> = aujourdhui</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-8 m-auto">
+            <?php
+            include('vues/calendrier.php');
+            ?>
+        </div>
+
+    </form>
 </div>
 </body>
 <footer class="site-footer">
@@ -76,20 +96,7 @@ include('header.php');
 </footer>
 </div>
 
-<script src="../js/jquery-3.3.1.min.js"></script>
-<script src="../js/jquery-migrate-3.0.1.min.js"></script>
-<script src="../js/jquery-ui.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/jquery.stellar.min.js"></script>
-<script src="../js/jquery.countdown.min.js"></script>
-<script src="../js/jquery.magnific-popup.min.js"></script>
-<script src="../js/bootstrap-datepicker.min.js"></script>
-<script src="../js/aos.js"></script>
-<script src="../js/rangeslider.min.js"></script>
 
-<script src="../js/main.js"></script>
 
 </body>
 </html>

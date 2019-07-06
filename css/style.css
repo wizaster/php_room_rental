@@ -2508,12 +2508,13 @@ td {
 
 .reserver {
     background: red;
+    color: wheat;
 }
 
-th:nth-of-type(1), td:nth-of-type(1) {
-    color: blue;
+.index_calendar td {
+    height: 20px;
 }
 
-th:nth-of-type(7), td:nth-of-type(7) {
-    color: blue;
+.index_calendar .reserver, .index_calendar .today {
+    width: 30%;
 }

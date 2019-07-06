@@ -6,13 +6,14 @@ include_once('./Classes/Location.class.php');
 class LocationDAO
 {
     public function __construct(){}
-    
-    public function create($x) {
+
+    public static function create($x)
+    {
         try {
             $db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "INSERT INTO '".Config::DB_TABLE_LOCATION."' (
+                "INSERT INTO " . Config::DB_TABLE_LOC . " (
                 id,
                 locateur_id,
                 salle_id,

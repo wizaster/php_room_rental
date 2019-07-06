@@ -7,7 +7,6 @@ require_once('controleur/ConnexionAction.class.php');
 require_once('controleur/ContactAction.class.php');
 require_once('controleur/DefaultAction.class.php');
 require_once('controleur/Nouvel_utilisateurAction.class.php');
-require_once('controleur/Recherche_avanceAction.class.php');
 require_once('controleur/ConnecteAction.class.php');
 require_once('controleur/AjoutAction.class.php');
 require_once('controleur/Creation_utilisateurAction.class.php');
@@ -20,6 +19,9 @@ require_once('controleur/Devenir_proprietaireAction.class.php');
 require_once('controleur/Confirm_devenir_proprietaireAction.class.php');
 require_once('controleur/Reserver_salleAction.class.php');
 require_once('controleur/CalendrierAction.class.php');
+require_once('controleur/Location_reussiAction.class.php');
+require_once('controleur/Valider_reservationAction.class.php');
+require_once('controleur/Location_annulerAction.class.php');
 
 class ActionBuilder
 {
@@ -77,23 +79,23 @@ class ActionBuilder
             case "modifier_utilisateur":
                 return new Modifier_utilisateurAction();
                 break;
-            case "salle_option":
-                return new Salle_optionAction();
-                break;
-            case "validerAction":
-                return new ValiderAction();
-                break;
             case "recherche":
                 return new RechercheAction();
-                break;
-            case "recherche_avance" :
-                return new Recherche_avanceAction();
                 break;
             case "reserver_salle" :
                 return new Reserver_salleAction();
                 break;
             case "calendrier" :
                 return new CalendrierAction();
+                break;
+            case "valider_reservation" :
+                return new Valider_reservationAction();
+                break;
+            case "confirmer_reservation" :
+                return new Location_reussiAction();
+                break;
+            case "annuler_reservation" :
+                return new Location_AnnulerAction();
                 break;
             default :
                 return new DefaultAction();

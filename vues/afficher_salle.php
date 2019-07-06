@@ -39,14 +39,9 @@ if (isset($_REQUEST['listing'])) {
 <body>
 <?php
 include('header.php');
-?>
-
-</header>
-<?php
 $image = ImageDAO::findBySalle($salleId);
 $salle = SalleDAO::findById($salleId);
 ?>
-
 <div class="site-blocks-cover inner-page-cover overlay" data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="site-blocks-cover inner-page-cover overlay salleBanniere m-auto col-8"
         <?php
@@ -175,6 +170,8 @@ $salle = SalleDAO::findById($salleId);
                 ?>
             </footer>
         </div>
+    </div>
+</div>
 
         <script src="../js/jquery-3.3.1.min.js"></script>
         <script src="../js/jquery-migrate-3.0.1.min.js"></script>
