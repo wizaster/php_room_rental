@@ -48,17 +48,12 @@ include('vues/header.php');
      data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
-
                 <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
-
-
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8 text-center">
                             <h1>Editer votre salle</h1>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -68,9 +63,10 @@ include('vues/header.php');
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 mb-12" data-aos="fade">
-
-
-                    <form action="#" method="post" id="formAjout" class="p-5 bg-white" enctype="multipart/form-data">
+                    <?php 
+                        $salle = unserialize($_SESSION['salleEdit']);
+                    ?>
+                    <form method="post" id="formAjout" class="p-5 bg-white" enctype="multipart/form-data">
 
                         <div class=" form-group">
 
@@ -80,61 +76,61 @@ include('vues/header.php');
                             <div class="row col-12">
                                 <div class="col-2 form-room">
                                     <label class="text-black" for="noCivique">No civique</label>
-                                    <input type="text" id="noCivique" name="noCivique" class="form-control" value="<?= $_SESSION['salleEdit']->getNoCivique() ?>">
+                                    <input type="text" id="noCivique" name="noCivique" class="form-control" value="<?= $salle->getNoCivique() ?>">
                                 </div>
                                 <div class="col-1 form-room">
                                     <label class="text-black" for="local_room">Local</label>
-                                    <input type="text" id="local_room" name="local_room" class="form-control" value="<?= $_SESSION['salleEdit']->getApptSuite() ?>">
+                                    <input type="text" id="local_room" name="local_room" class="form-control" value="<?= $salle->getApptSuite() ?>">
                                 </div>
                                 <div class="col-5 form-room">
                                     <label class="text-black" for="rue_room">Rue</label>
-                                    <input type="text" id="rue_room" name="rue_room" class="form-control" value="<?= $_SESSION['salleEdit']->getRue() ?>">
+                                    <input type="text" id="rue_room" name="rue_room" class="form-control" value="<?= $salle->getRue() ?>">
                                 </div>
                                 <div class="col-4 form-room">
                                     <label class="text-black" for="ville_room">Ville</label>
-                                    <input type="text" id="ville_room" name="ville_room" class="form-control" value="<?= $_SESSION['salleEdit']->getVille() ?>">
+                                    <input type="text" id="ville_room" name="ville_room" class="form-control" value="<?= $salle->getVille() ?>">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="codePostal_room">Code postal</label>
-                                    <input type="text" id="codePostal_room" name="codePostal_room" class="form-control" value="<?= $_SESSION['salleEdit']->getCodePostal() ?>">
+                                    <input type="text" id="codePostal_room" name="codePostal_room" class="form-control" value="<?= $salle->getCodePostal() ?>">
                                 </div>
                                 <div class="col-4 form-room">
                                     <label class="text-black" for="province_room">Province</label>
-                                    <input type="text" id="province_room" name="province_room" class="form-control" value="<?= $_SESSION['salleEdit']->getProvince() ?>">
+                                    <input type="text" id="province_room" name="province_room" class="form-control" value="<?= $salle->getProvince() ?>">
                                 </div>
                                 <div class="col-5 form-room">
                                     <label class="text-black" for="pays_room">Pays</label>
-                                    <input type="text" id="pays_room" name="pays_room" class="form-control" value="<?= $_SESSION['salleEdit']->getPays() ?>">
+                                    <input type="text" id="pays_room" name="pays_room" class="form-control" value="<?= $salle->getPays() ?>">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
                                     <label class="text-black" for="titre">Titre</label>
-                                    <input type="text" id="titre" name="titre" class="form-control" value="<?= $_SESSION['salleEdit']->getNom() ?>">
+                                    <input type="text" id="titre" name="titre" class="form-control" value="<?= $salle->getNom() ?>">
                                 </div>
                             </div>
                             <div class="row col-md-12">
                                 <div class="col-12 form-room">
                                     <label class="text-black" for="description_room">Description</label>
                                     <textarea rows="5" id="description_room" name="description_room"
-                                              class="form-control"><?= $_SESSION['salleEdit']->getDesc()?></textarea>
+                                              class="form-control"><?= $salle->getDesc()?></textarea>
                                 </div>
                             </div>
                             <br/><br/>
                             <div class="row col-md-12">
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="capaciteRoom">Capacité</label>
-                                    <input type="text" id="capaciteRoom" name="capaciteRoom" class="form-control" value="<?= $_SESSION['salleEdit']->getCapacite() ?>"/>
+                                    <input type="text" id="capaciteRoom" name="capaciteRoom" class="form-control" value="<?= $salle->getCapacite() ?>"/>
                                 </div>
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="superficieRoom">Superficie (en M²)</label>
-                                    <input type="text" id="superficieRoom" name="superficieRoom" class="form-control" value="<?= $_SESSION['salleEdit']->getSuperficie() ?>"/>
+                                    <input type="text" id="superficieRoom" name="superficieRoom" class="form-control" value="<?= $salle->getSuperficie() ?>"/>
                                 </div>
                                 <div class="col-3 form-room">
                                     <label class="text-black" for="prix_jour">Prix journalier</label>
-                                    <input type="number" min="1" step="any" id="prix_jour" name="prix_jour" class="form-control" value="<?= $_SESSION['salleEdit']->getTarif() ?>"/>
+                                    <input type="number" min="1" step="any" id="prix_jour" name="prix_jour" class="form-control" value="<?= $salle->getTarif() ?>"/>
                                 </div>
                             </div>
                             <div class="row col-md-12">
@@ -195,8 +191,6 @@ include('vues/header.php');
                                             <input type="file" name="uploadImage4">
                                             <input type="file" name="uploadImage5">
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="row col-md-12">
@@ -209,6 +203,7 @@ include('vues/header.php');
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
 

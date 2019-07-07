@@ -86,15 +86,13 @@ include('header.php');
         <div class="col-1"></div>
         <div class="col-2">
             <div class="row">
-                <form action="#" method="post" id="Options" class="p-2">
+                <form action="?action=consulter_historique" method="post" id="Options" class="p-2">
                     <input type="submit" value="Consulter Historique"/>
-                    <input type="hidden" name="action" value="consulter_historique"/>
                 </form>
             </div>
             <div class="row">
-                <form action="#" method="post" id="Options" class="p-2">
+                <form action="?action=info_utilisateur" method="post" id="Options" class="p-2">
                     <input type="submit" value="Editer Profil"/>
-                    <input type="hidden" name="action" value="info_utilisateur"/>
                 </form>
             </div>
                 <?php
@@ -102,9 +100,8 @@ include('header.php');
                     case 1:
                         ?>
                         <div class="row">
-                            <form action="#" method="post" id="Options" class="p-2">
+                            <form action="?action=devenir_proprietaire" method="post" id="Options" class="p-2">
                                 <input type="submit" value="Devenir Proprietaire"/>
-                                <input type="hidden" name="action" value="devenir_proprietaire"/>
                             </form>
                         </div>
                         <?php
@@ -112,16 +109,13 @@ include('header.php');
                     case 2:
                         ?>
                         <div class="row">
-                            <form action="#" method="post" id="Options" class="p-2">
+                            <form action="?action=ajouter_salle" method="post" id="Options" class="p-2">
                                 <input type="submit" value="Ajouter salle"/>
-                                <input type="hidden" name="action" value="ajouter_salle"/>
                             </form>
                         </div>
                         <div class="row">
-                            <form action="#" method="post" id="Options" class="p-2">
+                            <form action="?action=recherche&vos_salles=true" method="post" id="Options" class="p-2">
                                 <input type="submit" value="Vos Salles"/>
-                                <input type="hidden" name="action" value="recherche"/>
-                                <input type="hidden" name="recherche_par_proprio" value="<?= $_SESSION['id'] ?>"/>
                                 <?php
                                 if (isset($_SESSION['msg'])) {
                                     ?>

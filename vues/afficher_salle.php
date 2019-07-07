@@ -6,6 +6,8 @@ if (isset($_SESSION['connecte'])) {
 }
 if (isset($_REQUEST['listing'])) {
     $salleId = $_REQUEST['listing'];
+} elseif(isset($_REQUEST['salleId'])) {
+    $salleId = $_REQUEST['salleId'];
 } else {
     $action = "afficher_salles";
 }
@@ -158,7 +160,19 @@ $salle = SalleDAO::findById($salleId);
                             }
                             ?>
                         </form>
-
+                        <form action="?action=recherche&vos_salles=true" method="post">
+                        <?php
+                            if ($_SESSION['id'] == $salle->getIdProp() || $_SESSION['role'] == 3) {
+                                ?>
+                                <input type="hidden" name="action" value="supprimer_salle"/>
+                                <input type="hidden" name="salleId" value="<?= $salleId ?>"/>
+                                <input type="submit" name="supprimer" class="btn btn-primary btn-block rounded"
+                                       value="Supprimer Cette Salle"/>
+                                <?php
+                            }
+                        ?> 
+                        </form>
+                        
                     </div>
                 </div>
             </div>

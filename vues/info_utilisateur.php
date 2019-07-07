@@ -66,7 +66,7 @@ include('header.php');
             <div class="col-md-12 mb-12" data-aos="fade">
 
 
-                <form action="#" method="post" id="ajoutUser" class="p-5 bg-white">
+                <form action="?action=afficher_profil&updated=true" method="post" class="p-5 bg-white">
 
                     <div class=" form-group">
 
@@ -157,13 +157,11 @@ include('header.php');
 
                     <div class="row col-12">
                         <div class="col-12">
-                            <input type="submit" name="modify_user" value="Enregistrer"
+                            <input type="submit" name="btnModifierUtilisateur" value="Enregistrer"
                                    class="btn btn-primary py-2 px-4 text-white btn-suivant">
                             <input type="hidden" name="action" value="modifier_utilisateur"/>
                         </div>
                     </div>
-
-
                 </form>
             </div>
 

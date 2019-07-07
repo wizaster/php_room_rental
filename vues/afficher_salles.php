@@ -73,7 +73,7 @@ include('header.php');
                                 ?>
                                 <div class="d-block d-md-flex listing vertical col-5">
                                     <form method="post">
-                                        <a href="#" class="img d-block"<?php if (!empty($image)) {
+                                        <a href="?action=afficher_salle&listing=<?php echo $trouve->getId() ?>" class="img d-block"<?php if (!empty($image)) {
                                             ?>
                                             style="background-image: url('<?php echo $image[0][0] ?>')"
                                             <?php
@@ -94,11 +94,6 @@ include('header.php');
                                                 </a></h3>
                                                 
                                             <address><?php echo $trouve->getVille() . ", " . $trouve->getProvince() . ", " . $trouve->getPays() ?></address>
-                                            <?php
-                                                if ($_SESSION['id'] == $trouve->getIdProp()) {
-                                                    echo "<a href='?action=supprimer_salle&listing=" . $trouve->getId() . "'>" . "Supprimer Votre Salle" . "</a>";
-                                                }
-                                            ?>
                                         </div>
                                     </form>
                                 </div>
