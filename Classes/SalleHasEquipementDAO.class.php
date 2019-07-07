@@ -56,17 +56,23 @@ class SalleHasEquipementDAO
     
     public static function getAllEquipmentOfSalle($salleId)
     {
-        {
-            try {
-                $res = '';
-                $db = Database::getInstance();
+        $res = Array();
+        
+        try {
 
-                $res = $db->query("SELECT Equipement_Id FROM " . Config::DB_TABLE_SALEQ . " WHERE Salle_Id = '" . $salleId . "'");
-                return $res;
-            } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage() . "<br>";
-                return $res;
+            $query = "SELECT Equipement_Id FROM " . Config::DB_TABLE_SALEQ . " WHERE Salle_Id = '" . $salleId . "'";
+            $cnx = Database::getInstance();
+
+            $result = $cnx->query($query);
+            foreach ($result as $row) {
+                array_push($res, $row['Equipement_Id']);
             }
+            $result->closeCursor();
+            //$cnx->close();
+            return $res;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $res;
         }
     }
 
