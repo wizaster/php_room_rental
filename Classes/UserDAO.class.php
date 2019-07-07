@@ -99,7 +99,6 @@ class UserDAO
             throw $e;
         }
     }
-    
     public function update($x)
     {
         try {

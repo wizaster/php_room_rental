@@ -70,7 +70,8 @@ if (isset($_SESSION['connecte'])) {
 
                     </ul>
                     <div class="searchbar site-menu js-clone-nav">
-                        <input type="text" name="main_recherche" placeholder="Trouver le bonheur"/>
+                        <label for="main_recherche"></label>
+                        <input type="text" name="main_recherche" id="main_recherche" placeholder="Trouver le bonheur"/>
                         <a href="?action=recherche" class="cta"><span
                                     class="bg-primary text-white rounded">Recherche</span></a>
                     </div>

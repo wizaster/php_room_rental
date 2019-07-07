@@ -83,7 +83,7 @@ include('header.php');
                 <br/>
             </fieldset>
         </div>
-        <div clas="col-1"></div>
+        <div class="col-1"></div>
         <div class="col-2">
             <div class="row">
                 <form action="#" method="post" id="Options" class="p-2">

@@ -19,22 +19,22 @@ class Valider_reservationAction implements Action
             foreach ($location as $ficheLoc) {
                 if (($dateDebutDemander >= $ficheLoc->getDateDebut() && $dateDebutDemander <= $ficheLoc->getDateFin())
                     || ($dateFinDemander >= $ficheLoc->getDateDebut() && $dateFinDemander <= $ficheLoc->getDateFin())) {
-                    $_SESSION['err_validation_msg'] = "Veuillez choisir des dates ou la salle est disponible";
+                    $_SESSION['msg']['err_validation'] = "Veuillez choisir des dates ou la salle est disponible";
                     return "reserver_salle";
                 }
             }
         }
         $user = UserDAO::findByUsername($_SESSION['connecte']);
         $userId = $user->getId();
-        $salle = SalleDAO::findById($location[0]->getSalleId());
-        $debutAsTime = strtotime($dateDebutDemander);
-        $debutAsTime2 = date('Y-m-d', $debutAsTime);
-        $debutTime = DateTime::createFromFormat('Y-m-d', $debutAsTime2);
-        $finAsTime = strtotime($dateFinDemander);
-        $finAsTime2 = date('Y-m-d', $finAsTime);
-        $finTime = DateTime::createFromFormat('Y-m-d', $finAsTime2);
-        var_dump($debutTime);
+        $salle = SalleDAO::findById($_SESSION['salleId']);
+        $debutTime = DateTime::createFromFormat('Y-m-d', (date('Y-m-d', (strtotime($dateDebutDemander)))));
+        $finTime = DateTime::createFromFormat('Y-m-d', (date('Y-m-d', (strtotime($dateFinDemander)))));
+        if ($debutTime > $finTime) {
+            $_SESSION['msg']['err_validation'] = "Veuillez selectionner une date de fin ulterieur a la date de debut";
+            return "reserver_salle";
+        }
         $duree = $debutTime->diff($finTime)->format('%a') + 1;
+
         $nouvelLocation = new Location(0, $userId, $_SESSION['salleId'], date("Y-m-d H:i:s"), $debutTime->format('Y-m-d'), $finTime->format('Y-m-d'));
         $_SESSION['nouvelLocation'] = serialize($nouvelLocation);
         $_SESSION['facture']['salle'] = $salle->getNom();
@@ -42,7 +42,7 @@ class Valider_reservationAction implements Action
         $_SESSION['facture']['date_debut'] = $dateDebutDemander;
         $_SESSION['facture']['date_fin'] = $dateFinDemander;
         $_SESSION['facture']['prix_jour'] = $salle->getTarif();
-        $_SESSION['facture']['total'] = $duree;
+        $_SESSION['facture']['total'] = $duree * $_SESSION['facture']['prix_jour'];
         return "location_confirmation";
 
     }

@@ -76,6 +76,14 @@ include('header.php');
                                 <div class="col-5">
                                     <label class="text-black" for="create_username">Nom Utilisateur</label>
                                     <input type="text" id="create_username" name="create_username" class="form-control">
+                                    <?php
+                                    if (isset($_SESSION['msg']['err_username'])) {
+                                        ?>
+                                        <div class="msg-conn"><?php echo $_SESSION['msg']['err_username'] ?></div>
+                                        <?php
+                                        unset($_SESSION['msg']['err_username']);
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-5">
                                     <label class="text-black" for="create_password">Mot de passe</label>

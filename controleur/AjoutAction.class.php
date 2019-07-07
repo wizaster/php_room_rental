@@ -56,17 +56,20 @@ class AjoutAction implements Action
                 if (isset($_REQUEST['accessSalle'])) {
                     $accessArr = $_REQUEST['accessSalle'];
                 }
-
-                if ($equipArr < 0) {
-                    foreach ($equipArr as $equip) {
-                        $sEquip = new SalleHasEquipement($salleId, $equip);
-                        $seDao->create($sEquip);
+                if (isset($equipArr)) {
+                    if ($equipArr < 0) {
+                        foreach ($equipArr as $equip) {
+                            $sEquip = new SalleHasEquipement($salleId, $equip);
+                            $seDao->create($sEquip);
+                        }
                     }
                 }
-                if ($accessArr < 0) {
-                    foreach ($accessArr as $access) {
-                        $sAccess = new SalleHasAccessibilite($salleId, $access);
-                        $saDao->create($sAccess);
+                if (isset($accessArr)) {
+                    if ($accessArr < 0) {
+                        foreach ($accessArr as $access) {
+                            $sAccess = new SalleHasAccessibilite($salleId, $access);
+                            $saDao->create($sAccess);
+                        }
                     }
                 }
                 if (isset($_FILES['uploadImage1'])) {
@@ -98,5 +101,6 @@ class AjoutAction implements Action
 
             return "profil";
         }
+        return "erreur";
     }
 }

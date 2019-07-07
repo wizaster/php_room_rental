@@ -59,10 +59,22 @@ include('header.php');
     </div>
 </div>
 <div class="site-section m-auto">
+    <div class="col-4 m-auto">
+        <?php
+        if (isset($_SESSION['msg']['err_validation'])) {
+            ?>
+            <div class="msg-conn"><?php echo $_SESSION['msg']['err_validation'] ?></div>
+            <?php
+            unset($_SESSION['msg']['err_validation']);
+        }
+        ?>
+    </div>
     <form method="post">
         <div class="col-2 m-auto ">
-            <label>Date de debut :</label><input type="text" name="dateDebut" id="datepicker" class="float-right"/><br/>
-            <label>Date de fin :</label><input type="text" name="dateFin" id="datepickerFin" class="float-right"/><br/>
+            <label for="datepicker">Date de debut :</label><input type="text" name="dateDebut" id="datepicker"
+                                                                  class="float-right"/><br/>
+            <label for="datepickerFin">Date de fin :</label><input type="text" name="dateFin" id="datepickerFin"
+                                                                   class="float-right"/><br/>
             <input type="hidden" name="action" value="valider_reservation"/>
             <input type="submit" value="valider" class="m-auto col-12 btn btn-primary btn-block rounded"/>
         </div>
@@ -88,13 +100,11 @@ include('header.php');
 
     </form>
 </div>
-</body>
 <footer class="site-footer">
     <?php
     include('vues/footer.php');
     ?>
 </footer>
-</div>
 
 
 

@@ -10,6 +10,10 @@ class Creation_utilisateurAction implements Action
         $uDao = new UserDAO();
 
         $username = $_REQUEST['create_username'];
+        if (UserDAO::findByUsername($username) != null) {
+            $_SESSION['msg']['err_username'] = "Ce nom utilisateur existe deja";
+            return "nouvel_utilisateur";
+        }
         $password = $_REQUEST['create_password'];
 
         $nom = $_REQUEST['create_nom'];
