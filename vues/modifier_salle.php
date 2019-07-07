@@ -202,7 +202,7 @@ include('vues/header.php');
                                 <div class="row col-md-12">
                                     <div class="col-12 form-room">
                                         <div>
-                                            <input type="hidden" name="action" value="ajoutAction">
+                                            <input type="hidden" name="action" value="enregistrer_modifier_salle">
                                             <input type="submit" name="btnEnregistrer" id="btnEnregistrer" value="Enregistrer"
                                                    class="bg-primary text-white rounded">
                                         </div>
