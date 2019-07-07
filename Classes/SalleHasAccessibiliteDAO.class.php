@@ -14,7 +14,7 @@ class SalleHasAccessibiliteDAO
     {
     }
 
-    public function create($x)
+    public static function create($x)
     {
         try {
             $db = Database::getInstance();
@@ -80,7 +80,7 @@ class SalleHasAccessibiliteDAO
     }
             
             
-    public function deleteSpecific($x, $y)
+    public static function deleteSpecific($x, $y)
     {
         try {
             $db = Database::getInstance();
@@ -102,7 +102,7 @@ class SalleHasAccessibiliteDAO
         }
     }
     
-    public function deleteAccessibiliteReferences($x)
+    public static function deleteAccessibiliteReferences($x)
     {
         try {
             $db = Database::getInstance();
@@ -118,7 +118,7 @@ class SalleHasAccessibiliteDAO
         }
     }
     
-    public function deleteAllOfSalle($x)
+    public static function deleteAllOfSalle($x)
     {
         try {
             $db = Database::getInstance();

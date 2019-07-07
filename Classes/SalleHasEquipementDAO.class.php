@@ -14,7 +14,7 @@ class SalleHasEquipementDAO
     {
     }
 
-    public function create($x)
+    public static function create($x)
     {
         try {
             $db = Database::getInstance();
@@ -76,7 +76,7 @@ class SalleHasEquipementDAO
         }
     }
 
-    public function deleteSpecific($x, $y)
+    public static function deleteSpecific($x, $y)
     {
         try {
             $db = Database::getInstance();
@@ -98,7 +98,7 @@ class SalleHasEquipementDAO
         }
     }
     
-    public function deleteEquipmentReferences($x)
+    public static function deleteEquipmentReferences($x)
     {
         try {
             $db = Database::getInstance();
@@ -114,7 +114,7 @@ class SalleHasEquipementDAO
         }
     }
     
-    public function deleteAllOfSalle($x)
+    public static function deleteAllOfSalle($x)
     {
         try {
             $db = Database::getInstance();
