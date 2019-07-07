@@ -8,7 +8,7 @@ class Afficher_profilAction implements Action
         if (!isset($_SESSION['connecte'])) {
             return "connexion";
         }
-
+        
         date_default_timezone_set('America/New_York');
         $username = $_SESSION['connecte'];
         $user = UserDAO::findByUsername($username);

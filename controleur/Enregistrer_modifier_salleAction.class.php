@@ -26,7 +26,7 @@ class Enregistrer_modifier_salleAction implements Action
             return "devenir_proprietaire";
         }
 
-        if (ISSET($_REQUEST['btnEnregistrer'])) {
+        if (ISSET($_REQUEST['salleId']) && SalleDAO::matchesWithProp($_REQUEST['salleId'],$_SESSION['id'])) {
 
             $titre = $_REQUEST['titre'];
             $superficie = (int)$_REQUEST['superficieRoom'];
@@ -43,13 +43,14 @@ class Enregistrer_modifier_salleAction implements Action
             $rue = $_REQUEST['rue_room'];
 
             $salle = new Salle(0, $titre, $superficie, $capacite, $desc, 'x', $prix, $noCivique, $appt_suite, $rue, $code_postal, $ville, $province, $pays, "", $proprio);
-            /*
-            $idtoput = $_SESSION['salleEdit']->getId();
-            $salle->setId($idtoput);
+            
+            //$idtoput = unserialize($_SESSION['salleEdit'])->getId();
+            //$salle->setId($idtoput);
+            $salle->setId($_REQUEST['salleId']);
             
             SalleDAO::update($salle);
             
-            if (isset($_REQUEST['equipeSalle'])) {
+            if (isset($_REQUEST['equipSalle'])) {
                 $equipArr = $_REQUEST['equipSalle'];
                 SalleHasEquipementDAO::deleteAllOfSalle($salle->getId());
                 
@@ -108,8 +109,10 @@ class Enregistrer_modifier_salleAction implements Action
             unset($_SESSION['salleEditAccessibilite']);
             unset($_SESSION['salleEditEquipement']);
 
-            return "profil";
+            return "afficher_salle";
         }
         return "erreur";
     }
+    
+    
 }

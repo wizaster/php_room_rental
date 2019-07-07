@@ -24,6 +24,7 @@ require_once('controleur/Valider_reservationAction.class.php');
 require_once('controleur/Location_annulerAction.class.php');
 require_once('controleur/Modifier_salleAction.class.php');
 require_once('controleur/Enregistrer_modifier_salleAction.class.php');
+require_once('controleur/Supprimer_salleAction.class.php');
 
 class ActionBuilder
 {
@@ -47,6 +48,9 @@ class ActionBuilder
                 break;
             case "enregistrer_modifier_salle" :
                 return new Enregistrer_modifier_salleAction();
+                break;
+            case "supprimer_salle" :
+                return new Supprimer_salleAction();
                 break;
             case "a_propos" :
                 return new A_proposAction();

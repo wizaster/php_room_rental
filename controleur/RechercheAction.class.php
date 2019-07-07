@@ -24,8 +24,8 @@ class RechercheAction implements Action
         if(isset($_REQUEST['main_recherche']) && isset($_REQUEST['main_recherche_lieu'])) {
             $terme = $_REQUEST['main_recherche'];
             $lieu = $_REQUEST['main_recherche_lieu'];
-        } elseif (isset($_REQUEST['recherche_par_proprio'])) {
-            $salles = SalleDAO::findByIdProp($_REQUEST['recherche_par_proprio']);
+        } elseif (isset($_REQUEST['vos_salles'])) {
+            $salles = SalleDAO::findByIdProp($_SESSION['id']);
             if (empty($salles)) {
                 $_SESSION['msg'] = "Vous n'avez pas de salles!";
                 return "profil";

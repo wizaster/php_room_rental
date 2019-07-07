@@ -2,6 +2,7 @@
 require_once('./controleur/Action.interface.php');
 include_once('./Classes/User.class.php');
 include_once('./Classes/UserDAO.class.php');
+include_once('./controleur/Afficher_profilAction.class.php');
 
 class Modifier_utilisateurAction implements Action
 {
@@ -35,6 +36,7 @@ class Modifier_utilisateurAction implements Action
         $uDao->update($user);
 
         // pourrait peut etre setter un variable pour confirmer?
-        return "profil_utilisateur";
+        $action = new Afficher_profilAction();
+        return $action->execute();
     }
 }

@@ -48,30 +48,27 @@ class AjoutAction implements Action
                 , $ville, $province, $pays, "", $proprio);
             $salleId = $sDao->create($salle);
             if ($salleId != 0) {
-                $seDao = new SalleHasEquipementDAO();
-                $saDao = new SalleHasAccessibiliteDAO();
-                if (isset($_REQUEST['equipeSalle'])) {
+                if (isset($_REQUEST['equipSalle'])) {
                     $equipArr = $_REQUEST['equipSalle'];
-                }
-                if (isset($_REQUEST['accessSalle'])) {
-                    $accessArr = $_REQUEST['accessSalle'];
-                }
-                if (isset($equipArr)) {
-                    if ($equipArr < 0) {
+                    if ($equipArr > 0) {
                         foreach ($equipArr as $equip) {
                             $sEquip = new SalleHasEquipement($salleId, $equip);
-                            $seDao->create($sEquip);
+                            var_dump($sEquip);
+                            SalleHasEquipementDAO::create($sEquip);
                         }
                     }
                 }
-                if (isset($accessArr)) {
-                    if ($accessArr < 0) {
+                
+                if (isset($_REQUEST['accessSalle'])) {
+                    $accessArr = $_REQUEST['accessSalle'];
+                    if ($accessArr > 0) {
                         foreach ($accessArr as $access) {
                             $sAccess = new SalleHasAccessibilite($salleId, $access);
-                            $saDao->create($sAccess);
+                            SalleHasAccessibiliteDAO::create($sAccess);
                         }
                     }
                 }
+                
                 if (isset($_FILES['uploadImage1'])) {
                     if ($_FILES['uploadImage1']['name'] != '') {
                         ImageAction::addImage('uploadImage1', $salleId);
