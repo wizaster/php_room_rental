@@ -115,7 +115,7 @@ $salle = SalleDAO::findById($salleId);
                                 switch ($user->getTypeutilisateurId()) {
                                     case 1:
                                         ?>
-                                        <input type="hidden" name="salleId" value="<?php echo $salleId ?>"/>
+                                        <input type="hidden" name="salleId" value="<?= $salleId ?>"/>
                                         <input type="hidden" name="action" value="reserver_salle"/>
                                         <input type="submit" class="btn btn-primary btn-block rounded"
                                                value="Reserver cette salle"/>
@@ -124,14 +124,14 @@ $salle = SalleDAO::findById($salleId);
                                     case 2:
                                         if ($user->getId() == $salle->getIdProp()) {
                                             ?>
-                                            <input type="hidden" name="salleId" value="<?php echo $salleId ?>"/>
+                                            <input type="hidden" name="salleId" value="<?= $salleId ?>"/>
                                             <input type="hidden" name="action" value="modifier_salle"/>
                                             <input type="submit" class="btn btn-primary btn-block rounded"
                                                    value="Modifier ma salle"/>
                                             <?php
                                         } else {
                                             ?>
-                                            <input type="hidden" name="salleId" value="<?php echo $salleId ?>"/>
+                                            <input type="hidden" name="salleId" value="<?= $salleId ?>"/>
                                             <input type="hidden" name="action" value="reserver_salle"/>
                                             <input type="submit" class="btn btn-primary btn-block rounded"
                                                    value="Reserver cette salle"/>
@@ -141,7 +141,7 @@ $salle = SalleDAO::findById($salleId);
                                         break;
                                     case 3:
                                         ?>
-                                        <input type="hidden" name="salleId" value="<?php echo $salleId ?>"/>
+                                        <input type="hidden" name="salleId" value="<?= $salleId ?>"/>
                                         <input type="hidden" name="action" value="modifier_salle"/>
                                         <input type="submit" class="btn btn-primary btn-block rounded"
                                                    value="Modifier cette salle"/>
@@ -150,7 +150,7 @@ $salle = SalleDAO::findById($salleId);
                                 }
                             } else {
                                 ?>
-                                <input type="hidden" name="salleId" value="<?php echo $salleId ?>"/>
+                                <input type="hidden" name="salleId" value="<?= $salleId ?>"/>
                                 <input type="hidden" name="action" value="connexion"/>
                                 <input type="submit" class="btn btn-primary btn-block rounded"
                                         value="Reserver cette salle"/>

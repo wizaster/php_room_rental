@@ -92,7 +92,13 @@ include('header.php');
                                             <h3>
                                                 <a href="?action=afficher_salle&listing=<?php echo $trouve->getId() ?>"> <?php echo $trouve->getNom() ?>
                                                 </a></h3>
+                                                
                                             <address><?php echo $trouve->getVille() . ", " . $trouve->getProvince() . ", " . $trouve->getPays() ?></address>
+                                            <?php
+                                                if ($_SESSION['id'] == $trouve->getIdProp()) {
+                                                    echo "<a href='?action=supprimer_salle&listing=" . $trouve->getId() . "'>" . "Supprimer Votre Salle" . "</a>";
+                                                }
+                                            ?>
                                         </div>
                                     </form>
                                 </div>
