@@ -14,7 +14,7 @@ class SalleDAO
     public static function create($x) {
         try {
             $db = Database::getInstance();
-            var_dump($x);
+            //var_dump($x);
             $pstmt = $db->prepare(
                 "INSERT INTO " . Config::DB_TABLE_SALLE . " (
                 nom,
@@ -128,22 +128,6 @@ class SalleDAO
         try 
         {
             $db = Database::getInstance();
-            /*
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE VILLE = :x");
-            $pstmt->execute(array(':x' => $ville));
-            
-                                    // TODO Pas sur!
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
-            foreach($result as $row) {
-                $s = new Salle();
-                $s->loadFromArray($row);
-                
-                array_push($liste,$s);
-            }
-            $pstmt->closeCursor();
-            //$db->close();
-            return $liste;
-            */
             $res = $db->query("SELECT * FROM salle WHERE  ville = '" . $ville . "'");
             foreach ($res as $row) {
                 $obj = new Salle();
@@ -164,24 +148,6 @@ class SalleDAO
         try 
         {
             $db = Database::getInstance();
-            /*
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_SALLE." WHERE proprietaire_Id = :x");
-            $pstmt->execute(array(':x' => $idProp));
-            
-                                    // TODO Pas sur!
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
-            
-            foreach($result as $row) {
-                $s = new Salle();
-                
-                $s->loadFromArray($row);
-                
-                array_push($liste,$s);
-            }
-            $pstmt->closeCursor();
-            //$db->close();
-            return liste;
-            */
             $res = $db->query("SELECT * FROM salle WHERE proprietaire_Id = '" . $idProp . "'");
             foreach ($res as $row) {
                 $obj = new Salle();
@@ -201,22 +167,21 @@ class SalleDAO
             $db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "UPDATE '".Config::DB_TABLE_SALLE."' SET 
-                NOM = :nom, 
-                SUPERFICIE = :sup, 
-                CAPACITE = :cap,
-                DESC = :des,
-                STATUT = :sta, 
-                SUPERFICIE = :s, 
-                TARIF = :tar,
-                CODE_POSTAL = :cod,
-                PAYS = :pay, 
-                PROVINCE = :pro, 
-                VILLE = :vil,
-                RUE = :rue,
-                NO_CIVIQUE = :noc, 
-                APPT_SUITE = :app
-                WHERE ID = :i");
+                "UPDATE ".Config::DB_TABLE_SALLE." SET 
+                nom = :nom , 
+                superficie = :sup , 
+                capacite = :cap ,
+                description = :des ,
+                statut = :sta ,
+                tarif = :tar ,
+                code_postal = :cod ,
+                pays = :pay , 
+                province = :pro , 
+                ville = :vil ,
+                rue = :rue ,
+                no_civique = :noc , 
+                appt_suite = :app
+                WHERE Id = :i");
             
             $n = $pstmt->execute(array(
                 ':nom' => $x->getNom(),
@@ -281,7 +246,29 @@ class SalleDAO
             return $liste;
         }
     }
-
+    
+    public static function matchesWithProp($x, $y)
+    {
+        try 
+        {
+            $db = Database::getInstance();
+            
+            $pstmt = $db->prepare("SELECT ID FROM ".Config::DB_TABLE_SALLE." WHERE ID = :x AND proprietaire_Id = :y");
+            $pstmt->execute(array(':x' => $x, ':y' => $y));
+            
+            $result = $pstmt->fetch(PDO::FETCH_OBJ);
+            $pstmt->closeCursor();
+            //$db->close();
+            
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            throw $e;
+        }
+    }
     
     public static function delete($x)
     {
