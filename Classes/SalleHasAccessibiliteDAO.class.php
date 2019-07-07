@@ -80,7 +80,7 @@ class SalleHasAccessibiliteDAO
     }
             
             
-    public function delete($x, $y)
+    public function deleteSpecific($x, $y)
     {
         try {
             $db = Database::getInstance();
@@ -93,6 +93,38 @@ class SalleHasAccessibiliteDAO
             $n = $pstmt->execute(array(
                 ':x' => $x,
                 ':y' => $y));
+
+            $pstmt->closeCursor();
+            //$db->close();
+            return $n;
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+    
+    public function deleteAccessibiliteReferences($x)
+    {
+        try {
+            $db = Database::getInstance();
+
+            $pstmt = $db->prepare("DELETE FROM " . Config::DB_TABLE_SALACC . " WHERE Accessibilite_Id = :x");
+            $n = $pstmt->execute(array(':x' => $x));
+
+            $pstmt->closeCursor();
+            //$db->close();
+            return $n;
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+    
+    public function deleteAllOfSalle($x)
+    {
+        try {
+            $db = Database::getInstance();
+
+            $pstmt = $db->prepare("DELETE FROM " . Config::DB_TABLE_SALACC . " WHERE Salle_Id = :x");
+            $n = $pstmt->execute(array(':x' => $x));
 
             $pstmt->closeCursor();
             //$db->close();
