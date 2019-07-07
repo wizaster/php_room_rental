@@ -56,7 +56,28 @@ class SalleHasAccessibiliteDAO
             }
         }
     }
+    
+    public static function getAllAccessOfSalle($salleId)
+    {
+        {
+            try {
+                $liste = array();
+                $db = Database::getInstance();
 
+                $res = $db->query("SELECT Accessibilite_Id FROM " . Config::DB_TABLE_SALACC . " WHERE Salle_Id = '" . $salleId . "'");
+                foreach ($res as $row) {
+                    array_push($liste, $row[0]);
+                }
+                return $liste;
+                return $res;
+            } catch (PDOException $e) {
+                print "Error!: " . $e->getMessage() . "<br>";
+                return $res;
+            }
+        }
+    }
+            
+            
     public function delete($x, $y)
     {
         try {
