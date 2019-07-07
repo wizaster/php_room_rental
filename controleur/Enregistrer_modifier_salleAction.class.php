@@ -26,7 +26,6 @@ class Enregistrer_modifier_salleAction implements Action
             return "devenir_proprietaire";
         }
 
-        $sDao = new SalleDAO();
         if (ISSET($_REQUEST['btnEnregistrer'])) {
 
             $titre = $_REQUEST['titre'];
@@ -43,39 +42,40 @@ class Enregistrer_modifier_salleAction implements Action
             $appt_suite = $_REQUEST['local_room'];
             $rue = $_REQUEST['rue_room'];
 
-
-            $salle = new Salle(0, $titre, $superficie, $capacite, $desc, 'x', $prix, $noCivique, $appt_suite, $rue, $code_postal
-                , $ville, $province, $pays, "", $proprio);
-            $salle->setId($_SESSION['salleEdit']->getId());
+            $salle = new Salle(0, $titre, $superficie, $capacite, $desc, 'x', $prix, $noCivique, $appt_suite, $rue, $code_postal, $ville, $province, $pays, "", $proprio);
+            /*
+            $idtoput = $_SESSION['salleEdit']->getId();
+            $salle->setId($idtoput);
             
-            $salleId = $sDao->update($salle);
+            SalleDAO::update($salle);
+            
+            if (isset($_REQUEST['equipeSalle'])) {
+                $equipArr = $_REQUEST['equipSalle'];
+                SalleHasEquipementDAO::deleteAllOfSalle($salle->getId());
+                
+                if ($equipArr > 0) {
+                    foreach ($equipArr as $equip) {
+                        $sEquip = new SalleHasEquipement($salle->getId(), $equip);
+                        SalleHasEquipementDAO::create($sEquip);
+                    }
+                }    
+            }
+            
+            if (isset($_REQUEST['accessSalle'])) {
+                $accessArr = $_REQUEST['accessSalle'];
+                SalleHasAccessibiliteDAO::deleteAllOfSalle($salle->getId());
+                
+                if ($accessArr > 0) {
+                    foreach ($accessArr as $access) {
+                        $sAccess = new SalleHasAccessibilite($salle->getId(), $access);
+                        SalleHasAccessibiliteDAO::create($sAccess);
+                    }
+                }
+            }
             
             /*
             if ($salleId != 0) {
-                $seDao = new SalleHasEquipementDAO();
-                $saDao = new SalleHasAccessibiliteDAO();
-                if (isset($_REQUEST['equipeSalle'])) {
-                    $equipArr = $_REQUEST['equipSalle'];
-                }
-                if (isset($_REQUEST['accessSalle'])) {
-                    $accessArr = $_REQUEST['accessSalle'];
-                }
-                if (isset($equipArr)) {
-                    if ($equipArr < 0) {
-                        foreach ($equipArr as $equip) {
-                            $sEquip = new SalleHasEquipement($salleId, $equip);
-                            $seDao->create($sEquip);
-                        }
-                    }
-                }
-                if (isset($accessArr)) {
-                    if ($accessArr < 0) {
-                        foreach ($accessArr as $access) {
-                            $sAccess = new SalleHasAccessibilite($salleId, $access);
-                            $saDao->create($sAccess);
-                        }
-                    }
-                }
+                
                 if (isset($_FILES['uploadImage1'])) {
                     if ($_FILES['uploadImage1']['name'] != '') {
                         ImageAction::addImage('uploadImage1', $salleId);
@@ -103,6 +103,10 @@ class Enregistrer_modifier_salleAction implements Action
                 }
             }
             */
+            
+            unset($_SESSION['salleEdit']);
+            unset($_SESSION['salleEditAccessibilite']);
+            unset($_SESSION['salleEditEquipement']);
 
             return "profil";
         }
