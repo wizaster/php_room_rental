@@ -11,7 +11,7 @@ class SalleDAO
 {
     public function __construct(){}
     
-    public function create($x) {
+    public static function create($x) {
         try {
             $db = Database::getInstance();
             var_dump($x);
@@ -195,7 +195,7 @@ class SalleDAO
         }
     }
     
-    public function update($x) {
+    public static function update($x) {
         try
         {
             $db = Database::getInstance();
@@ -283,7 +283,7 @@ class SalleDAO
     }
 
     
-    public function delete($x)
+    public static function delete($x)
     {
         try
         {

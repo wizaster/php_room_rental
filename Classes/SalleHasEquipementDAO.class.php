@@ -18,7 +18,6 @@ class SalleHasEquipementDAO
     {
         try {
             $db = Database::getInstance();
-            var_dump($x);
             $pstmt = $db->prepare(
                 "INSERT INTO " . Config::DB_TABLE_SALEQ . " (
                 Salle_Id,
