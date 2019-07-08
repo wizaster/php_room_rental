@@ -116,16 +116,19 @@ include('header.php');
                         <div class="row">
                             <form action="?action=recherche&vos_salles=true" method="post" id="Options" class="p-2">
                                 <input type="submit" value="Vos Salles"/>
+
                                 <?php
-                                if (isset($_SESSION['msg'])) {
+
+                                if (isset($_SESSION['msg']['err_vosSalle'])) {
                                     ?>
                                     <div class="msg-conn">
-                                        <p><?= $_SESSION['msg'] ?></p>
+                                        <p><?= $_SESSION['msg']['err_vosSalle'] ?></p>
                                     </div>
                                     <?php
-                                    unset($_SESSION['msg']);
+                                    unset($_SESSION['msg']['err_vosSalle']);
                                 }
                                 ?>
+
                             </form>
                         </div>
                         <?php

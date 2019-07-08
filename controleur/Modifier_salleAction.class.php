@@ -14,6 +14,7 @@ class Modifier_salleAction implements Action
             //var_dump($_SESSION['salleEdit']);
             $_SESSION['salleEditAccessibilite'] = SalleHasAccessibiliteDAO::getAllAccessOfSalle($_REQUEST['salleId']);
             $_SESSION['salleEditEquipement'] = SalleHasEquipementDAO::getAllEquipmentOfSalle($_REQUEST['salleId']);
+            $_SESSION['salleEditImage'] = ImageDAO::findBySalle($_REQUEST['salleId']);
             
             return "modifier_salle";
         } else {

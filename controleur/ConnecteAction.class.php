@@ -20,13 +20,12 @@ class ConnecteAction implements Action
                 $_SESSION['id'] = $user->getId();
                 return "default";
             } else {
-                $_SESSION['msg'] = "Le mot de passe ou le nom utilisateur est errone";
+                $_SESSION['msg']['err_connection'] = "Le mot de passe ou le nom utilisateur est errone";
                 return "connexion";
             }
         } else {
-            $_SESSION['msg'] = "Le mot de passe ou le nom utilisateur est errone";
+            $_SESSION['msg']['err_connection'] = "Le mot de passe ou le nom utilisateur est errone";
             return "connexion";
         }
     }
 }
-

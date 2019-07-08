@@ -27,7 +27,7 @@ class RechercheAction implements Action
         } elseif (isset($_REQUEST['vos_salles'])) {
             $salles = SalleDAO::findByIdProp($_SESSION['id']);
             if (empty($salles)) {
-                $_SESSION['msg'] = "Vous n'avez pas de salles!";
+                $_SESSION['msg']['err_vosSalle'] = "Vous n'avez pas de salles!";
                 return "profil";
             } else {
                 $_SESSION['recherche'] = $salles;

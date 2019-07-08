@@ -65,13 +65,21 @@ include('header.php');
 
                 <form action="#" class="p-5 bg-white">
                     <?php
-                    if (ISSET($_SESSION['msg'])) {
+                    if (ISSET($_SESSION['msg']['err_connection'])) {
                         ?>
                         <div class="msg-conn">
-                            <p><?php echo $_SESSION['msg'] ?></p>
+                            <p><?php echo $_SESSION['msg']['err_connection'] ?></p>
                         </div>
                         <?php
-                        unset($_SESSION['msg']);
+                        unset($_SESSION['msg']['err_connection']);
+                    }
+                    if (ISSET($_SESSION['msg']['succ_deconnection'])) {
+                        ?>
+                        <div class="msg-succ">
+                            <p><?php echo $_SESSION['msg']['succ_deconnection'] ?></p>
+                        </div>
+                        <?php
+                        unset($_SESSION['msg']['succ_deconnection']);
                     }
                     ?>
 

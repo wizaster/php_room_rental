@@ -2455,6 +2455,15 @@ h1, h2, h3, h4, h5,
     color: red;
 }
 
+.msg-succ p {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 125%;
+    font-weight: bold;
+    color: green;
+}
+
 .imgSlide {
     display: block;
 !important;
@@ -2517,4 +2526,9 @@ td {
 
 .index_calendar .reserver, .index_calendar .today {
     width: 30%;
+}
+
+.heightImg img {
+    height: 125px;
+    width: 150px;
 }

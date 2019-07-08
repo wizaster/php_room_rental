@@ -144,18 +144,20 @@ class SalleDAO
     public static function findByIdProp($idProp)
     {
         $liste = Array();
-        
-        try 
-        {
-            $db = Database::getInstance();
-            $res = $db->query("SELECT * FROM salle WHERE proprietaire_Id = '" . $idProp . "'");
-            foreach ($res as $row) {
-                $obj = new Salle();
-                $obj->loadFromArray($row);
-                array_push($liste, $obj);
+        $db = Database::getInstance();
+        try {
+            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_SALLE . " where proprietaire_Id = :x");
+            if ($stmt->execute(array(':x' => $idProp))) {
+                while ($row = $stmt->fetch()) {
+                    $l = new Salle();
+
+                    $l->loadFromArray($row);
+
+                    array_push($liste, $l);
+                }
+                return $liste;
             }
-            return $liste;
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: ".$e->getMessage()."<br>";
             return $liste;
         }

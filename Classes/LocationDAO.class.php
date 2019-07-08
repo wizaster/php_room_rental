@@ -69,8 +69,8 @@ class LocationDAO
         try 
         {
             $db = Database::getInstance();
-            
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE ID = :x");
+
+            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_LOC . " WHERE ID = :x");
             $pstmt->execute(array(':x' => $id));
             
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
@@ -92,31 +92,54 @@ class LocationDAO
             throw $e;
         }
     }
-    
     public static function findLocateurId($id)
     {
         try 
         {
+
             $liste = Array();
             
             $db = Database::getInstance();
-            
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE LOCATEUR_ID = :x");
+            /*
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOC." WHERE locateur_Id = :x");
             $pstmt->execute(array(':x' => $id));
             
                                     // TODO Pas sur!
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
-            
-            foreach($result as $row) {
+            var_dump($result);
+            if(count($result) > 1){
+                foreach($result as $row) {
+                    var_dump($row);
+                    $l = new Location();
+
+                    $l->loadFromArray($row);
+
+                    array_push($liste,$l);
+                }
+                $pstmt->closeCursor();
+                //$db->close();
+                return $liste;
+            }elseif (count($result) == 1){
                 $l = new Location();
-                
-                $l->loadFromArray($row);
-                
-                array_push($liste,$l);
+
+                $l->loadFromObject($result);
+
+                return $l;
             }
-            $pstmt->closeCursor();
-            //$db->close();
-            return liste;
+            return null;
+            */
+            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_LOC . " where locateur_Id = '" . $id . "'");
+            if ($stmt->execute(array(':x' => $id))) {
+                while ($row = $stmt->fetch()) {
+                    var_dump($row);
+                    $l = new Location();
+
+                    $l->loadFromArray($row);
+
+                    array_push($liste, $l);
+                }
+                return $liste;
+            }
         }
         catch(PDOException $e) 
         {
@@ -160,7 +183,6 @@ class LocationDAO
             
             foreach($result as $row) {
                 $l = new Location();
-                var_dump($row);
                 $l->loadFromArray($row);
                 
                 array_push($liste,$l);
@@ -182,7 +204,7 @@ class LocationDAO
 			$db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "UPDATE '".Config::DB_TABLE_LOCATION."' SET 
+                "UPDATE '" . Config::DB_TABLE_LOC . "' SET 
                 DATE_DEBUT = :deb, 
                 DATE_FIN = :fin
                 WHERE ID = :i");

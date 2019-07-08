@@ -17,7 +17,6 @@ class ImageDAO
     {
         try {
             $db = Database::getInstance();
-            var_dump($x);
             $pstmt = $db->prepare(
                 "INSERT INTO " . Config::DB_TABLE_IMAGE . " (
                 emplacement,
@@ -77,6 +76,25 @@ class ImageDAO
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br>";
             return $liste;
+        }
+    }
+
+    public static function delete($emplacement)
+    {
+        try {
+            $db = Database::getInstance();
+            $pstmt = $db->prepare(
+                "DELETE FROM " . Config::DB_TABLE_IMAGE . " WHERE emplacement = :emp");
+
+            $n = $pstmt->execute(array(
+                ':emp' => $emplacement));
+
+
+            $pstmt->closeCursor();
+            //$db->close();
+            return $n;
+        } catch (PDOException $e) {
+            throw $e;
         }
     }
 

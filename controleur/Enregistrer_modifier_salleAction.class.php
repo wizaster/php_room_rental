@@ -73,41 +73,27 @@ class Enregistrer_modifier_salleAction implements Action
                     }
                 }
             }
-            
-            /*
-            if ($salleId != 0) {
-                
-                if (isset($_FILES['uploadImage1'])) {
-                    if ($_FILES['uploadImage1']['name'] != '') {
-                        ImageAction::addImage('uploadImage1', $salleId);
-                    }
-                }
-                if (isset($_FILES['uploadImage2'])) {
-                    if ($_FILES['uploadImage2']['name'] != '') {
-                        ImageAction::addImage('uploadImage2', $salleId);
-                    }
-                }
-                if (isset($_FILES['uploadImage3'])) {
-                    if ($_FILES['uploadImage3']['name'] != '') {
-                        ImageAction::addImage('uploadImage3', $salleId);
-                    }
-                }
-                if (isset($_FILES['uploadImage4'])) {
-                    if ($_FILES['uploadImage4']['name'] != '') {
-                        ImageAction::addImage('uploadImage4', $salleId);
-                    }
-                }
-                if (isset($_FILES['uploadImage5'])) {
-                    if ($_FILES['uploadImage5']['name'] != '') {
-                        ImageAction::addImage('uploadImage5', $salleId);
+            if (isset($_FILES)) {
+                for ($i = 1; $i < 6; $i++) {
+                    if (isset($_FILES['uploadImage' . $i])) {
+                        if ($_FILES['uploadImage' . $i]['name'] != '') {
+                            ImageAction::addImage('uploadImage' . $i, $salle->getId());
+                            ImageDAO::delete($_SESSION['salleEditImage'][$i - 1][0]);
+                        }
                     }
                 }
             }
-            */
+            if (isset($_REQUEST['deleteImage'])) {
+                foreach ($_REQUEST['deleteImage'] as $image) {
+                    ImageDAO::delete($image);
+                }
+            }
+
             
             unset($_SESSION['salleEdit']);
             unset($_SESSION['salleEditAccessibilite']);
             unset($_SESSION['salleEditEquipement']);
+            unset($_SESSION['salleEditImage']);
 
             return "afficher_salle";
         }

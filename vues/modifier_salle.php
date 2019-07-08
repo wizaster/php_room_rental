@@ -185,11 +185,23 @@ include('vues/header.php');
                                             <p>Vous pouvez mettre jusqu'a 5 images sur votre annonce</p>
                                         </div>
                                         <div>
-                                            <input type="file" name="uploadImage1">
-                                            <input type="file" name="uploadImage2">
-                                            <input type="file" name="uploadImage3">
-                                            <input type="file" name="uploadImage4">
-                                            <input type="file" name="uploadImage5">
+                                            <?php
+                                            for ($i = 1; $i < 6; $i++) {
+                                                ?>
+                                                <div class="col-12 heightImg">
+                                                    <?php
+                                                    if (isset($_SESSION['salleEditImage'][$i - 1])) {
+                                                        ?>
+                                                        <img src="<?php echo $_SESSION['salleEditImage'][$i - 1][0] ?>"/>
+                                                        <label for="deleteImage[]">Supprimer</label>
+                                                        <input type="checkbox" name="deleteImage[]"
+                                                               value="<?php echo $_SESSION['salleEditImage'][$i - 1][0] ?>"/>
+                                                    <?php } ?>
+                                                    <input type="file" name="uploadImage<?php echo $i ?>">
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
