@@ -100,23 +100,18 @@ class LocationDAO
             $liste = Array();
             
             $db = Database::getInstance();
-            
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOC." WHERE LOCATEUR_ID = :x");
-            $pstmt->execute(array(':x' => $id));
-            
-                                    // TODO Pas sur!
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
-            
-            foreach($result as $row) {
-                $l = new Location();
-                
-                $l->loadFromArray($row);
-                
-                array_push($liste,$l);
+            $stmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_LOC . " where locateur_Id = :x");
+            if ($stmt->execute(array(':x => $id'))) {
+                while ($row = $stmt->fetch()) {
+                    $l = new Location();
+
+                    $l->loadFromArray($row);
+
+                    array_push($liste, $l);
+                }
+                $stmt->closeCursor();
+                return $liste;
             }
-            $pstmt->closeCursor();
-            //$db->close();
-            return liste;
         }
         catch(PDOException $e) 
         {

@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399a17c2-6754-4db0-bbf8-d49b49162f93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controleur/Afficher_historiqueAction.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vues/afficher_historique.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/ImageDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/ImageDAO.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/LocationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/LocationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/SalleDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/SalleDAO.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controleur/ActionBuilder.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleur/ActionBuilder.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controleur/ConnecteAction.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleur/ConnecteAction.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controleur/DeconnexionAction.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleur/DeconnexionAction.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controleur/Enregistrer_modifier_salleAction.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleur/Enregistrer_modifier_salleAction.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controleur/Modifier_salleAction.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleur/Modifier_salleAction.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controleur/RechercheAction.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleur/RechercheAction.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/connexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/modifier_salle.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/modifier_salle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vues/profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/profil.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vues/afficher_historique.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="167">
+              <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -107,17 +94,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controleur/ActionBuilder.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="109" column="40" lean-forward="true" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
+            <state relative-caret-position="711">
+              <caret line="121" column="54" selection-start-line="121" selection-start-column="54" selection-end-line="121" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Classes/LocationDAO.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="232" column="85" lean-forward="true" selection-start-line="232" selection-start-column="85" selection-end-line="232" selection-end-column="85" />
+            <state relative-caret-position="439">
+              <caret line="119" column="9" lean-forward="true" selection-start-line="119" selection-start-column="9" selection-end-line="119" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -219,11 +206,11 @@
         <option value="$PROJECT_DIR$/Classes/ImageDAO.class.php" />
         <option value="$PROJECT_DIR$/controleur/Enregistrer_modifier_salleAction.class.php" />
         <option value="$PROJECT_DIR$/controleur/afficher_historiqueAction.class.php" />
-        <option value="$PROJECT_DIR$/controleur/ActionBuilder.class.php" />
-        <option value="$PROJECT_DIR$/Classes/LocationDAO.class.php" />
         <option value="$PROJECT_DIR$/Classes/SalleDAO.class.php" />
         <option value="$PROJECT_DIR$/controleur/Afficher_historiqueAction.class.php" />
         <option value="$PROJECT_DIR$/vues/afficher_historique.php" />
+        <option value="$PROJECT_DIR$/controleur/ActionBuilder.class.php" />
+        <option value="$PROJECT_DIR$/Classes/LocationDAO.class.php" />
       </list>
     </option>
   </component>
@@ -290,8 +277,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\bulletcase\Desktop\Downloads\UwAmp\www\php_room_rental\vues" />
       <recent name="C:\Users\bulletcase\Desktop\Downloads\UwAmp\www\php_room_rental\sqlFile" />
+      <recent name="C:\Users\bulletcase\Desktop\Downloads\UwAmp\www\php_room_rental\vues" />
       <recent name="C:\UwAmp\www\site" />
       <recent name="C:\UwAmp\www\site\vues" />
     </key>
@@ -353,7 +340,7 @@
       <workItem from="1561744932084" duration="7065000" />
       <workItem from="1561752783042" duration="1199000" />
       <workItem from="1561822109920" duration="68758000" />
-      <workItem from="1562540395875" duration="15487000" />
+      <workItem from="1562540395875" duration="16126000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1560994108390</created>
@@ -530,11 +517,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562463054936</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="modifier photo, voir historique + db a jours">
+      <created>1562556546640</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1562556546640</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226184000" />
+    <option name="totallyTimeSpent" value="226823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -590,7 +584,8 @@
     <MESSAGE value="working calendar" />
     <MESSAGE value="woohoo peut ajouter location- reste validateur edge case et page erreur" />
     <MESSAGE value="separation logique calendrier + ajout page erreur" />
-    <option name="LAST_COMMIT_MESSAGE" value="separation logique calendrier + ajout page erreur" />
+    <MESSAGE value="modifier photo, voir historique + db a jours" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifier photo, voir historique + db a jours" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -859,13 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controleur/ActionBuilder.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="109" column="40" lean-forward="true" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controleur/Afficher_salleAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -908,13 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/LocationDAO.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="232" column="85" lean-forward="true" selection-start-line="232" selection-start-column="85" selection-end-line="232" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controleur/Afficher_historiqueAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -924,8 +905,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vues/afficher_historique.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="167">
+          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controleur/ActionBuilder.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="121" column="54" selection-start-line="121" selection-start-column="54" selection-end-line="121" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/LocationDAO.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="119" column="9" lean-forward="true" selection-start-line="119" selection-start-column="9" selection-end-line="119" selection-end-column="9" />
         </state>
       </provider>
     </entry>
