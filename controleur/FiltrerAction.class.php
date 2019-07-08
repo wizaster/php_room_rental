@@ -18,7 +18,7 @@ class FiltrerAction implements Action
             $listeAccess = SalleHasAccessibiliteDAO::getSalleId($_REQUEST['filtre_accessibilite']);
             $vraiListeA = array();
             foreach ($listeAccess as $access) {
-                array_push($vraiListeA, $access->getSalleId());
+                array_push($vraiListeA, $access);
             }
             $list[] = $vraiListeA;
         }
@@ -27,7 +27,7 @@ class FiltrerAction implements Action
             $listeEquip = SalleHasEquipementDAO::getSalleId($_REQUEST['filtre_equipement']);
             $vraiListeE = array();
             foreach ($listeEquip as $equip) {
-                array_push($vraiListeE, $equip->getSalleId());
+                array_push($vraiListeE, $equip[0]);
             }
             $list[] = $vraiListeE;
         }
@@ -47,7 +47,7 @@ class FiltrerAction implements Action
         } else {
             $intersect = $list[0];
         }
-        $_SESSION['recherche'] = $intersect;
+        $_SESSION['recherche_filtree'] = $intersect;
         return "afficher_salles";
     }
 }

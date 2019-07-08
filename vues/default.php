@@ -5,13 +5,6 @@ include_once('./Classes/Salle.class.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Abbys'List</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-</head>
 <body>
 <?php
 include('header.php');
@@ -23,10 +16,7 @@ if (isset($_SESSION['recherche'])) {
      data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
-
             <div class="col-md-12">
-
-
                 <div class="row justify-content-center mb-4">
                     <div class="col-md-8 text-center">
                         <h1 class="" data-aos="fade-up">Trouver le lieu parfait pour vos évènements</h1>
@@ -60,7 +50,6 @@ if (isset($_SESSION['recherche'])) {
                                 <input type="hidden" name="action" value="recherche">
                                 <input type="submit" class="btn btn-primary btn-block rounded" value="Trouver">
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -69,7 +58,6 @@ if (isset($_SESSION['recherche'])) {
         </div>
     </div>
 </div>
-
 <div class="site-section bg-light">
     <div class="container">
         <div class="overlap-category mb-5">
@@ -93,7 +81,6 @@ if (isset($_SESSION['recherche'])) {
                         <span class="icon"><span class="flaticon-bunk-bed"></span></span>
                         <span class="number">1,229</span>
                         <span class="caption mb-2 d-block">Clients satifaits</span>
-
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
@@ -108,8 +95,6 @@ if (isset($_SESSION['recherche'])) {
                         <span class="icon"><span class="flaticon-car"></span></span>
                         <span class="number">29,221</span>
                         <span class="caption mb-2 d-block">Cars &amp; Vehicles</span>
-
-
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
@@ -117,7 +102,6 @@ if (isset($_SESSION['recherche'])) {
                         <span class="icon"><span class="flaticon-pizza"></span></span>
                         <span class="number">219</span>
                         <span class="caption mb-2 d-block">Other</span>
-
                     </a>
                 </div>
             </div>
@@ -133,7 +117,6 @@ if (isset($_SESSION['recherche'])) {
                     une soirée corporative, il y a ici la salle pour vous.</p>
             </div>
         </div>
-
         <div class="row">
             <div id="type-evenement1" class="col-md-6 mb-4 mb-lg-4 col-lg-4">
                 <div class="listing-item">
@@ -143,7 +126,7 @@ if (isset($_SESSION['recherche'])) {
                     <div class="listing-item-content">
                         <a href="#" class="bookmark" data-toggle="tooltip" data-placement="left"
                            title="Bookmark"><span class="icon-heart"></span></a>
-                        <h2 class="mb-1"><a href="#">Red Luxury Car</a></h2>
+                        <h2 class="mb-1"><a href="#">Impressionner ses amis</a></h2>
                     </div>
                 </div>
             </div>
@@ -154,7 +137,7 @@ if (isset($_SESSION['recherche'])) {
                     </div>
                     <div class="listing-item-content">
                         <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                        <h2 class="mb-1"><a href="#">House with Swimming Pool</a></h2>
+                        <h2 class="mb-1"><a href="#">Soiree Mondaine</a></h2>
                     </div>
                 </div>
             </div>
@@ -165,7 +148,7 @@ if (isset($_SESSION['recherche'])) {
                     </div>
                     <div class="listing-item-content">
                         <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                        <h2 class="mb-1"><a href="#">Wooden Chair &amp; Table</a></h2>
+                        <h2 class="mb-1"><a href="#">De belles retrouvailles</a></h2>
                     </div>
                 </div>
             </div>
@@ -177,7 +160,6 @@ if (isset($_SESSION['recherche'])) {
 </div>
 <div class="site-section bg-white">
     <div class="container">
-
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 text-center border-primary">
                 <h2 class="font-weight-light text-primary">Testimonials</h2>
@@ -211,7 +193,6 @@ if (isset($_SESSION['recherche'])) {
                     </blockquote>
                 </div>
             </div>
-
             <div>
                 <div class="testimonial">
                     <figure class="mb-4">
@@ -225,7 +206,6 @@ if (isset($_SESSION['recherche'])) {
                     </blockquote>
                 </div>
             </div>
-
             <div>
                 <div class="testimonial">
                     <figure class="mb-4">
@@ -243,8 +223,6 @@ if (isset($_SESSION['recherche'])) {
         </div>
     </div>
 </div>
-
-
 <div class="site-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -291,8 +269,6 @@ if (isset($_SESSION['recherche'])) {
         </div>
     </div>
 </div>
-
-
 <div class="newsletter bg-primary py-5">
     <div class="container">
         <div class="row align-items-center">
@@ -310,15 +286,10 @@ if (isset($_SESSION['recherche'])) {
         </div>
     </div>
 </div>
-
-
 <footer class="site-footer">
     <?php
     include('vues/footer.php');
     ?>
-
 </footer>
-
-
 </body>
 </html>

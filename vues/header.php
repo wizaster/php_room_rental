@@ -6,7 +6,7 @@ if (isset($_SESSION['connecte'])) {
 }
 ?>
 
-<div class="site-wrap">
+
 
     <div class="site-mobile-menu">
         <div class="site-mobile-menu-header">
@@ -23,8 +23,8 @@ if (isset($_SESSION['connecte'])) {
         <div class="row align-items-center">
 
             <div class="col-6 col-xl-2">
-                <h1 class="mb-0 site-logo"><a href="?action=default" class="text-black mb-0">Abbys'<span
-                                class="text-primary">List</span>
+                <h1 class="mb-0 site-logo"><a href="?action=default" class="text-black mb-0">Loue<span
+                                class="text-primary">ta salle</span>
                     </a></h1>
             </div>
             <div class="col-12 col-md-10 d-none d-xl-block">

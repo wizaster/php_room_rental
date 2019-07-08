@@ -68,7 +68,7 @@ class ImageDAO
             $liste = Array();
 
             $db = Database::getInstance();
-            $res = $db->query("SELECT * FROM " . Config::DB_TABLE_IMAGE . " WHERE salle_Id = '" . $salleId . "'");
+            $res = $db->query("SELECT emplacement FROM " . Config::DB_TABLE_IMAGE . " WHERE salle_Id = '" . $salleId . "'");
             foreach ($res as $row) {
                 array_push($liste, $row);
             }

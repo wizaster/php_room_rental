@@ -112,6 +112,26 @@ class SalleDAO
     
     public static function findById($id)
     {
+        $db = Database::getInstance();
+
+        try {
+            $l = new Salle();
+            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_SALLE . " where Id = :x");
+            if ($stmt->execute(array(':x' => $id))) {
+                while ($row = $stmt->fetch()) {
+                    $l->loadFromArray($row);
+                }
+                if ($l->getId() != "") {
+                    return $l;
+                } else {
+                    return null;
+                }
+            }
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return null;
+        }
+        /*
         try 
         {
             $db = Database::getInstance();
@@ -144,6 +164,7 @@ class SalleDAO
         } catch(PDOException $e) {
             throw $e;
         }
+        */
     }
     
     public static function findByVille($ville)

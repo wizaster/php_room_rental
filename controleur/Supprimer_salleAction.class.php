@@ -15,14 +15,12 @@ class Supprimer_salleAction implements Action
         if ($_SESSION['role'] == 1) {
             return "devenir_proprietaire";
         }
-
         if (ISSET($_REQUEST['salleId']) && SalleDAO::matchesWithProp($_REQUEST['salleId'],$_SESSION['id'])) {
             
             $locsInSalle = LocationDAO::findSalleId($_REQUEST['salleId']);
             foreach ($locsInSalle as $location) {
                 LocationDao::delete($location->getId());
             }
-            
             SalleHasAccessibiliteDAO::deleteAllOfSalle($_REQUEST['salleId']);
             SalleHasEquipementDAO::deleteAllOfSalle($_REQUEST['salleId']);
             SalleDAO::delete($_REQUEST['salleId']);

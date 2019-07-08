@@ -22,7 +22,7 @@ class Salle
     
     
     public function __construct(
-        $_id = "",
+        $_id = 0,
         $_nom = "",
         $_superficie = 0,
         $_capacite = 0,

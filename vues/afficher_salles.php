@@ -39,21 +39,22 @@ include('header.php');
                     <div class="col-lg-12 row">
                         <?php
                         if ($resultat) {
-                            foreach ($_SESSION['recherche'] as $trouveS) {
-                                $trouve = SalleDAO::findById($trouveS);
+                            foreach ($_SESSION['recherche'] as $trouve) {
+                                // $trouve = SalleDAO::findById($trouveS);
                                 $sId = $trouve->getId();
                                 $image = ImageDAO::findBySalle($sId);
                                 ?>
                                 <div class="d-block d-md-flex listing vertical col-5">
                                     <form method="post">
-                                        <a href="?action=afficher_salle&listing=<?php echo $trouve->getId() ?>" class="img d-block"<?php if (!empty($image)) {
+                                        <a href="?action=afficher_salle&salleId=<?php echo $trouve->getId() ?>"
+                                           class="img d-block"<?php if (!empty($image)) {
                                             ?>
                                             style="background-image: url('<?php echo $image[0][0] ?>')"
                                             <?php
                                         }
                                         ?>
                                         >
-                                            <input type="submit" name="listing" value="<?php echo $trouve->getId() ?>"
+                                            <input type="submit" name="salleId" value="<?php echo $trouve->getId() ?>"
                                                    style="background-color: rgba(255, 255, 255, 0); width:100%; height:100%; color: rgba(255, 255, 255, 0);"/>
                                             <input type="hidden" name="action" value="afficher_salle"/>
                                         </a>
@@ -61,7 +62,7 @@ include('header.php');
                                             <span class="category">Salle Deluxe</span>
                                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
                                             <h3>
-                                                <a href="?action=afficher_salle&listing=<?php echo $trouve->getId() ?>"> <?php echo $trouve->getNom() ?>
+                                                <a href="?action=afficher_salle&salleId=<?php echo $trouve->getId() ?>"> <?php echo $trouve->getNom() ?>
                                                 </a></h3>
                                             <address><?php echo $trouve->getVille() . ", " . $trouve->getProvince() . ", " . $trouve->getPays() ?></address>
                                         </div>
@@ -70,6 +71,40 @@ include('header.php');
                                 <?php
                             }
                             unset($_SESSION['recherche']);
+                        } elseif (isset($_SESSION['recherche_filtree'])) {
+                            foreach ($_SESSION['recherche_filtree'] as $trouveS) {
+                                $trouve = SalleDAO::findById($trouveS);
+                                //$sId = $trouve->getId();
+                                $image = ImageDAO::findBySalle($trouveS);
+                                ?>
+                                <div class="d-block d-md-flex listing vertical col-5">
+                                    <form method="post">
+                                        <a href="?action=afficher_salle&salleId=<?php echo $trouve->getId() ?>"
+                                           class="img d-block"<?php if (!empty($image)) {
+                                            ?>
+                                            style="background-image: url('<?php echo $image[0][0] ?>')"
+                                            <?php
+                                        }
+                                        ?>
+                                        >
+                                            <input type="submit" name="saleId" value="<?php echo $trouve->getId() ?>"
+                                                   style="background-color: rgba(255, 255, 255, 0); width:100%; height:100%; color: rgba(255, 255, 255, 0);"/>
+                                            <input type="hidden" name="action" value="afficher_salle"/>
+                                        </a>
+                                        <div class="lh-content">
+                                            <span class="category">Salle Deluxe</span>
+                                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3>
+                                                <a href="?action=afficher_salle&salleId=<?php echo $trouve->getId() ?>"> <?php echo $trouve->getNom() ?>
+                                                </a></h3>
+                                            <address><?php echo $trouve->getVille() . ", " . $trouve->getProvince() . ", " . $trouve->getPays() ?></address>
+                                        </div>
+                                    </form>
+                                </div>
+                                <?php
+
+                            }
+                            unset($_SESSION['recherche_filtree']);
                         } else {
                             $loadAllSalle = SalleDAO::findAll();
                             foreach ($loadAllSalle as $salle) {
@@ -78,14 +113,15 @@ include('header.php');
                                 ?>
                                 <div class="d-block d-md-flex listing vertical col-5">
                                     <form method="post">
-                                        <a href="#" class="img d-block"<?php if (!empty($image)) {
+                                        <a href="?action=afficher_salle&salleId=<?php echo $salle->getId() ?>"
+                                           class="img d-block"<?php if (!empty($image)) {
                                             ?>
                                             style="background-image: url('<?php echo $image[0][0] ?>')"
                                             <?php
                                         }
                                         ?>
                                         >
-                                            <input type="submit" name="listing" value="<?php echo $salle->getId() ?>"
+                                            <input type="submit" name="salleId" value="<?php echo $salle->getId() ?>"
                                                    style="background-color: rgba(255, 255, 255, 0); width:100%; height:100%; color: rgba(255, 255, 255, 0);"/>
                                             <input type="hidden" name="action" value="afficher_salle"/>
                                         </a>
@@ -93,7 +129,7 @@ include('header.php');
                                             <span class="category">Salle Deluxe</span>
                                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
                                             <h3>
-                                                <a href="?action=afficher_salle&listing=<?php echo $salle->getId() ?>"> <?php echo $salle->getNom() ?></a>
+                                                <a href="?action=afficher_salle&salleId=<?php echo $salle->getId() ?>"> <?php echo $salle->getNom() ?></a>
                                             </h3>
                                             <address><?php echo $salle->getVille() . ", " . $salle->getProvince() . ", " . $salle->getPays() ?></address>
                                         </div>

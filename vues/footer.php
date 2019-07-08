@@ -29,14 +29,5 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <form action="#" method="post">
-                <div class="input-group >
-                    <input type=" text" class="form-control border-secondary text-white bg-transparent"
-                           placeholder="Search products..." aria-label="Enter Email"
-                           aria-describedby="button-addon2">
-                </div>
-            </form>
-        </div>
     </div>
 </div>

@@ -42,14 +42,10 @@ class SalleHasAccessibiliteDAO
         $liste = Array();
         $db = Database::getInstance();
         try {
-            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_SALACC . " where Accessibilite_Id = :x");
+            $stmt = $db->prepare("SELECT Salle_Id FROM " . config::DB_TABLE_SALACC . " where Accessibilite_Id = :x");
             if ($stmt->execute(array(':x' => $accessId))) {
                 while ($row = $stmt->fetch()) {
-                    $l = new SalleHasAccessibilite();
-
-                    $l->loadFromArray($row);
-
-                    array_push($liste, $l);
+                    array_push($liste, $row[0]);
                 }
                 return $liste;
             }
