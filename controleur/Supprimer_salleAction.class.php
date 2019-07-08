@@ -1,11 +1,9 @@
 <?php
 
 require_once('./controleur/Action.interface.php');
-require_once('./Classes/SalleDAO.class.php');
-include_once('./Classes/Salle.class.php');
-include_once('./Classes/SalleHasAccessibiliteDAO.class.php');
-include_once('./Classes/SalleHasEquipementDAO.class.php');
-include_once('./controleur/RechercheAction.class.php');
+require_once('./Classes/Location.class.php');
+require_once('./Classes/Salle.class.php');
+require_once('./controleur/RechercheAction.class.php');
 
 class Supprimer_salleAction implements Action
 {
@@ -19,6 +17,11 @@ class Supprimer_salleAction implements Action
         }
 
         if (ISSET($_REQUEST['salleId']) && SalleDAO::matchesWithProp($_REQUEST['salleId'],$_SESSION['id'])) {
+            
+            $locsInSalle = LocationDAO::findSalleId($_REQUEST['salleId']);
+            foreach ($locsInSalle as $location) {
+                LocationDao::delete($location->getId());
+            }
             
             SalleHasAccessibiliteDAO::deleteAllOfSalle($_REQUEST['salleId']);
             SalleHasEquipementDAO::deleteAllOfSalle($_REQUEST['salleId']);

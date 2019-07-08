@@ -25,7 +25,8 @@ require_once('controleur/Location_annulerAction.class.php');
 require_once('controleur/Modifier_salleAction.class.php');
 require_once('controleur/Enregistrer_modifier_salleAction.class.php');
 require_once('controleur/Supprimer_salleAction.class.php');
-require_once('controleur/Afficher_historiqueAction.class.php');
+require_once('controleur/Afficher_utilisateursAction.class.php');
+require_once('controleur/Supprimer_utilisateurAction.class.php');
 
 class ActionBuilder
 {
@@ -110,8 +111,11 @@ class ActionBuilder
             case "annuler_reservation" :
                 return new Location_AnnulerAction();
                 break;
-            case "consulter_historique" :
-                return new Afficher_historiqueAction();
+            case "afficher_utilisateurs" :
+                return new Afficher_utilisateursAction();
+                break;
+            case "supprimer_utilisateur" :
+                return new Supprimer_utilisateurAction();
                 break;
             default :
                 return new DefaultAction();
