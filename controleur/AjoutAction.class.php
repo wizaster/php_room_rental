@@ -53,7 +53,7 @@ class AjoutAction implements Action
                     if ($equipArr > 0) {
                         foreach ($equipArr as $equip) {
                             $sEquip = new SalleHasEquipement($salleId, $equip);
-                            var_dump($sEquip);
+                            //var_dump($sEquip);
                             SalleHasEquipementDAO::create($sEquip);
                         }
                     }
