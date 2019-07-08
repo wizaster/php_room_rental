@@ -19,10 +19,14 @@ class Valider_reservationAction implements Action
         } else {
             return "erreur";
         }
+        $debutT = strtotime($dateDebutDemander);
+        $newDebutT = date('Y-m-d', $debutT);
+        $finT = strtotime($dateFinDemander);
+        $newFinT = date('Y-m-d', $finT);
         if (count($location) > 0) {
             foreach ($location as $ficheLoc) {
-                if (($dateDebutDemander >= $ficheLoc->getDateDebut() && $dateDebutDemander <= $ficheLoc->getDateFin())
-                    || ($dateFinDemander >= $ficheLoc->getDateDebut() && $dateFinDemander <= $ficheLoc->getDateFin())) {
+                if (($newDebutT >= $ficheLoc->getDateDebut() && $newDebutT <= $ficheLoc->getDateFin())
+                    || ($newFinT >= $ficheLoc->getDateDebut() && $newFinT <= $ficheLoc->getDateFin())) {
                     $_SESSION['msg']['err_validation'] = "Veuillez choisir des dates ou la salle est disponible";
                     return "reserver_salle";
                 }
@@ -31,8 +35,8 @@ class Valider_reservationAction implements Action
         $user = UserDAO::findByUsername($_SESSION['connecte']);
         $userId = $user->getId();
         $salle = SalleDAO::findById($_SESSION['salleId']);
-        $debutTime = DateTime::createFromFormat('Y-m-d', (date('Y-m-d', (strtotime($dateDebutDemander)))));
-        $finTime = DateTime::createFromFormat('Y-m-d', (date('Y-m-d', (strtotime($dateFinDemander)))));
+        $debutTime = DateTime::createFromFormat('Y-m-d H:i:s', (date('Y-m-d H:i:s', (strtotime($dateDebutDemander)))));
+        $finTime = DateTime::createFromFormat('Y-m-d H:i:s', (date('Y-m-d H:i:s', (strtotime($dateFinDemander)))));
         if ($debutTime > $finTime) {
             $_SESSION['msg']['err_validation'] = "Veuillez selectionner une date de fin ulterieur a la date de debut";
             return "reserver_salle";

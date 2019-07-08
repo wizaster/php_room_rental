@@ -17,18 +17,18 @@ $_SESSION['location'] = serialize($location);
 if (count($location) > 0) {
     $datesLoc = array();
     foreach ($location as $ficheLoc) {
-        if (DateTime::createFromFormat("Y-m-d", $ficheLoc->getDateDebut())->format("Y-m") == $ym
-            || DateTime::createFromFormat("Y-m-d", $ficheLoc->getDateFin())->format("Y-m") == $ym
-            || (DateTime::createFromFormat("Y-m-d", $ficheLoc->getDateDebut())->format("Y-m") < $ym)
-            && DateTime::createFromFormat("Y-m-d", $ficheLoc->getDateFin())->format("Y-m") > $ym) {
+        if (DateTime::createFromFormat("Y-m-d H:i:s", $ficheLoc->getDateDebut())->format("Y-m") == $ym
+            || DateTime::createFromFormat("Y-m-d H:i:s", $ficheLoc->getDateFin())->format("Y-m") == $ym
+            || (DateTime::createFromFormat("Y-m-d H:i:s", $ficheLoc->getDateDebut())->format("Y-m") < $ym)
+            && DateTime::createFromFormat("Y-m-d H:i:s", $ficheLoc->getDateFin())->format("Y-m") > $ym) {
             array_push($datesLoc, $ficheLoc);
         }
     }
     $dateReserve = array();
     if (count($datesLoc) > 0) {
         foreach ($datesLoc as $dateLoc) {
-            $debLoc = DateTime::createFromFormat("Y-m-d", $dateLoc->getDateDebut());
-            $finLoc = DateTime::createFromFormat("Y-m-d", $dateLoc->getDateFin());
+            $debLoc = DateTime::createFromFormat("Y-m-d H:i:s", $dateLoc->getDateDebut());
+            $finLoc = DateTime::createFromFormat("Y-m-d H:i:s", $dateLoc->getDateFin());
             $duree = $debLoc->diff($finLoc)->format('%a') + 1;
             $time = $debLoc;
             for ($i = 0; $i <= $duree; $i++) {
