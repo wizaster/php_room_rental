@@ -10,6 +10,10 @@ class Valider_reservationAction implements Action
         date_default_timezone_set('America/New_York');
         $dateDebutDemander = $_REQUEST['dateDebut'];
         $dateFinDemander = $_REQUEST['dateFin'];
+        if (empty($dateFinDemander) || empty($dateDebutDemander)) {
+            $_SESSION['msg']['err_validation'] = "Veuillez remplir les champs de dates";
+            return "reserver_salle";
+        }
         if (isset($_SESSION['location'])) {
             $location = unserialize($_SESSION['location']);
         } else {

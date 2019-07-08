@@ -69,7 +69,7 @@ include('header.php');
         }
         ?>
     </div>
-    <form method="post">
+    <form method="post" id="reservation_form">
         <div class="col-2 m-auto ">
             <label for="datepicker">Date de debut :</label><input type="text" name="dateDebut" id="datepicker"
                                                                   class="float-right"/><br/>
@@ -105,7 +105,6 @@ include('header.php');
     include('vues/footer.php');
     ?>
 </footer>
-
 
 
 </body>

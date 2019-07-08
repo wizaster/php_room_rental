@@ -14,30 +14,6 @@ if (isset($_REQUEST['listing'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>ClassyAds &mdash; Colorlib Website Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="../fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="../css/aos.css">
-    <link rel="stylesheet" href="../css/rangeslider.css">
-
-    <link rel="stylesheet" href="../css/style.css">
-
-</head>
 <body>
 <?php
 include('header.php');
@@ -101,9 +77,9 @@ $salle = SalleDAO::findById($salleId);
                     </div>
                     <div <?php
                     if (empty($image)){
-                        ?> class="row col-4" <?php
+                        ?> class=" col-4" <?php
                     } else {
-                    ?> class="row testrow col-4"> <?php
+                    ?> class="testrow col-4"> <?php
                         }
                         ?>
                         <h4 class="h5 mb-4 text-black">Description</h4>
@@ -162,7 +138,7 @@ $salle = SalleDAO::findById($salleId);
                         </form>
                         <form action="?action=recherche&vos_salles=true" method="post">
                         <?php
-                            if ($_SESSION['id'] == $salle->getIdProp() || $_SESSION['role'] == 3) {
+                        if ((isset($_SESSION['id']) && $_SESSION['id'] == $salle->getIdProp()) || (isset($_SESSION['role']) && $_SESSION['role'] == 3)) {
                                 ?>
                                 <input type="hidden" name="action" value="supprimer_salle"/>
                                 <input type="hidden" name="salleId" value="<?= $salleId ?>"/>
@@ -176,8 +152,6 @@ $salle = SalleDAO::findById($salleId);
                     </div>
                 </div>
             </div>
-
-
             <footer class="site-footer">
                 <?php
                 include('vues/footer.php');
@@ -186,21 +160,5 @@ $salle = SalleDAO::findById($salleId);
         </div>
     </div>
 </div>
-
-        <script src="../js/jquery-3.3.1.min.js"></script>
-        <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="../js/jquery-ui.js"></script>
-        <script src="../js/popper.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/owl.carousel.min.js"></script>
-        <script src="../js/jquery.stellar.min.js"></script>
-        <script src="../js/jquery.countdown.min.js"></script>
-        <script src="../js/jquery.magnific-popup.min.js"></script>
-        <script src="../js/bootstrap-datepicker.min.js"></script>
-        <script src="../js/aos.js"></script>
-        <script src="../js/rangeslider.min.js"></script>
-
-        <script src="../js/main.js"></script>
-
 </body>
 </html>

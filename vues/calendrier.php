@@ -1,7 +1,6 @@
 <?php
 include('./Classes/CalendrierManipulation.class.php');
 ?>
-
 <div class="container_calendar">
     <h3><a href="?action=calendrier&ym=<?php echo $prev; ?>">&lt;</a> <?php echo $html_title; ?> <a
                 href="?action=calendrier&ym=<?php echo $next; ?>">&gt;</a></h3>

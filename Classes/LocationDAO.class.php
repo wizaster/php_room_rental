@@ -69,22 +69,17 @@ class LocationDAO
         try 
         {
             $db = Database::getInstance();
-            
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOC." WHERE ID = :x");
-            $pstmt->execute(array(':x' => $id));
-            
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
-            
-            if($result)
-            {
-                $l = new Location();
-                $l->loadFromObject($result);
-                
-                $pstmt->closeCursor();
-                return $l;
+
+            $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_LOC . " WHERE Id = :x");
+            if ($pstmt->execute(array(':x' => $id))) {
+                while ($row = $pstmt->fetch()) {
+                    $l = new Location();
+                    $l->loadFromObject($row);
+                    $pstmt->closeCursor();
+                    return $l;
+                }
             }
             $pstmt->closeCursor();
-            //$db->close();
             return null;
         }
         catch(PDOException $e) 
@@ -98,16 +93,13 @@ class LocationDAO
         try 
         {
             $liste = Array();
-            
             $db = Database::getInstance();
             $stmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_LOC . " where locateur_Id = :x");
-            if ($stmt->execute(array(':x => $id'))) {
+            if ($stmt->execute(array(':x' => $id))) {
                 while ($row = $stmt->fetch()) {
                     $l = new Location();
-
                     $l->loadFromArray($row);
-
-                    array_push($liste, $l);
+                    \                    array_push($liste, $l);
                 }
                 $stmt->closeCursor();
                 return $liste;
@@ -124,9 +116,7 @@ class LocationDAO
     {
         try {
             $liste = Array();
-
             $db = Database::getInstance();
-
             $res = $db->query("SELECT * FROM " . config::DB_TABLE_LOC . " WHERE  Salle_Id = " . $id);
             foreach ($res as $row) {
                 $obj = new Location();
@@ -144,27 +134,17 @@ class LocationDAO
         try 
         {
             $liste = Array();
-            
             $db = Database::getInstance();
-
             $pstmt = $db->prepare("SELECT * FROM " . Config::DB_TABLE_LOC . " WHERE Salle_Id = :x");
-            $pstmt->execute(array(':x' => $id));
-            
-                                    // TODO Pas sur!
-            $result = $pstmt->fetch(PDO::FETCH_OBJ);
-            
-            if (isset($result)) {
-                foreach($result as $row) {
+            if ($pstmt->execute(array(':x' => $id))) {
+                while ($row = $pstmt->fetch()) {
                     $l = new Location();
-                    //var_dump($row);
                     $l->loadFromArray($row);
-
                     array_push($liste,$l);
                 }
             }
             $pstmt->closeCursor();
-            //$db->close();
-            return liste;
+            return $liste;
         }
         catch(PDOException $e) 
         {
@@ -177,20 +157,16 @@ class LocationDAO
 		try
 		{
 			$db = Database::getInstance();
-            
             $pstmt = $db->prepare(
                 "UPDATE '".Config::DB_TABLE_LOC."' SET 
                 DATE_DEBUT = :deb, 
                 DATE_FIN = :fin
                 WHERE ID = :i");
-            
             $n = $pstmt->execute(array(
                 ':deb' => $x->getDateDebut(),
                 ':fin' => $x->getDateFin(),
                 ':i' => $x->getId()));
-            
             $pstmt->closeCursor();
-            //$db->close();
             return $n;
 		}
 		catch(PDOException $e)
@@ -204,12 +180,9 @@ class LocationDAO
         try
         {
             $db = Database::getInstance();
-            
             $pstmt = $db->prepare("DELETE FROM ".Config::DB_TABLE_LOC." WHERE ID = :x");
             $n = $pstmt->execute(array(':x' => $x));
-            
             $pstmt->closeCursor();
-            //$db->close();
             return $n;
         }
         catch(PDOException $e)

@@ -1,6 +1,24 @@
 $(document).ready(function () {
     $('#datepicker').datepicker();
     $('#datepickerFin').datepicker();
+    $('#reservation_form').validate({
+        rules: {
+            datepicker: {
+                required: true
+            },
+            datepickerFin: {
+                required: true
+            }
+        },
+        messages: {
+            datepicker: {
+                required: "Veuillez entrer une date de debut."
+            },
+            datepickerFin: {
+                required: "veuillez entrer une date de fin."
+            }
+        }
+    });
     $("#formAjout").validate({
         rules: {
             noCivique: {

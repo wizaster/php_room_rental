@@ -26,7 +26,29 @@ class AccessibiliteDAO
         }
     }
 
-    public function findAll()
+    public static function findById($id)
+    {
+        $liste = Array();
+        $db = Database::getInstance();
+        try {
+            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_ACCESS . " where Id = :x");
+            if ($stmt->execute(array(':x' => $id))) {
+                while ($row = $stmt->fetch()) {
+                    $l = new Accessibilite();
+
+                    $l->loadFromArray($row);
+
+                    array_push($liste, $l);
+                }
+                return $liste;
+            }
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
+        }
+    }
+
+    public static function findAll()
     {
         try {
             $liste = Array();

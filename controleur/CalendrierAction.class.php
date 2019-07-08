@@ -8,8 +8,6 @@ class CalendrierAction implements Action
 {
     public function execute()
     {
-
         return "reserver_salle";
-
     }
 }

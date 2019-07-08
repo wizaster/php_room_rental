@@ -31,6 +31,6 @@ class Creation_utilisateurAction implements Action
 
         $user = new User(0, $password, $username, $email, $nom, $prenom, $adresse, $desc, 0, 1);
         $uDao->create($user);
-        return "default";
+        return "profil";
     }
 }

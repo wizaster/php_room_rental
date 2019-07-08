@@ -26,7 +26,7 @@ class EquipementDAO
         }
     }
 
-    public function findAll()
+    public static function findAll()
     {
         try {
             $liste = Array();
@@ -45,6 +45,28 @@ class EquipementDAO
             $result->closeCursor();
             //$cnx->close();
             return $liste;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
+        }
+    }
+
+    public static function findById($id)
+    {
+        $liste = Array();
+        $db = Database::getInstance();
+        try {
+            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_SALEQ . " where Id = :x");
+            if ($stmt->execute(array(':x' => $id))) {
+                while ($row = $stmt->fetch()) {
+                    $l = new Equipement();
+
+                    $l->loadFromArray($row);
+
+                    array_push($liste, $l);
+                }
+                return $liste;
+            }
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br>";
             return $liste;

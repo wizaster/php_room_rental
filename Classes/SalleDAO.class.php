@@ -84,6 +84,31 @@ class SalleDAO
             return $liste;
         }
     }
+
+    public static function findAllWithPages()
+    {
+        try {
+            $liste = Array();
+
+            $query = 'SELECT * FROM ' . Config::DB_TABLE_SALLE . ' LIMIT ' . $_SESSION['offset'] . ', ' . $_SESSION['rowsperpage'];
+            $cnx = Database::getInstance();
+
+            $result = $cnx->query($query);
+            foreach ($result as $row) {
+                $s = new Salle();
+
+                $s->loadFromArray($row);
+
+                array_push($liste, $s);
+            }
+            $result->closeCursor();
+            //$cnx->close();
+            return $liste;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
+        }
+    }
     
     public static function findById($id)
     {
@@ -286,6 +311,23 @@ class SalleDAO
             return $n;
         } catch(PDOException $e) {
             throw $e;
+        }
+    }
+
+    public static function getCountSalles()
+    {
+        $liste = Array();
+        $db = Database::getInstance();
+        try {
+            $stmt = $db->prepare("SELECT count(*) FROM " . config::DB_TABLE_SALLE);
+            if ($stmt->execute(array())) {
+                while ($row = $stmt->fetch()) {
+                    return $row;
+                }
+            }
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
         }
     }
 }

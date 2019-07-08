@@ -40,6 +40,19 @@ class User
     }
     
     // Getters
+    public function setSessionUser()
+    {
+        date_default_timezone_set('America/New_York');
+        $_SESSION['role'] = $this->Type_utilisateur_Id;
+        $_SESSION['user']['nom'] = $this->nom;
+        $_SESSION['user']['prenom'] = $this->prenom;
+        $_SESSION['user']['email'] = $this->email;
+        $_SESSION['user']['adresse'] = $this->adresse;
+        $_SESSION['user']['bio'] = $this->description;
+        $date = $this->create_time;
+        $date = date("d/m/Y", strtotime($date));
+        $_SESSION['user']['membreDepuis'] = $date;
+    }
 
     public function getNomUtilisateur()
     {
@@ -143,8 +156,6 @@ class User
     {
         $this->create_time = $_user_since;
     }
-
-
     
     public function __toString()
     {

@@ -28,6 +28,7 @@ require_once('controleur/Supprimer_salleAction.class.php');
 require_once('controleur/Afficher_utilisateursAction.class.php');
 require_once('controleur/Supprimer_utilisateurAction.class.php');
 require_once('controleur/Afficher_historiqueAction.class.php');
+require_once('controleur/FiltrerAction.class.php');
 
 class ActionBuilder
 {
@@ -120,6 +121,9 @@ class ActionBuilder
                 break;
             case "consulter_historique" :
                 return new Afficher_historiqueAction();
+                break;
+            case "filtrer" :
+                return new FiltrerAction();
                 break;
             default :
                 return new DefaultAction();
