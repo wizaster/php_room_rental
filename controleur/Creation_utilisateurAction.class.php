@@ -28,7 +28,6 @@ class Creation_utilisateurAction implements Action
         $pays = $_REQUEST['pays_user'];
         $desc = $_REQUEST['description_user'];
         $adresse = $noCivique . "," . $appt . "," . $rue . "," . $codePostal . "," . $ville . "," . $province . "," . $pays;
-
         $user = new User(0, $password, $username, $email, $nom, $prenom, $adresse, $desc, 0, 1);
         $uDao->create($user);
         return "profil";

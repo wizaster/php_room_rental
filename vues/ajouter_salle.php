@@ -14,56 +14,24 @@ include_once('./Classes/AccessibiliteDAO.class.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Abbys'List - Connexion</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="../fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="../css/aos.css">
-    <link rel="stylesheet" href="../css/rangeslider.css">
-
-    <link rel="stylesheet" href="../css/style.css">
-
-</head>
 <body>
 <?php
 include('vues/header.php');
 ?>
-
-
 <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(./images/banquet_login.jpg);"
      data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
-
                 <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
-
-
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8 text-center">
                             <h1>Afficher votre salle</h1>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-
     <div class="site-section bg-light">
         <div class="container">
             <div class="row justify-content-center">
@@ -230,9 +198,5 @@ include('vues/header.php');
         include('vues/footer.php');
         ?>
     </footer>
-</div>
-
-
-
 </body>
 

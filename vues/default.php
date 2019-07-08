@@ -33,20 +33,19 @@ if (isset($_SESSION['recherche'])) {
                     </div>
                 </div>
 
-                <div class="form-search-wrap" data-aos="fade-up" data-aos-delay="200">
+                <div class="form-search-wrap " data-aos="fade-up" data-aos-delay="200">
                     <form method="post">
                         <div class="row align-items-center">
-                            <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4">
+                            <div class="col-4 m-auto">
                                 <input type="text" name="main_recherche" class="form-control rounded"
                                        placeholder="Que cherchez-vous?">
                             </div>
-                            <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
+                            <div class="col-4 m-auto">
                                 <div class="wrap-icon">
                                     <span class="icon icon-room"></span>
                                     <select class="form-control rounded" name="main_recherche_lieu">
                                         <?php
                                         $villes = SalleDAO::findAllCities();
-
                                         $nb = count($villes);
                                         for ($i = 0; $i < $nb; $i++) {
                                             ?>
@@ -57,21 +56,7 @@ if (isset($_SESSION['recherche'])) {
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
-                                <div class="select-wrap">
-                                    <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-                                    <select class="form-control rounded" name="" id="">
-                                        <option value="">Types d'évènements</option>
-                                        <option value="">Real Estate</option>
-                                        <option value="">Books &amp; Magazines</option>
-                                        <option value="">Furniture</option>
-                                        <option value="">Electronics</option>
-                                        <option value="">Cars &amp; Vehicles</option>
-                                        <option value="">Others</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                            <div class="col-4 ml-0 text-right">
                                 <input type="hidden" name="action" value="recherche">
                                 <input type="submit" class="btn btn-primary btn-block rounded" value="Trouver">
                             </div>
@@ -137,176 +122,8 @@ if (isset($_SESSION['recherche'])) {
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-12">
-                <h2 class="h5 mb-4 text-black">Salles en Vedette</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12  block-13">
-                <div class="owl-carousel nonloop-block-13">
-
-                    <div id="featured1" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('./images/img_1.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Cars &amp; Vehicles</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">Red Luxury Car</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="featured2" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('./images/img_2.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Real Estate</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">House with Swimming Pool</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="featured3" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('./images/img_3.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Furniture</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">Wooden Chair &amp; Table</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="featured4" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('./images/img_4.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Electronics</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">iPhone X gray</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="featured5" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('./images/img_1.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Cars &amp; Vehicles</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">Red Luxury Car</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="featured6" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('./images/img_2.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Real Estate</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">House with Swimming Pool</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="featured7" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('./images/img_3.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Furniture</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">Wooden Chair &amp; Table</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="featured8" class="d-block d-md-flex listing vertical">
-                        <a href="afficher_salle.php" class="img d-block"
-                           style="background-image: url('/images/img_4.jpg')"></a>
-                        <div class="lh-content">
-                            <span class="category">Electronics</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="afficher_salle.php">iPhone X gray</a></h3>
-                            <address>Don St, Brooklyn, New York</address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">(3 Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-        </div>
     </div>
 </div>
-
 <div class="site-section" data-aos="fade">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -326,44 +143,34 @@ if (isset($_SESSION['recherche'])) {
                     <div class="listing-item-content">
                         <a href="#" class="bookmark" data-toggle="tooltip" data-placement="left"
                            title="Bookmark"><span class="icon-heart"></span></a>
-                        <a class="px-3 mb-3 category" href="#">Car &amp; Vehicles</a>
                         <h2 class="mb-1"><a href="#">Red Luxury Car</a></h2>
-                        <span class="address">West Orange, New York</span>
                     </div>
                 </div>
-
             </div>
             <div id="type-evenement2" class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
                 <div class="listing-item">
                     <div class="listing-image">
                         <img src="./images/img_2.jpg" alt="Image" class="img-fluid">
                     </div>
                     <div class="listing-item-content">
                         <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                        <a class="px-3 mb-3 category" href="#">Real Estate</a>
                         <h2 class="mb-1"><a href="#">House with Swimming Pool</a></h2>
-                        <span class="address">West Orange, New York</span>
                     </div>
                 </div>
-
             </div>
             <div id="type-evenement3" class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
                 <div class="listing-item">
                     <div class="listing-image">
                         <img src="./images/img_3.jpg" alt="Image" class="img-fluid">
                     </div>
                     <div class="listing-item-content">
                         <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                        <a class="px-3 mb-3 category" href="#">Furniture</a>
                         <h2 class="mb-1"><a href="#">Wooden Chair &amp; Table</a></h2>
-                        <span class="address">West Orange, New York</span>
                     </div>
                 </div>
             </div>
             <div class="col-12 text-center mt-4">
-                <a href="#" class="btn btn-primary rounded py-2 px-4 text-white">En savoir plus</a>
+                <a href="?action=connexion" class="btn btn-primary rounded py-2 px-4 text-white">En savoir plus</a>
             </div>
         </div>
     </div>

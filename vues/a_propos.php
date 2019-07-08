@@ -1,36 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>ClassyAds &mdash; Colorlib Website Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="/fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link rel="stylesheet" href="/css/jquery-ui.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="/css/aos.css">
-    <link rel="stylesheet" href="/css/rangeslider.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-</head>
 <body>
 <?php
 include('header.php');
 ?>
-    </header>
-
-
 <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../images/hero_business.jpg);"
      data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
@@ -51,11 +24,8 @@ include('header.php');
             </div>
         </div>
     </div>
-
     <div class="site-section" data-aos="fade">
         <div class="container">
-
-
             <div class="row mb-5">
                 <div class="col-md-4 ml-auto">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam eveniet laudantium dignissimos
@@ -107,8 +77,6 @@ include('header.php');
 
         </div>
     </div>
-
-
     <div class="site-section">
         <div class="container">
             <div class="row align-items-center">
@@ -122,7 +90,6 @@ include('header.php');
                     <p class="mb-4">Adipisci dolore reprehenderit est et assumenda veritatis, ex voluptate odio
                         consequuntur quo ipsa accusamus dicta laborum exercitationem aspernatur reiciendis
                         perspiciatis!</p>
-
                     <ul class="ul-check list-unstyled primary">
                         <li>Adipisci dolore reprehenderit</li>
                         <li>Accusamus dicta laborum</li>
@@ -132,7 +99,6 @@ include('header.php');
             </div>
         </div>
     </div>
-
     <div class="site-section">
         <div class="container">
             <div class="row align-items-center">
@@ -143,7 +109,6 @@ include('header.php');
                     <h2 class="text-primary mb-3">Customer Centered Co.</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam voluptates a explicabo delectus
                         sed labore dolor enim optio odio at!</p>
-
                     <ul class="ul-check list-unstyled primary">
                         <li>Adipisci dolore reprehenderit</li>
                         <li>Accusamus dicta laborum</li>
@@ -153,8 +118,6 @@ include('header.php');
             </div>
         </div>
     </div>
-
-
     <div class="newsletter bg-primary py-5">
         <div class="container">
             <div class="row align-items-center">
@@ -163,7 +126,6 @@ include('header.php');
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 </div>
                 <div class="col-md-6">
-
                     <form class="d-flex">
                         <input type="text" class="form-control" placeholder="Email">
                         <input type="submit" value="Subscribe" class="btn btn-white">
@@ -172,29 +134,10 @@ include('header.php');
             </div>
         </div>
     </div>
-
-
     <footer class="site-footer">
         <?php
         include('vues/footer.php');
         ?>
     </footer>
-</div>
-
-<script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/popper.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/jquery.stellar.min.js"></script>
-<script src="/js/jquery.countdown.min.js"></script>
-<script src="/js/jquery.magnific-popup.min.js"></script>
-<script src="/js/bootstrap-datepicker.min.js"></script>
-<script src="/js/aos.js"></script>
-<script src="/js/rangeslider.min.js"></script>
-
-<script src="/js/main.js"></script>
-
 </body>
 </html>

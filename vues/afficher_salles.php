@@ -9,7 +9,6 @@ if (isset($_SESSION['recherche'])) {
 } else {
     $resultat = false;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -225,7 +224,6 @@ include('header.php');
                     </blockquote>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
