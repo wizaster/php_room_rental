@@ -2532,3 +2532,20 @@ td {
     height: 125px;
     width: 150px;
 }
+
+
+.table-desc td {
+    height: 20px;
+}
+
+footer {
+    height: 300px;
+}
+
+.footer-heading {
+    margin-top: -100px;
+}
+
+.actSalle {
+    margin-bottom: 100px;
+}

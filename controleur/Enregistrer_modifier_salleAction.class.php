@@ -43,9 +43,6 @@ class Enregistrer_modifier_salleAction implements Action
             $rue = $_REQUEST['rue_room'];
 
             $salle = new Salle(0, $titre, $superficie, $capacite, $desc, 'x', $prix, $noCivique, $appt_suite, $rue, $code_postal, $ville, $province, $pays, "", $proprio);
-            
-            //$idtoput = unserialize($_SESSION['salleEdit'])->getId();
-            //$salle->setId($idtoput);
             $salle->setId($_REQUEST['salleId']);
             
             SalleDAO::update($salle);
@@ -61,7 +58,6 @@ class Enregistrer_modifier_salleAction implements Action
                     }
                 }    
             }
-            
             if (isset($_REQUEST['accessSalle'])) {
                 $accessArr = $_REQUEST['accessSalle'];
                 SalleHasAccessibiliteDAO::deleteAllOfSalle($salle->getId());
@@ -78,7 +74,9 @@ class Enregistrer_modifier_salleAction implements Action
                     if (isset($_FILES['uploadImage' . $i])) {
                         if ($_FILES['uploadImage' . $i]['name'] != '') {
                             ImageAction::addImage('uploadImage' . $i, $salle->getId());
-                            ImageDAO::delete($_SESSION['salleEditImage'][$i - 1][0]);
+                            if (isset($_SESSION['salleEditImage'][$i - 1][0])) {
+                                ImageDAO::delete($_SESSION['salleEditImage'][$i - 1][0]);
+                            }
                         }
                     }
                 }
@@ -88,13 +86,10 @@ class Enregistrer_modifier_salleAction implements Action
                     ImageDAO::delete($image);
                 }
             }
-
-            
             unset($_SESSION['salleEdit']);
             unset($_SESSION['salleEditAccessibilite']);
             unset($_SESSION['salleEditEquipement']);
             unset($_SESSION['salleEditImage']);
-
             return "afficher_salle";
         }
         return "erreur";

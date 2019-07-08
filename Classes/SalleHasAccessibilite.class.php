@@ -11,7 +11,7 @@ class SalleHasAccessibilite
      * @param $salleId
      * @param $accessibiliteId
      */
-    public function __construct($salleId, $accessibiliteId)
+    public function __construct($salleId = null, $accessibiliteId = null)
     {
         $this->salleId = $salleId;
         $this->accessibiliteId = $accessibiliteId;
@@ -32,6 +32,12 @@ class SalleHasAccessibilite
     public function getAccessibiliteId()
     {
         return $this->accessibiliteId;
+    }
+
+    public function loadFromArray($tab)
+    {
+        $this->salleId = $tab['Salle_Id'];
+        $this->accessibiliteId = $tab['Accessibilite_Id'];
     }
 
 

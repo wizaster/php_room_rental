@@ -40,7 +40,8 @@ include('header.php');
                     <div class="col-lg-12 row">
                         <?php
                         if ($resultat) {
-                            foreach ($_SESSION['recherche'] as $trouve) {
+                            foreach ($_SESSION['recherche'] as $trouveS) {
+                                $trouve = SalleDAO::findById($trouveS);
                                 $sId = $trouve->getId();
                                 $image = ImageDAO::findBySalle($sId);
                                 ?>
@@ -114,7 +115,7 @@ include('header.php');
                             <div class="select-wrap">
                                 <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
                                 <select class="form-control rounded" name="filtre_accessibilite">
-                                    <option>--Accessibilite--</option>
+                                    <option value="" disabled selected>--Accessibilite--</option>
                                     <?php
                                     $accessS = AccessibiliteDAO::findAll();
 
@@ -131,7 +132,7 @@ include('header.php');
                             <div class="select-wrap">
                                 <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
                                 <select class="form-control rounded" name="filtre_equipement">
-                                    <option>--equipement--</option>
+                                    <option value="" disabled selected>--equipement--</option>
                                     <?php
                                     $equips = EquipementDAO::findAll();
 
@@ -148,7 +149,7 @@ include('header.php');
                             <div class="wrap-icon">
                                 <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
                                 <select class="form-control rounded" name="filtre_lieu">
-                                    <option>--ville--</option>
+                                    <option disabled selected>--ville--</option>
                                     <?php
                                     $villes = SalleDAO::findAllCities();
                                     $nb = count($villes);

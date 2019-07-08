@@ -39,21 +39,23 @@ class SalleHasAccessibiliteDAO
 
     public static function getSalleId($accessId)
     {
-        {
-            try {
-                $liste = array();
-                $db = Database::getInstance();
+        $liste = Array();
+        $db = Database::getInstance();
+        try {
+            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_SALACC . " where Accessibilite_Id = :x");
+            if ($stmt->execute(array(':x' => $accessId))) {
+                while ($row = $stmt->fetch()) {
+                    $l = new SalleHasAccessibilite();
 
-                $res = $db->query("SELECT Salle_Id FROM " . Config::DB_TABLE_SALACC . " WHERE Accessibilite_Id = '" . $accessId . "'");
-                foreach ($res as $row) {
-                    array_push($liste, $row[0]);
+                    $l->loadFromArray($row);
+
+                    array_push($liste, $l);
                 }
                 return $liste;
-                return $res;
-            } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage() . "<br>";
-                return $res;
             }
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br>";
+            return $liste;
         }
     }
     

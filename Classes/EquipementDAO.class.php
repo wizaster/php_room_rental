@@ -9,7 +9,6 @@ class EquipementDAO
     function __construct()
     {
     }
-
     public function create($x)
     {
         try {
@@ -25,7 +24,6 @@ class EquipementDAO
             throw $e;
         }
     }
-
     public static function findAll()
     {
         try {
@@ -33,7 +31,6 @@ class EquipementDAO
 
             $query = 'SELECT * FROM ' . Config::DB_TABLE_EQUIP;
             $cnx = Database::getInstance();
-
             $result = $cnx->query($query);
             foreach ($result as $row) {
                 $s = new Equipement();
@@ -50,13 +47,12 @@ class EquipementDAO
             return $liste;
         }
     }
-
     public static function findById($id)
     {
         $liste = Array();
         $db = Database::getInstance();
         try {
-            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_SALEQ . " where Id = :x");
+            $stmt = $db->prepare("SELECT * FROM " . config::DB_TABLE_EQUIP . " where Id = :x");
             if ($stmt->execute(array(':x' => $id))) {
                 while ($row = $stmt->fetch()) {
                     $l = new Equipement();
@@ -72,17 +68,12 @@ class EquipementDAO
             return $liste;
         }
     }
-
     public static function findByAnything($terme)
     {
         try {
             $liste = Array();
-
             $db = Database::getInstance();
-
             $liste = array();
-
-
             $therme = $_REQUEST['main_recherche'];
             $res = $db->query("SELECT * FROM " . Config::DB_TABLE_EQUIP . " WHERE description LIKE '%" . $therme . "%' OR nom LIKE '%" . $therme . "%'");
             foreach ($res as $row) {
@@ -94,5 +85,4 @@ class EquipementDAO
             return $liste;
         }
     }
-
 }
