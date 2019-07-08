@@ -43,7 +43,7 @@ class LocationDAO
         try {
             $liste = Array();
                 
-            $query = 'SELECT * FROM '.Config::DB_TABLE_LOCATION;
+            $query = 'SELECT * FROM '.Config::DB_TABLE_LOC;
             $cnx = Database::getInstance();
             
             $result = $cnx->query($query);
@@ -70,7 +70,7 @@ class LocationDAO
         {
             $db = Database::getInstance();
             
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE ID = :x");
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOC." WHERE ID = :x");
             $pstmt->execute(array(':x' => $id));
             
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
@@ -101,7 +101,7 @@ class LocationDAO
             
             $db = Database::getInstance();
             
-            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOCATION." WHERE LOCATEUR_ID = :x");
+            $pstmt = $db->prepare("SELECT * FROM ".Config::DB_TABLE_LOC." WHERE LOCATEUR_ID = :x");
             $pstmt->execute(array(':x' => $id));
             
                                     // TODO Pas sur!
@@ -158,12 +158,14 @@ class LocationDAO
                                     // TODO Pas sur!
             $result = $pstmt->fetch(PDO::FETCH_OBJ);
             
-            foreach($result as $row) {
-                $l = new Location();
-                var_dump($row);
-                $l->loadFromArray($row);
-                
-                array_push($liste,$l);
+            if (isset($result)) {
+                foreach($result as $row) {
+                    $l = new Location();
+                    //var_dump($row);
+                    $l->loadFromArray($row);
+
+                    array_push($liste,$l);
+                }
             }
             $pstmt->closeCursor();
             //$db->close();
@@ -182,7 +184,7 @@ class LocationDAO
 			$db = Database::getInstance();
             
             $pstmt = $db->prepare(
-                "UPDATE '".Config::DB_TABLE_LOCATION."' SET 
+                "UPDATE '".Config::DB_TABLE_LOC."' SET 
                 DATE_DEBUT = :deb, 
                 DATE_FIN = :fin
                 WHERE ID = :i");
@@ -202,13 +204,13 @@ class LocationDAO
 		}
     }
     
-    public function delete($x)
+    public static function delete($x)
     {
         try
         {
             $db = Database::getInstance();
             
-            $pstmt = $db->prepare("DELETE FROM ".Config::DB_TABLE_LOCATION." WHERE ID = :x");
+            $pstmt = $db->prepare("DELETE FROM ".Config::DB_TABLE_LOC." WHERE ID = :x");
             $n = $pstmt->execute(array(':x' => $x));
             
             $pstmt->closeCursor();

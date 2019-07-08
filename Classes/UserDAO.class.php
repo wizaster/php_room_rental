@@ -8,7 +8,7 @@ class UserDAO
 {
     public function __construct(){}
 
-    public function create($x)
+    public static function create($x)
     {
         try {
             $db = Database::getInstance();
@@ -39,6 +39,31 @@ class UserDAO
             return $n;
         } catch (PDOException $e) {
             throw $e;
+        }
+    }
+    
+    public static function findAll() 
+    {
+        try {
+            $listeUsers = Array();
+                
+            $query = 'SELECT * FROM '.Config::DB_TABLE_USER;
+            $cnx = Database::getInstance();
+            
+            $result = $cnx->query($query);
+            foreach($result as $row) {
+                $u = new User();
+                
+                $u->loadFromArray($row);
+                
+                array_push($listeUsers,$u);
+            }
+            $result->closeCursor();
+            //$cnx->close();
+            return $listeUsers;
+        } catch (PDOException $e) {
+            print "Error!: ".$e->getMessage()."<br>";
+            return $listeUsers;
         }
     }
     
@@ -99,7 +124,7 @@ class UserDAO
             throw $e;
         }
     }
-    public function update($x)
+    public static function update($x)
     {
         try {
             $db = Database::getInstance();
@@ -130,7 +155,7 @@ class UserDAO
         }
     }
     
-    public function updateUserType($x)
+    public static function updateUserType($x)
     {
         try {
             $db = Database::getInstance();
@@ -151,7 +176,7 @@ class UserDAO
         }
     }
     
-    public function delete($x)
+    public static function delete($x)
     {
         try
         {

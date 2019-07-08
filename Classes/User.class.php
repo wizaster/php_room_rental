@@ -163,15 +163,15 @@ class User
     public function loadFromArray($tab)
     {
         $this->nomUtilisateur = $tab["nomUtilisateur"];
-        $this->password = $tab["PASSWORD"];
-        $this->id = $tab["ID"];
-        $this->nom = $tab["NOM"];
-        $this->prenom = $tab["PRENOM"];
-        $this->adresse = $tab["ADRESSE"];
-        $this->email = $tab["EMAIL"];
-		$this->description = $tab["DESCRIPTION"];
-        $this->Type_utilisateur_Id = $tab["TYPE_UTILISATEUR_ID"];
-        $this->create_time = $tab["CREATE_TIME"];
+        $this->password = $tab["password"];
+        $this->id = $tab["Id"];
+        $this->nom = $tab["nom"];
+        $this->prenom = $tab["prenom"];
+        $this->adresse = $tab["adresse"];
+        $this->email = $tab["email"];
+	$this->description = $tab["description"];
+        $this->Type_utilisateur_Id = $tab["Type_utilisateur_Id"];
+        $this->create_time = $tab["create_time"];
     }
     
     public function loadFromObject($x)
