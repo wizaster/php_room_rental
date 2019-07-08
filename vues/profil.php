@@ -132,7 +132,11 @@ include('header.php');
                         break;
                     case 3:
                         ?>
-
+                        <div class="row">
+                            <form action="?action=afficher_utilisateurs" method="post" id="Options" class="p-2">
+                                <input type="submit" value="Afficher les Utilisateurs"/>
+                            </form>
+                        </div>
                         <?php
                         break;
                 }
