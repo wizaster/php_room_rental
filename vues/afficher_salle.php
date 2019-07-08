@@ -4,14 +4,14 @@ if (isset($_SESSION['connecte'])) {
 } else {
     $loggedIn = false;
 }
-if (isset($_REQUEST['salleId'])) {
-    $salleId = $_REQUEST['salleId'];
-}
-$image = ImageDAO::findBySalle($salleId);
+$salle = unserialize($_SESSION['salle']);
+$image = unserialize($_SESSION['images']);
+$salleId = $salle->getId();
 if (count($image) < 1) {
     $image[0][0] = "";
 }
-$salle = unserialize($_SESSION['salle']);
+unset($_SESSION['images']);
+unset($_SESSION['salle']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

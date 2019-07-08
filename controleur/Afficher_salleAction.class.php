@@ -8,6 +8,11 @@ class Afficher_salleAction implements Action
         if (isset($_REQUEST['salleId'])) {
             $salle = SalleDAO::findById($_REQUEST['salleId']);
             if ($salle != null) {
+                $image = ImageDAO::findBySalle($_REQUEST['salleId']);
+                if (count($image) < 1) {
+                    $image[0][0] = "";
+                }
+                $_SESSION['images'] = serialize($image);
                 $_SESSION['salle'] = serialize($salle);
                 return "afficher_salle";
             } else {

@@ -26,6 +26,9 @@
 </head>
 <body>
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 // -- Contrôleur frontal --
 require_once('./controleur/ActionBuilder.class.php');
 if (ISSET($_REQUEST["action"])) {

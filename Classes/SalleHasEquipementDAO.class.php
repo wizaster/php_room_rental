@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+
 
 include_once('./configs/config.php');
 include_once('./Classes/Database.class.php');
